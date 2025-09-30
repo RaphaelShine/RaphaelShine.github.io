@@ -15,13 +15,13 @@ remote_theme             : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "ko-KR"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "가려 꺾은 묏버들"
 title_separator          : "-"
-subtitle                 : "컴퓨터의 언어, 문학의 언어, 다 심어두고 보소서" # site tagline that appears below site title in masthead
+subtitle                 : "언어에 대한 기억 저장소" # site tagline that appears below site title in masthead
 name                     : "RaphaelShine"
-description              : "An amazing website."
+description              : "컴퓨터, 문학 등의 기억 저장소"
 url                      : "https://RaphaelShine.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "RaphaelShine/RaphaelShine.github.io"
@@ -115,9 +115,9 @@ analytics:
 author:
   name             : "Shin Young Jea"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "한국어, English, 한국 수어, ⠚⠒⠈⠍⠁⠀⠨⠎⠢⠨, Python, C#을 주로 사용합니다."
+  bio              : "언어는 한국어, English, 한국 수어, ⠚⠒⠈⠍⠁⠀⠨⠎⠢⠨, Python, C#을 주로 사용합니다. **아직 중졸입니다.**"
   location         : "Seoul, Korea"
-  email            : ""
+  email            : # 새 email 만들고 나서 넣어야지~
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -127,7 +127,7 @@ author:
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://x.com/bebebebebe14159"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -143,7 +143,7 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://x.com/bebebebebe14159"
+      # url:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
