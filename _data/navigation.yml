@@ -1,9 +1,25 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  - title: "개발"
+    url: /development/
+    children:
+      - title: "유니티"
+        url: /list/unity/
+      - title: "C#"
+        url: /list/csharp/
+      - title: "C"
+        url: /list/c/
+  - title: "한국어"
+    url: /korean/
+    children:
+      - title: "문법"
+        url: /list/grammar/
+      - title: "문학"
+        url: /list/literature/
+  - title: "언어 창제"
+    url: /new-language/
+  - title: "기타"
+    url: /etc/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
