@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Shin Young Jea"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/TheEarthCapture.png"
   bio              : "언어는 한국어, English, 한국 수어, ⠚⠒⠈⠍⠁⠀⠨⠎⠢⠨, Python, C#을 주로 사용합니다. **아직 중졸입니다.**"
   location         : "Seoul, Korea"
   email            : # 새 email 만들고 나서 넣어야지~
