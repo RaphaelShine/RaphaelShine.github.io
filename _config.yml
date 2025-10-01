@@ -323,6 +323,7 @@ defaults:
       layout: single
       author_profile: true
       show_date: true
+      show_last_modified_at: true
       read_time: true
       comments: # true
       share: true
