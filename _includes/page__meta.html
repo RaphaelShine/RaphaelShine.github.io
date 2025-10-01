@@ -4,7 +4,7 @@
     {% if document.show_date and document.date %}
       {% assign date = document.date %}
       <span class="page__meta-date">
-        <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
+        <i class="fas {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
         개시:
         {% assign date_format = site.date_format | default: "%Y/%m/%d" %}
         <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
@@ -13,8 +13,8 @@
 
     {% if document.show_last_modified_at and document.last_modified_at %}
       {% assign last_modified_at = document.last_modified_at %}
-      <span class="page__meta-date"><!--아니 얘 어디감?-->
-        <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-history" aria-hidden="true"></i>
+      <span class="page__meta-date">
+        <i class="fas {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-history" aria-hidden="true"></i>
         수정:
         {% assign date_format = site.date_format | default: "%Y/%m/%d" %}
         <time datetime="{{ last_modified_at | date_to_xmlschema }}">{{ last_modified_at | date: date_format }}</time>
