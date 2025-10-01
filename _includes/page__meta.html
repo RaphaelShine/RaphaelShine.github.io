@@ -5,17 +5,19 @@
       {% assign date = document.date %}
       <span class="page__meta-date">
         <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
+        <p>개시:</p>
         {% assign date_format = site.date_format | default: "%Y/%m/%d" %}
         <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
       </span>
     {% endif %}
 
-    {% if document.show_last_modified_at and document.show_date %}<span class="page__meta-sep"><!--자 이거잖아--></span>{% endif %}
+    <!--{% if document.show_last_modified_at and document.show_date %}<span class="page__meta-sep"></span>{% endif %}-->
 
     {% if document.show_last_modified_at and document.last_modified_at %}
       {% assign last_modified_at = document.last_modified_at %}
       <span class="page__meta-date"><!--아니 얘 어디감?-->
-        <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
+        <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-history" aria-hidden="true"></i>
+        <p>수정:</p>
         {% assign date_format = site.date_format | default: "%Y/%m/%d" %}
         <time datetime="{{ last_modified_at | date_to_xmlschema }}">{{ last_modified_at | date: date_format }}</time>
       </span>
