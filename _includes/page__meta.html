@@ -1,5 +1,5 @@
 {% assign document = post | default: page %}
-{% if document.read_time or document.show_date %}
+{% if document.show_last_modified_at or document.show_date %}
   <p class="page__meta">
     {% if document.show_date and document.date %}
       {% assign date = document.date %}
@@ -10,15 +10,16 @@
       </span>
     {% endif %}
 
-    {% if document.show_last_modified_at and document.show_date %}<span class="page__meta-sep"></span>{% endif %}<!--자 이거잖아-->
+    {% if document.show_last_modified_at and document.show_date %}<span class="page__meta-sep"><!--자 이거잖아--></span>{% endif %}
 
     {% if document.show_last_modified_at and document.last_modified_at %}
       {% assign last_modified_at = document.last_modified_at %}
-      <span class="page__meta-date">
+      <span class="page__meta-date"><!--아니 얘 어디감?-->
         <i class="far {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
         {% assign date_format = site.date_format | default: "%Y/%m/%d" %}
         <time datetime="{{ last_modified_at | date_to_xmlschema }}">{{ last_modified_at | date: date_format }}</time>
-      </span><!--아니 얘 어디감?-->
+      </span>
+    {% endif %}
 
     <!--이건 읽는 데 걸리는 시간 표시인데 쓸모 없다고 생각해.
     {% if document.read_time %}
