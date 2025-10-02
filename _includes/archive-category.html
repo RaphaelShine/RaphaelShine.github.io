@@ -1,34 +1,4 @@
-{% if a_category.header.teaser %}
-  {% capture teaser %}{{ a_category.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
 
-{% if a_category.id %}
-  {% assign title = a_category.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = a_category.title %}
-{% endif %}
-
-{{ include.category }}
-
-<div class="{{ include.type | default: 'list' }}__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork"{% if a_category.locale %} lang="{{ a_category.locale }}"{% endif %}>
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src="{{ teaser | relative_url }}" alt="">
-      </div>
-    {% endif %}
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      {% if a_category.link %}
-        <a href="{{ a_category.link }}">{{ title }}</a> <a href="{{ a_category.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ a_category.url | relative_url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-    </h2>
-    {% assign posts = site.categories[include.category] %}
-    {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
-    <!--{% include page__meta.html type=include.type %}
-    {% if a_category.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ a_category.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}-->
-  </article>
-</div>
+{% for post in posts %}
+{% include archive-single.html type=page.entries_layout %}
+{% endfor %}

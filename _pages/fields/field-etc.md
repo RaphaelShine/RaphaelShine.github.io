@@ -7,6 +7,12 @@ sidebar_main: true
 ---
 
 ***
-
-{% assign categorylist = site.fields.ect %}
-{% for a_category in categorylist %} {% include archive-category.html category="Etc" type=page.entries_layout %} {% endfor %}
+<!--노가다를 해야겠다... -->
+{% assign devcats = "Blog" | split: "," %}
+{% for devcat in devcats %}
+  <h3><a href="/etc/{{devcat}}">{{devcat}}</a></h3>
+  <hr>
+  {% assign posts = site.categories[devcat] %}
+  {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
+  <br>
+{% endfor %}

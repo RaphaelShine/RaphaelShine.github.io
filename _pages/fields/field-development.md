@@ -7,9 +7,12 @@ sidebar_main: true
 ---
 
 ***
-<p>아 아</p>
-{% assign categorylist = site.fields.development %}
-{% for a_category in categorylist %} {% include archive-category.html category="Development" type=page.entries_layout %} {% endfor %}
-<!--
-{% assign categorylist = site.fields.development %}
-{% for a_category in categorylist %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}-->
+<!--노가다를 해야겠다... -->
+{% assign devcats = "Csharp,Unity" | split: "," %}
+{% for devcat in devcats %}
+  <h3><a href="/development/{{devcat}}">{{devcat}}</a></h3>
+  <hr>
+  {% assign posts = site.categories[devcat] %}
+  {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
+  <br>
+{% endfor %}
