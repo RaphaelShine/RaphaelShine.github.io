@@ -7,6 +7,7 @@ sidebar_main: true
 ---
 
 ***
+<p>아 아</p>
 {% assign categorylist = site.fields.development %}
 {% for a_category in categorylist %} {% include archive-category.html category="Development" type=page.entries_layout %} {% endfor %}
 <!--

@@ -16,8 +16,8 @@ main:
         url: /list/grammar/
       - title: "문학"
         url: /list/literature/
-  - title: "언어 창제"
-    url: /new-language/
+  - title: "인공어"
+    url: /artificial-language/
   - title: "기타"
     url: /etc/
   # - title: "Sample Posts"

@@ -10,6 +10,8 @@
   {% assign title = a_category.title %}
 {% endif %}
 
+{{ include.category }}
+
 <div class="{{ include.type | default: 'list' }}__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork"{% if a_category.locale %} lang="{{ a_category.locale }}"{% endif %}>
     {% if include.type == "grid" and teaser %}
