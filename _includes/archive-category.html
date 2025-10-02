@@ -24,7 +24,9 @@
         <a href="{{ a_category.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    {% include page__meta.html type=include.type %}
-    {% if a_category.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ a_category.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% assign posts = site.categories[include.category] %}
+    {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
+    <!--{% include page__meta.html type=include.type %}
+    {% if a_category.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ a_category.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}-->
   </article>
 </div>
