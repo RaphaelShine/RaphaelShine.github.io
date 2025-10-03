@@ -299,10 +299,10 @@ sidebar_main: true
       ```
 
 ## 마무리
-⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
+⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.  
 
 ***
-내가 공부한 포스트
+내가 공부한 포스트  
   [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"}  
   [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"}  
   [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"}  
