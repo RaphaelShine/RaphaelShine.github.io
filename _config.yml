@@ -115,7 +115,7 @@ analytics:
 author:
   name             : "RaphaelShine"
   avatar           : "/assets/images/TheEarthCapture.png"
-  bio              : "한국어, English, 한국 수어, ⠚⠒⠈⠍⠁⠀⠨⠎⠢⠨, Python, C#을 주로 사용합니다.\n **아직 중졸입니다.**"
+  bio              : "한국어, English, 한국수어, ⠚⠒⠈⠍⠁⠀⠨⠎⠢⠨, Python, C#을 주로 사용합니다. <br> **아직 중졸입니다.**"
   location         : "Seoul, Korea"
   email            : # 새 email 만들고 나서 넣어야지~
   links:
