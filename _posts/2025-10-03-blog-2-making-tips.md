@@ -54,7 +54,7 @@ last_modified_at: 2025-10-03
 
 ⠀repository의 이름은 `당신의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. (저는 이미 만들어놔서 빨개요...)
 
-⠀밑에 있는 <span style="color=green">Create Fork</span> 버튼을 누릅니다.
+⠀밑에 있는 <span style="color:green">Create Fork</span> 버튼을 누릅니다.
 
 (my repo 사진)
 
@@ -82,16 +82,16 @@ Code and automation에 있는 Pages를 확인합니다.
 
 ### 제거하기
 
-Fork해 온 상태 그대로는 사용하기 어렵습니다. 따라서 Github에 올라가 있는 파일을 여러분 컴퓨터로 옮겨와서 작업해 주셔야 합니다.
+⠀Fork해 온 상태 그대로는 사용하기 어렵습니다. 따라서 Github에 올라가 있는 파일을 여러분 컴퓨터로 옮겨와서 작업해 주셔야 합니다.
 
 <details><summary>VSCode에서 Github 연동하는 법</summary><div markdown="1">
-*좌측 바에서 Source Control을 찾아 <span style="color=blue">Clone Repository</span> 버튼을 누릅니다.*  
-*Github에서 로그인 인증.*  
+*좌측 바에서 Source Control을 찾아 <span style="color:blue">Clone Repository</span> 버튼을 누릅니다.*  
+*열린 창에서 Github에서 로그인 인증합니다.*  
 </div></details>
 
 (VSC 사진)
 
-Minimal-Mistakes의 경우 다음 파일들은 깔끔하게 제거할 수 있습니다. -[공식사이트 왈](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/){:target="_blank" rel="noopener noreferrer"}-
+⠀Minimal-Mistakes의 경우 다음 파일들은 깔끔하게 제거할 수 있습니다. -[공식사이트 왈](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/){:target="_blank" rel="noopener noreferrer"}-
 
 - .editorconfig
 - .gitattributes
@@ -106,7 +106,7 @@ Minimal-Mistakes의 경우 다음 파일들은 깔끔하게 제거할 수 있습
 
 ### 수정하기
 
-여러분이 깊이있게 들어가고 싶다면 다른 파일들도 건들게 되겠지만, 기본적으로 수정해야 하는 부분은 다음 세 파트입니다.
+⠀여러분이 깊이있게 들어가고 싶다면 다른 파일들도 건드리게 되겠지만, 기본적으로 수정해야 하는 부분은 다음 세 파트입니다.
 
 - `_config.yml`
   - 테마 설정  
@@ -248,13 +248,13 @@ sidebar_main: true
 ### 확인하기
 ⠀수정 사항을 블로그에 반영하는 데 두 가지 방법이 있습니다. 
 
-⠀Github에 올려서 사이트를 구동하는 것과, 로컬 서버를 돌리는 것입니다.  
+⠀<span style="color:lightblue">Github에 올려서</span> 사이트를 구동하는 것과, <span style="color:pink">로컬 서버</span>를 돌리는 것입니다.  
 
-⠀사이트를 구동하기 위해서는 무조건 Github에 올려야 합니다. 그러나 Github에 코드를 올리면 Github는 구동에 시간이 적잖이 소요됩니다. 그래서 수정한 블로그가 잘 돌아가는지, 또는 포스트가 잘 올라가는지를 편히 확인하기 위해 테스트용으로 로컬 서버를 돌립니다. 당연히 로컬 서버에만 수정사항을 테스트하면 다른 사람들은 볼 수 없습니다.  
+⠀사이트를 구동하기 위해서는 무조건 <span style="color:lightblue">Github에 올려야</span> 합니다. 그러나 Github에 코드를 올리면 Github는 구동에 <span style="color:lightblue">시간이 적잖이 소요됩니다.</span> 그래서 수정한 블로그가 잘 돌아가는지, 또는 포스트가 잘 올라가는지를 편히 확인하기 위해 <span style="color:pink">테스트용으로 로컬 서버</span>를 돌립니다. 당연히 로컬 서버에만 수정사항을 테스트하면 다른 사람들은 볼 수 없습니다.  
 
-⠀로컬 서버를 돌리기 위해서는 준비 과정이 필요하므로 우선은 Github로 push하고 기다리는 것을 추천합니다.
+>로컬 서버를 돌리기 위해서는 준비 과정이 필요하므로 우선은 <span style="color:lightblue">Github로 push</span>하고 기다리는 것을 추천합니다.
 
-1. Github로 push.
+1. <span style="color:lightblue">Github로 push.</span>
   - cmd의 위치가 `여러분 Github 닉네임.github.io`에 있는지 확인합니다.  
     *다른 곳에 있다면 os에 맞는 명령어를 사용하여 이동합니다.*  
     *보통 `help` 치면 명령어 도움말이 나옵니다.*
@@ -264,36 +264,47 @@ sidebar_main: true
   - cmd에 `git commit -m "first commit"`을 입력합니다.  
   - cmd에 여러분의 branch에 따라 `git push origin master` 또는 `git push origin main`을 입력합니다.  
     *여러분의 branch가 무엇인지는 `git status`를 입력해 나온 정보 중 찾거나 [repository setting](#설정값-확인하기){:target="_blank" rel="noopener noreferrer"}에서 찾을 수 있습니다.*
-  - repository에서 파일 리스트 위에 여러분의 닉네임과 first commit이 적힌 곳 오른쪽, 체크박스가 체크되기를 기다립니다.  
+  - repository에서 파일 리스트 위에 여러분의 닉네임과 first commit이 적힌 곳 오른쪽, 체크박스가 <span style="color:green">체크</span>되기를 기다립니다.  
     (check box 사진)
-    *<span style="color=orange">O</span>는 대기중, <span style="color=red">X</span>은 실패입니다.*
-2. 로컬서버를 돌린다.  
+    *<span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.*
+2. <span style="color:pink">로컬서버를 돌린다.</span>  
   - [ruby](https://rubyinstaller.org/downloads/){:target="_blank" rel="noopener noreferrer"}를 다운 받습니다.  
     *Mac은 아래 방법을 한 줄 씩 입력해 바로 로컬 서버 실행으로 넘어가는 것도 가능합니다.*  
     *ruby 최신 버전이 업데이트 되었을 경우 3.2.9 대신 최신 버전을 쓰십시오.*
-```bash
-brew install rbenv ruby-build
-echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-source ~/.zshrc
+        ```bash
+        brew install rbenv ruby-build
+        echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+        source ~/.zshrc
+        rbenv install -l
+        rbenv install 3.2.9
+        rbenv global 3.2.9
+        ruby -v
+        gem install bundler
+        bundle -v
+        gem install jekyll
+        jekyll -v
+        bundle install  
 
-rbenv install -l
-rbenv install 3.2.9
-rbenv global 3.2.9
-ruby -v
+        bundle exec jekyll serve
+        ```
 
-gem install bundler
-bundle -v
+    - bundler를 cmd를 통해 다운 받는다.  
+      ```bash
+      gem install jekyll bundler
+      ```
+      확인 : `jekyll -v`
+    - 로컬 서버 실행
+      ```bash
+      bundle exec jekyll serve
+      ```
 
-gem install jekyll
-jekyll -v
+## 마무리
+⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
 
-bundle install
-```
-  - bundler를 cmd를 통해 다운 받는다.  
-    `gem install jekyll bundler`  
-    확인 : `jekyll -v`
-  - 로컬 서버 실행
-    `bundle exec jekyll serve`
+***
+내가 공부한 포스트
+  [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"}  
+  [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"}  
+  [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"}  
 
-하하호호  
-신난다.
+이 외에는 Gpt에게 배웠습니다.
