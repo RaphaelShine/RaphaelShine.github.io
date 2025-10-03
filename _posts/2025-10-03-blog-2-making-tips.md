@@ -44,7 +44,8 @@ last_modified_at: 2025-10-03
 ### 복붙하기
 
 ⠀깃허브에서 마음에 드는 템플릿을 찾습니다.  
-⠀(저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다.)  
+⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다.  
+⠀앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다.
 
 (mm repo 사진)
 
@@ -78,15 +79,15 @@ Code and automation에 있는 Pages를 확인합니다.
 - Custom domain을 이용하기 위해서는 추가 작업이 필요합니다.  
     도메인을 외부에서 설정 후 그 도메인을 기입하면 됩니다. [***자세한 내용***](https://docs.github.com/ko/pages/configuring-a-custom-domain-for-your-github-pages-site){:target="_blank" rel="noopener noreferrer"}
 
-## 다듬는다
+## 다듬는다 (Minimal-Mistakes 기준)
 
 ### 제거하기
 
 ⠀Fork해 온 상태 그대로는 사용하기 어렵습니다. 따라서 Github에 올라가 있는 파일을 여러분 컴퓨터로 옮겨와서 작업해 주셔야 합니다.
 
 <details><summary>VSCode에서 Github 연동하는 법</summary><div markdown="1">
-*좌측 바에서 Source Control을 찾아 <span style="color:blue">Clone Repository</span> 버튼을 누릅니다.*  
-*열린 창에서 Github에서 로그인 인증합니다.*  
+*좌측 바에서 Source Control을 찾아 <span style="color:cyan">Clone Repository</span> 버튼을 누릅니다.*  
+*열린 창에서 Github 로그인 인증합니다.*  
 </div></details>
 
 (VSC 사진)
@@ -106,7 +107,7 @@ Code and automation에 있는 Pages를 확인합니다.
 
 ### 수정하기
 
-⠀여러분이 깊이있게 들어가고 싶다면 다른 파일들도 건드리게 되겠지만, 기본적으로 수정해야 하는 부분은 다음 세 파트입니다.
+⠀여러분께서 깊이있게 들어가고 싶으시다면 다른 파일들도 건드리게 되겠지만, 기본적으로 수정해야 하는 부분은 다음 세 파트; `_config.yml`, `_posts`, `_pages` 입니다.
 
 - `_config.yml`
   - 테마 설정  
@@ -199,7 +200,7 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     date: 2001-01-01
     last_modified_at: 2001-01-01
     ---
-    <!--여기가 본문입니다. 이 밑으로 아무 글을 써 보십시오.-->
+    <!--여기가 본문입니다. 이 밑으로 뭐든 써 보십시오.-->
 
     ```
 - `_pages`  
@@ -245,7 +246,7 @@ sidebar_main: true
 ---
 ```
 
-### 확인하기
+## 확인한다
 ⠀수정 사항을 블로그에 반영하는 데 두 가지 방법이 있습니다. 
 
 ⠀<span style="color:lightblue">Github에 올려서</span> 사이트를 구동하는 것과, <span style="color:pink">로컬 서버</span>를 돌리는 것입니다.  
@@ -268,8 +269,8 @@ sidebar_main: true
     (check box 사진)
     *<span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.*
 2. <span style="color:pink">로컬서버를 돌린다.</span>  
-  - [ruby](https://rubyinstaller.org/downloads/){:target="_blank" rel="noopener noreferrer"}를 다운 받습니다.  
-    *Mac은 아래 방법을 한 줄 씩 입력해 바로 로컬 서버 실행으로 넘어가는 것도 가능합니다.*  
+  - Mac에서 shortcut  
+    *Mac은 아래 방법을 한 줄 씩 입력해 바로 로컬 서버 실행까지 가는 것도 가능합니다.*  
     *ruby 최신 버전이 업데이트 되었을 경우 3.2.9 대신 최신 버전을 쓰십시오.*
         ```bash
         brew install rbenv ruby-build
@@ -288,18 +289,24 @@ sidebar_main: true
         bundle exec jekyll serve
         ```
 
-    - bundler를 cmd를 통해 다운 받는다.  
+    - [ruby](https://rubyinstaller.org/downloads/){:target="_blank" rel="noopener noreferrer"}를 다운 받습니다.  
+
+    - bundler를 cmd를 통해 다운 받습니다.  
       ```bash
       gem install jekyll bundler
       ```
       확인 : `jekyll -v`
-    - 로컬 서버 실행
+    - 로컬 서버를 실행합니다.
       ```bash
       bundle exec jekyll serve
       ```
 
+⠀이제 한번 둘러보십시오. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 보십시오. 다음 포스트에서 그 상상을 실현해 봅시다.
+
 ## 마무리
-⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.  
+⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. 일단 page와 post의 구조부터 markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
+
+⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 댓글이나 메일 남겨주셨으면 좋겠습니다. 감사합니다.
 
 ***
 내가 공부한 포스트  
