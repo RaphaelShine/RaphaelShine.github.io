@@ -4,18 +4,18 @@ main:
     url: /development/
     children:
       - title: "유니티"
-        url: /list/unity/
+        url: /development/unity/
       - title: "C#"
-        url: /list/csharp/
+        url: /development/csharp/
       - title: "C"
-        url: /list/c/
+        url: /development/c/
   - title: "한국어"
     url: /korean/
     children:
       - title: "문법"
-        url: /list/grammar/
+        url: /korean/grammar/
       - title: "문학"
-        url: /list/literature/
+        url: /korean/literature/
   - title: "인공어"
     url: /artificial-language/
   - title: "기타"

@@ -1,4 +1,4 @@
-
-{% for post in posts %}
-{% include archive-single.html type=page.entries_layout %}
-{% endfor %}
+<h3 class="archive__subtitle"><a href="{{include.caturl}}">{{ include.cat }}</a></h3>
+{% assign posts = site.categories[include.catname] %}
+{% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
+<br>

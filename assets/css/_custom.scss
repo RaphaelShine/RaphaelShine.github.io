@@ -1,0 +1,110 @@
+// 얘네는 navigation hover 시 세부목록 나열하는 곳이에요.
+
+/* 1) hover 브리지 제거: 부모 클릭/hover 가로채지 않게 */
+#site-nav li > .sub-menu::before {
+  content: none !important;
+}
+
+/* 2) 부모 앵커를 위 레이어로 (애니메이션 중 겹쳐도 클릭 보장) */
+#site-nav li.masthead__menu-item > a {
+  position: relative;
+  z-index: 2;
+}
+
+/* 3) 모든 1뎁스 메뉴 li를 절대배치 기준점으로 고정 */
+#site-nav .visible-links > li,
+#site-nav .hidden-links  > li,
+#site-nav li.masthead__menu-item {
+  position: relative !important;
+}
+
+/* 4) 서브메뉴 박스: 부모 아래 중앙 정렬 + 기본은 숨김 */
+#site-nav li > .sub-menu {
+  display: flex !important;      /* 세로 스택 + gap 사용 */
+  flex-direction: column;
+  gap: 10px;                     /* ← 항목 사이 간격(여기 숫자만 바꾸면 됨) */
+  position: absolute;
+  top: 100%;                     /* 부모 바로 아래에 밀착 */
+  left: 50%;                     /* 가로 중앙 기준 */
+  transform: translate(-50%, -14px);  /* 초기 상태: 살짝 위에서 시작(애니메이션용) */
+
+  min-width: 180px;
+  margin: 0;
+  padding: 12px;                 /* 박스 안쪽 여백 */
+  list-style: none;
+
+  background: #252a34;           /* 네가 쓰던 배경 유지 */
+  border: 1px solid #ddd;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  z-index: 1;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+
+/* 5) 열릴 때: 부모 hover/포커스 OR 서브메뉴 자체 hover 모두 허용 */
+#site-nav li:hover > .sub-menu,
+#site-nav li:focus-within > .sub-menu,
+#site-nav li > .sub-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);   /* 위에서 아래로 스르륵 */
+  pointer-events: auto;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* 6) 서브메뉴 항목(링크) 스타일: 가운데 정렬 + 히트영역 */
+#site-nav li > .sub-menu a {
+  display: block;
+  text-align: center;              /* 글자 가운데 정렬 */
+  padding: 8px 12px;               /* 항목 자체의 클릭 영역(원하면 키워도 됨) */
+  border-radius: 6px;              /* hover 배경 모서리 */
+  text-decoration: none;
+  color: inherit;
+}
+
+#site-nav li > .sub-menu a:hover,
+#site-nav li > .sub-menu a:focus {
+  background: #2f3542;             /* 호버 배경(원하면 조정) */
+}
+
+/* 7) 잘림 방지 */
+.masthead, .masthead__inner-wrap, .masthead__menu,
+.greedy-nav, .greedy-nav .visible-links, .greedy-nav .hidden-links {
+  overflow: visible !important;
+}
+
+/* 8) flex-gap 폴백: 아주 구형 브라우저에서 gap 미지원 시 */
+@supports not (gap: 1px) {
+  #site-nav li > .sub-menu { display: block !important; }
+  #site-nav li > .sub-menu li + li { margin-top: 10px; } /* 항목 간 간격 */
+}
+
+
+/* 부모 메뉴 버튼 크기 키우기 + hover 히트영역 확대 */
+.greedy-nav .visible-links > li.masthead__menu-item > a {
+  /* 간격은 작게, 버튼 자체는 크게 */
+  margin: 0 .25rem;          /* 기본은 0 1rem 이라 간격이 큼 → 줄여서 '버튼 크기' 위주로 */
+  padding: .65rem 1.1rem;    /* ↑ 세로/가로 패딩 늘려 클릭(hover) 영역 확대 */
+  border-radius: .5rem;      /* 버튼 느낌 */
+  line-height: 1;            /* 폰트 내부 여백 영향 최소화 */
+}
+/* hover시 버튼 배경 강조(필요하면 색만 조정) */
+.greedy-nav .visible-links > li.masthead__menu-item > a:hover,
+.greedy-nav .visible-links > li.masthead__menu-item:hover > a {
+  background: mix($background-color, $primary-color, 92%);
+  border-radius: .5rem;
+}
+
+/* 기본 테마의 밑줄 애니메이션이 버튼 배경과 겹치면 살짝 두껍게/유지하고 싶으면 이대로 둠 */
+.greedy-nav .visible-links > li.masthead__menu-item > a::before {
+  height: 4px;   /* 필요 시 6px 등으로 */
+  bottom: 0;
+}
+
+/* 드롭다운 있는 부모도 동일 버튼 크기 유지 */
+.greedy-nav .visible-links > li.masthead__menu-item.has-children > a {
+  padding-right: 1.25rem; /* 화살표/아이콘 여유 */
+}
