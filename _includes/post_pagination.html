@@ -1,14 +1,63 @@
-{% if page.previous or page.next %}
-  <nav class="pagination">
-    {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html | strip}}">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
-    {% endif %}
-    {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html | strip}}">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
-    {% endif %}
-  </nav>
-{% endif %}
+{%- comment -%}
+  Category-scoped post pagination for Minimal Mistakes
+  - Uses page.nav_category > page.category > first of page.categories
+  - If the post has no category, falls back to theme's global prev/next
+{%- endcomment -%}
+
+{%- assign nav_category = page.nav_category | default: page.category | default: page.categories | first -%}
+{%- assign prev_post = nil -%}
+{%- assign next_post = nil -%}
+
+{%- if nav_category and site.categories[nav_category] -%}
+  {%- comment -%} Get posts in the same category, sorted by date ascending {%- endcomment -%}
+  {%- assign same_cat_posts = site.categories[nav_category] | sort: "date" -%}
+  {%- assign current_index = nil -%}
+  {%- for p in same_cat_posts -%}
+    {%- if p.url == page.url -%}
+      {%- assign current_index = forloop.index0 -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if current_index != nil -%}
+    {%- if current_index > 0 -%}
+      {%- assign prev_index = current_index | minus: 1 -%}
+      {%- assign prev_post = same_cat_posts[prev_index] -%}
+    {%- endif -%}
+    {%- assign last_index = same_cat_posts | size | minus: 1 -%}
+    {%- if current_index < last_index -%}
+      {%- assign next_index = current_index | plus: 1 -%}
+      {%- assign next_post = same_cat_posts[next_index] -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%}
+  Render: If category exists → only show within-category links.
+  If the post has no category at all, gracefully fall back to global prev/next.
+{%- endcomment -%}
+<nav class="pagination">
+  {%- if nav_category -%}
+    {%- if prev_post -%}
+      <a class="pagination--pager" href="{{ prev_post.url | relative_url }}" title="{{ prev_post.title | escape }}">
+        {{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}
+      </a>
+    {%- endif -%}
+    {%- if next_post -%}
+      <a class="pagination--pager" href="{{ next_post.url | relative_url }}" title="{{ next_post.title | escape }}">
+        {{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}
+      </a>
+    {%- endif -%}
+  {%- else -%}
+    {%- if page.previous.url -%}
+      <a class="pagination--pager" href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title | escape }}">
+        {{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}
+      </a>
+    {%- endif -%}
+    {%- if page.next.url -%}
+      <a class="pagination--pager" href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}">
+        {{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}
+      </a>
+    {%- endif -%}
+  {%- endif -%}
+</nav>

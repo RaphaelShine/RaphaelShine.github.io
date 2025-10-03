@@ -8,7 +8,7 @@ search: false
 /* ▷ 여기 숫자만 바꾸면 끝 */
 $max-width: 100vw;  // 본문 너비 무제한
 $right-sidebar-width-narrow: 200px;  // large 브레이크포인트에서의 폭
-$right-sidebar-width:        200px;  // x-large에서도 같은 폭 원하면 동일하게
+$right-sidebar-width:        210px;  // x-large에서도 같은 폭 원하면 동일하게
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
