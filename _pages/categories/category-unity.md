@@ -1,7 +1,7 @@
 ---
 title: "Unity"
 layout: archive
-permalink: /development/unity/
+permalink: /unity/
 author_profile: true
 sidebar_main: true
 ---

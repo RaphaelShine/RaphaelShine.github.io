@@ -19,7 +19,7 @@ locale                   : "ko-KR"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "가려 꺾은 묏버들"
 title_separator          : "-"
-subtitle                 : "언어에 대한 기억 저장소" # site tagline that appears below site title in masthead
+subtitle                 : "컴퓨터든 문학이든, 언어에 대한 기억 저장소" # site tagline that appears below site title in masthead
 name                     : "RaphaelShine"
 description              : "컴퓨터, 문학 등의 기억 저장소"
 url                      : "https://RaphaelShine.github.io"

@@ -26,11 +26,49 @@
         <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
       {% endif %}
       {% if forloop.last %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          {%- assign target = crumb -%}
+          {% assign parent = nil %}
+          {%- for p in site.data.navigation.main -%}
+            {%- if p.name == target -%}{%- break -%}{%- endif -%}
+            {%- for c in p.children -%}
+              {%- assign cn = c.name | downcase -%}
+              {%- if cn == target -%}
+                {%- assign parent = p -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if parent != nil -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if parent != nil -%}
+            <a href="{{ parent.name | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ parent.name | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+            <meta itemprop="position" content="{{ i }}" />
+            <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+          {% endif %}
         <li class="current"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>{{ page.title }}</li>
       {% else %}
         {% assign i = i | plus: 1 %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ crumb | downcase | replace: '%20', '-' | prepend: path_type | prepend: crumb_path | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+          {%- assign target = crumb -%}
+          {% assign parent = nil %}
+          {%- for p in site.data.navigation.main -%}
+            {%- if p.name == target -%}{%- break -%}{%- endif -%}
+            {%- for c in p.children -%}
+              {%- assign cn = c.name | downcase -%}
+              {%- if cn == target -%}
+                {%- assign parent = p -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if parent != nil -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if parent != nil -%}
+            <a href="{{ parent.name | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ parent.name | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+            <meta itemprop="position" content="{{ i }}" />
+            <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
+            {% assign i = i | plus: 1 %}
+          {% endif %}
+          <a href="{{ crumb | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
           <meta itemprop="position" content="{{ i }}" />
         </li>
         <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>

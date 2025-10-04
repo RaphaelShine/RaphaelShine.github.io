@@ -1,7 +1,7 @@
 ---
 title: "C#"
 layout: archive
-permalink: /development/csharp/
+permalink: /csharp/
 author_profile: true
 sidebar_main: true
 ---

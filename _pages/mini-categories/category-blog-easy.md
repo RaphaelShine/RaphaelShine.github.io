@@ -1,7 +1,7 @@
 ---
-title: "Blog"
+title: "Blog Easy"
 layout: archive
-permalink: /blog/
+permalink: /blog/blog-easy/
 author_profile: true
 sidebar_main: true
 ---
@@ -10,5 +10,5 @@ sidebar_main: true
 
 ***
 
-{% assign posts = site.categories.Blog %}
+{% assign posts = site.categories.Blog-Easy %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

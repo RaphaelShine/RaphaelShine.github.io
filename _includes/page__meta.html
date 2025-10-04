@@ -12,7 +12,9 @@
     {% endif %}
 
     {% if document.show_last_modified_at and document.last_modified_at %}
-      {% if document.last_modified_at != document.date %}
+      {% assign post_date = document.date | date: "%Y-%m-%d" %}
+      {% assign modified_date = document.last_modified_at | date: "%Y-%m-%d" %}
+      {% if post_date != modified_date %}
         {% assign last_modified_at = document.last_modified_at %}
         <span class="page__meta-date">
           <i class="fas {% if include.type == 'grid' and document.show_date %}fa-fw {% endif %}fa-history" aria-hidden="true"></i>

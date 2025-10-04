@@ -4,8 +4,9 @@ excerpt: "블로그를 Github Pages로 시작하는 방법, 팁."
 
 categories:
   - Blog
+  - Blog-Easy
 tags:
-  - [Github]
+  - [블로그-뼈대부터]
 
 toc: true
 toc_sticky: true
@@ -300,16 +301,22 @@ sidebar_main: true
       ```bash
       bundle exec jekyll serve
       ```
+    - 로컬 서버의 주소가 cmd에 뜨게 됩니다.  
+      보통 https://127.0.0.1:4000
 
-⠀이제 한번 둘러보십시오. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 보십시오. 다음 포스트에서 그 상상을 실현해 봅시다.
+⠀이제 한번 페이지를 둘러보십시오. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 보십시오.
+
+⠀다음 포스트에서 그 상상을 실현해 봅시다.
 
 ## 마무리
 ⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. 일단 page와 post의 구조부터 markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
 
-⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 댓글이나 메일 남겨주셨으면 좋겠습니다. 감사합니다.
+⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 댓글이나 메일 남겨 주셨으면 좋겠습니다. 감사합니다.
+
+<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 
 ***
-내가 공부한 포스트  
+내가 공부한 포스트!  
   [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"}  
   [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"}  
   [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"}  

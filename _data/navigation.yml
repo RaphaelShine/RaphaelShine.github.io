@@ -1,25 +1,42 @@
 # main links
 main:
   - title: "개발"
+    name: "development"
     url: /development/
     children:
       - title: "유니티"
+        name: "Unity"
         url: /development/unity/
       - title: "C#"
+        name: "Csharp"
         url: /development/csharp/
       - title: "C"
+        name: "C"
         url: /development/c/
-  - title: "한국어"
-    url: /korean/
+  - title: "문학"
+    name: "literature"
+    url: /literature/
     children:
-      - title: "문법"
-        url: /korean/grammar/
-      - title: "문학"
-        url: /korean/literature/
-  - title: "인공어"
-    url: /artificial-language/
+      - title: "시 창작"
+        name: "Writing Poem"
+        url: /literature/writing-poem/
+      - title: "시 공유"
+        name: "Sharing Poem"
+        url: /literature/sharing-poem/
+  - title: "언어"
+    name: "language"
+    url: /language/
+    children:
+      - title: "수어"
+        name: "Korean Handsign"
+        url: /language/korean-handsign/
   - title: "기타"
+    name: "etc"
     url: /etc/
+    children:
+      - title: "블로그"
+        name: "Blog"
+        url: /etc/blog/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"

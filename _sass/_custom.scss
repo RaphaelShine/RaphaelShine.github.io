@@ -1,3 +1,27 @@
+//본문 글씨 크기 조절 조절 (진짜 조절을 조절함)
+.page__content {
+  @include breakpoint($small) {
+    font-size: $type-size-8;
+  }
+  @include breakpoint($medium-wide) {
+    font-size: $type-size-7;
+  }
+  @include breakpoint($medium) {
+    font-size: $type-size-7;
+  }
+  @include breakpoint($large) {
+    font-size: $type-size-6;
+  }
+  @include breakpoint($x-large) {
+    font-size: $type-size-6;
+  }
+  @include breakpoint($max-width) {
+    font-size: $type-size-6;
+  }
+}
+
+
+
 // 얘네는 navigation hover 시 세부목록 나열하는 곳이에요.
 
 /* 1) hover 브리지 제거: 부모 클릭/hover 가로채지 않게 */

@@ -4,4 +4,17 @@ layout: archive
 
 {{ content }}
 
-{% include posts-taxonomy.html taxonomies=site.categories %}
+{% assign categories = site.categories %}
+{% for field in site.data.navigation.main %}
+  {% assign taxonomies-by-field = "" | split: "" %}
+  {% for category in categories %}
+    {% for child in field.children %}
+      {% if child.name == category[0] %}
+        {% assign taxonomies-by-field = taxonomies-by-field | push: category %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  <h2 class="archive__title" id={{field.name}}>{{field.name|capitalize}}</h2>
+  {% include posts-taxonomy.html taxonomies=taxonomies-by-field %}
+{% endfor %}
+  
