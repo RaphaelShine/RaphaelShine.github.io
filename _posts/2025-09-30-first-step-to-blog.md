@@ -4,7 +4,6 @@ excerpt: "블로그를 만드는 중, 첫 포스트를 올린다."
 
 categories:
   - Blog
-  - Blog-Easy
 tags:
   - [주절주절]
 

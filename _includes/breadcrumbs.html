@@ -67,9 +67,12 @@
             <meta itemprop="position" content="{{ i }}" />
             <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
             {% assign i = i | plus: 1 %}
+            <a href="{{ crumb | prepend: '/' |prepend: parent.name | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+            <meta itemprop="position" content="{{ i }}" />
+          {% else %}
+            <a href="{{ crumb | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
+            <meta itemprop="position" content="{{ i }}" />
           {% endif %}
-          <a href="{{ crumb | downcase | replace: '%20', '-' | relative_url }}" itemprop="item"><span itemprop="name">{{ crumb | url_decode | replace: '-', ' ' | capitalize }}</span></a>
-          <meta itemprop="position" content="{{ i }}" />
         </li>
         <span class="sep">{{ site.data.ui-text[site.locale].breadcrumb_separator | default: "/" }}</span>
       {% endif %}

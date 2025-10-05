@@ -4,9 +4,8 @@ excerpt: "블로그를 Github Pages로 시작하는 방법, 팁."
 
 categories:
   - Blog
-  - Blog-Easy
 tags:
-  - [블로그-뼈대부터]
+  - [Blog-뼈대부터, Blog-초보]
 
 toc: true
 toc_sticky: true
@@ -16,7 +15,8 @@ last_modified_at: 2025-10-03
 ---
 
 ## 시작하기에 앞서
-⠀이 Blog카테고리는 오로지 초보를 위한 글입니다. 고수를 원하시는 분들은 밑에 훨씬 좋은 블로그 링크를 둘테니 용서 바랍니다.
+⠀이 Blog카테고리는 오로지 초보를 위한 글입니다. 저는 블로그 완성하고 바로 다 까먹을 예정이라 이 글이 다시 필요할 때는 초보가 되었을 것이기 때문입니다. 고수를 원하시는 분들은 밑에 훨씬 좋은 블로그 링크를 둘 테니 용서 바랍니다.  
+<span style="font-family:OngleipParkDahyeon">⠀흠... 우선 초보 포스트만 만든 후 기회가 되면 고수포스트도 올리겠습니다.</span>
 
 ## Github Pages란?
 ⠀우선 이 글을 열심히 읽고 계신 분들은 아마도 블로그를 시작하고 싶은 마음을 한아름 안고 계신 분들일 겁니다.
@@ -31,12 +31,12 @@ last_modified_at: 2025-10-03
 
 - [Github](https://github.com){:target="_blank" rel="noopener noreferrer"} 계정이 필요합니다.
 - [Git](https://git-scm.com/downloads){:target="_blank" rel="noopener noreferrer"}이 필요합니다.  
-    없어도 가능은 하지만 불편함이 너무 크므로 Git은 설치한 것을 전제하고 설명하겠습니다.
+  없어도 가능은 하지만 불편함이 너무 크므로 Git은 설치한 것을 전제하고 설명하겠습니다.
 - Free 플랜에서는 public repository 1개만 지원합니다.  
-    (유료는 private도 되고 여러개도 된다네요.)
+  <span style="font-family:OngleipParkDahyeon">유료는 private도 되고 여러개도 된다네요~</span>
 - 아무래도 깔끔한 코드 에디터 하나는 있어야 눈이 편합니다.  
-    그냥 기본 텍스트 편집기를 써도 되기야 하지만...  
-    (전 [VisualStudioCode](https://code.visualstudio.com/download){:target="_blank" rel="noopener noreferrer"} 쓰는 중입니다.)
+  <span style="font-family:OngleipParkDahyeon">그냥 기본 텍스트 편집기를 써도 되기야 하지만...</span>  
+  (전 [VisualStudioCode](https://code.visualstudio.com/download){:target="_blank" rel="noopener noreferrer"} 쓰는 중입니다.)
 - 아무래도 브라우저가 있어야 합니다.
 - 가장 중요한 건 열정!이 필요합니다.  
 
@@ -54,7 +54,7 @@ last_modified_at: 2025-10-03
 
 (fork 사진)
 
-⠀repository의 이름은 `당신의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. (저는 이미 만들어놔서 빨개요...)
+⠀repository의 이름은 `당신의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. <span style="font-family:OngleipParkDahyeon">(저는 이미 만들어놔서 빨개요...)</span>
 
 ⠀밑에 있는 <span style="color:green">Create Fork</span> 버튼을 누릅니다.
 
@@ -112,7 +112,7 @@ Code and automation에 있는 Pages를 확인합니다.
 
 - `_config.yml`
   - 테마 설정  
-    *똑같이 해도 됩니다.*
+    <span style="font-family:OngleipParkDahyeon">똑같이 해도 됩니다.</span>
 ```yml
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme             : "mmistakes/minimal-mistakes"
@@ -133,7 +133,7 @@ baseurl                  : # url 뒤에 기본으로 붙이는 주소, e.g. "/bl
 repository               : "여러분 Github 아이디/여러분 Github 아이디.github.io" # repository 이름을 변경했다면 변경해야 합니다.
 ```
   - 검색엔진 연동  
-    *블로그가 검색엔진에서 발견되도록 합니다.*
+    <span style="font-family:OngleipParkDahyeon">블로그가 검색엔진에서 발견되도록 합니다.</span>
 ```yml
 # SEO Related
 google_site_verification :
@@ -143,7 +143,7 @@ yandex_site_verification :
 baidu_site_verification  :
 ```
   - 여러분 프로필  
-    *좌측바에 보입니다.*
+    <span style="font-family:OngleipParkDahyeon">좌측바에 보입니다.</span>
     <div markdown="1">
     ```yml
     # Site Author
@@ -166,7 +166,7 @@ permalink: /:categories/:title/
 timezone: Asia/Seoul
 date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖아요? 그거 설정하는 겁니다. 
 ```
-*참고 : 날짜 기호 표*
+***참고 : 날짜 기호 표***
 
     ||연도|월|일|요일|  
     |:---:|:---:|:---:|:---:|:---:|  
@@ -181,10 +181,11 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 
 - `_posts`
   - 포스팅 해보기  
-    *`_posts/` 폴더가 없다면 새로 만듭니다.*  
-    *`_posts/` 폴더 안에 파일을 새로 만듭니다.*  
-    ***파일의 이름은 `날짜-제목.md`으로 짓습니다.(`xxxx-xx-xx-title.md`)***  
-    *다음 코드를 파일에 복붙하고 아무 글을 쓰십시오.*
+    >`_posts/` 폴더가 없다면 새로 만듭니다.  
+    >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
+    >***파일의 이름은 `날짜-제목.md`으로 짓습니다.(`xxxx-xx-xx-title.md`)***  
+    >다음 코드를 파일에 복붙하고 아무 글을 쓰십시오.
+    
     ```markdown
     ---
     title:  "포스트 제목"
@@ -206,10 +207,11 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     ```
 - `_pages`  
   - 필수 페이지 만들기  
-    *`_pages/` 폴더가 없다면 새로 만듭니다.*  
-    *`_posts/` 폴더 안에 `404.md` 파일을 넣습니다.*  
-    *`404.md` 파일이 없다면 새로 만듭니다.*  
-    *다음 코드를 파일에 복붙하십시오.*  
+    >`_pages/` 폴더가 없다면 새로 만듭니다.  
+    >`_posts/` 폴더 안에 `404.md` 파일을 넣습니다.  
+    >`404.md` 파일이 없다면 새로 만듭니다.  
+    >다음 코드를 파일에 복붙하십시오.
+
     ```markdown
     ---
     title: "Page Not Found"
@@ -234,18 +236,19 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     <script src="https://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js">
     </script>
     ```  
-    *`_posts/` 폴더 안에 파일을 새로 만듭니다.*  
-    ***이름은 `category-archive.md`라고 짓습니다.***  
-    *다음 코드를 파일에 복붙하십시오.*
-```markdown
----
-title: "Category"
-layout: categories
-permalink: /categories/
-author_profile: true
-sidebar_main: true
----
-```
+    >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
+    >***이름은 `category-archive.md`라고 짓습니다.***  
+    >다음 코드를 파일에 복붙하십시오.
+    
+    ```markdown
+    ---
+    title: "Category"
+    layout: categories
+    permalink: /categories/
+    author_profile: true
+    sidebar_main: true
+    ---
+    ```
 
 ## 확인한다
 ⠀수정 사항을 블로그에 반영하는 데 두 가지 방법이 있습니다. 
@@ -258,21 +261,21 @@ sidebar_main: true
 
 1. <span style="color:lightblue">Github로 push.</span>
   - cmd의 위치가 `여러분 Github 닉네임.github.io`에 있는지 확인합니다.  
-    *다른 곳에 있다면 os에 맞는 명령어를 사용하여 이동합니다.*  
-    *보통 `help` 치면 명령어 도움말이 나옵니다.*
+    <span style="font-family:OngleipParkDahyeon">다른 곳에 있다면 os에 맞는 명령어를 사용하여 이동합니다.  
+    보통 `help` 치면 명령어 도움말이 나옵니다.</span>
   - cmd에 `git add .`을 입력합니다.  
-    *git의 initial setting은 끝낸 것을 전제하고 설명하겠습니다.*  
-    *안 했으면 지금이라도 하세요!*
+    <span style="font-family:OngleipParkDahyeon">git의 initial setting은 끝낸 것을 전제하고 설명하겠습니다.  
+    안 했으면 지금이라도 하세요!</span>
   - cmd에 `git commit -m "first commit"`을 입력합니다.  
   - cmd에 여러분의 branch에 따라 `git push origin master` 또는 `git push origin main`을 입력합니다.  
-    *여러분의 branch가 무엇인지는 `git status`를 입력해 나온 정보 중 찾거나 [repository setting](#설정값-확인하기){:target="_blank" rel="noopener noreferrer"}에서 찾을 수 있습니다.*
+    <span style="font-family:OngleipParkDahyeon">여러분의 branch가 무엇인지는 `git status`를 입력해 나온 정보 중 찾거나 [repository setting](#설정값-확인하기){:target="_blank" rel="noopener noreferrer"}에서 찾을 수 있습니다.</span>
   - repository에서 파일 리스트 위에 여러분의 닉네임과 first commit이 적힌 곳 오른쪽, 체크박스가 <span style="color:green">체크</span>되기를 기다립니다.  
-    (check box 사진)
-    *<span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.*
+    (check box 사진)  
+    <span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.
 2. <span style="color:pink">로컬서버를 돌린다.</span>  
   - Mac에서 shortcut  
-    *Mac은 아래 방법을 한 줄 씩 입력해 바로 로컬 서버 실행까지 가는 것도 가능합니다.*  
-    *ruby 최신 버전이 업데이트 되었을 경우 3.2.9 대신 최신 버전을 쓰십시오.*
+    Mac은 아래 방법을 한 줄 씩 입력해 바로 로컬 서버 실행까지 가는 것도 가능합니다.  
+    <span style="font-family:OngleipParkDahyeon">ruby 최신 버전이 업데이트 되었을 경우 3.2.9 대신 최신 버전을 쓰십시오.</span>
         ```bash
         brew install rbenv ruby-build
         echo 'eval "$(rbenv init -)"' >> ~/.zshrc
@@ -302,23 +305,23 @@ sidebar_main: true
       bundle exec jekyll serve
       ```
     - 로컬 서버의 주소가 cmd에 뜨게 됩니다.  
-      보통 https://127.0.0.1:4000
+      <span style="font-family:OngleipParkDahyeon">보통 <https://127.0.0.1:4000>입니다.</span>
 
-⠀이제 한번 페이지를 둘러보십시오. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 보십시오.
+⠀이제 한번 페이지를 둘러봅시다. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 봅시다.
 
-⠀다음 포스트에서 그 상상을 실현해 봅시다.
+⠀계속되는 포스트에서 그 상상을 실현해 보겠습니다.
 
 ## 마무리
 ⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. 일단 page와 post의 구조부터 markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
 
-⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 댓글이나 메일 남겨 주셨으면 좋겠습니다. 감사합니다.
+⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 꼭 **댓글**이나 [**메일**]({{site.author.email}}) 남겨 주셨으면 좋겠습니다. 감사합니다.
 
 <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 
 ***
-내가 공부한 포스트!  
-  [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"}  
-  [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"}  
-  [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"}  
+내가 공부한 포스트 중 좋은 곳!  
 
-이 외에는 Gpt에게 배웠습니다.
+|:---:|:---|  
+| [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"} | 여기서 별의별 블로그를 다 염탐했습니다. |  
+| [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"} | 위 블로그에서 찾은 곳인데, 상당히 깔끔해서 열심히 읽었습니다. 여기서 읽은 것들을 바로 적용하기에는 처음이라 잘 안됐지만 기본적인 개념들을 잡을 수 있었습니다. |  
+| [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"} | 여기를 읽을 때는 이미 위 블로그를 읽고 나서 ChatGPT와 단둘이 씨름하며 산전수전을 다 겪고 다 익숙해진 후이기에 사실 지금 필요한 정보를 얻은 건 아닙니다. 다만 검색엔진 등록이나 광고 등록 방법이 잘 돼있더군요. 나중에 이 부분 만들 때 읽으려고 갖다 두었습니다. |
