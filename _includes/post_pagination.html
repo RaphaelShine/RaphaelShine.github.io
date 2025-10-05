@@ -9,8 +9,8 @@
 {%- assign next_post = nil -%}
 
 {%- if nav_category and site.categories[nav_category] -%}
-  {%- comment -%} Get posts in the same category, sorted by date ascending {%- endcomment -%}
-  {%- assign same_cat_posts = site.categories[nav_category] | sort: "date" -%}
+  {%- comment -%} Get posts in the same category, sorted by sort_key ascending {%- endcomment -%}
+  {%- assign same_cat_posts = site.categories[nav_category] | sort: "sort_key" -%}
   {%- assign current_index = nil -%}
   {%- for p in same_cat_posts -%}
     {%- if p.url == page.url -%}

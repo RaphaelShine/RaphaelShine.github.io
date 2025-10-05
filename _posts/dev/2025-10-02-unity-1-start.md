@@ -2,6 +2,7 @@
 title:  "[Unity]1. 유니티를 시작할 때"
 excerpt: "유니티란 무엇인가? 유니티 다운로드 방법, 목적에 따른 개발 환경 설정."
 
+sort_key: 0101
 categories:
   - Unity
 tags:

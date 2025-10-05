@@ -2,6 +2,7 @@
 title:  "[Blog]1. 블로그로 첫발"
 excerpt: "블로그를 만드는 중, 첫 포스트를 올린다."
 
+sort_key : 0101
 categories:
   - Blog
 tags:

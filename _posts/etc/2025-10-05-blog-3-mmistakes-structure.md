@@ -2,6 +2,7 @@
 title:  "[Blog]3. Jekyll의 구조 ( + Minimal Mistakes )"
 excerpt: "Jekyll에 대해 배운 후, Minimal Mistakes의 기본 폴더 구조를 정리한다."
 
+sort_key : 0103
 categories:
   - Blog
 tags:
@@ -57,7 +58,7 @@ permalink: /title/
 ```
 
 ### Collections
-⠀Jekyll은 post들을 `_posts`에 나열하는데, 이를 다른 방식으로도 묶을 수 있도록 Collections를 지원합니다. `_config.yml`에 다음과 같이 적으면 됩니다.
+⠀post들은 기본적으로 `_posts` 안에 저장되는데, post를 다른 폴더로도 묶을 수 있도록 Jekyll에서 Collections를 지원합니다. `_config.yml`에 다음과 같이 적으면 됩니다.
 ```yml
 collections :
   development :
@@ -72,18 +73,17 @@ collections :
       - english-poem.md
       - poem-theory.md
 ```
-⠀dev와 literature라는 Collection이 만들어졌습니다. output이 true면 permalink에 정의된 대로 정렬 페이지를 빌드합니다. 정렬 기준은 sort_by에 대해 오름차순입니다. sort_by에는 해당 페이지를 나타내는 파일에서 front matter에 정의한 변수명을 넣으면 됩니다. sort_by 대신 order를 사용하면 하드코딩할 수 있습니다.
+⠀development와 literature라는 Collection이 만들어졌습니다. output이 true면 permalink에 정의된 대로 아카이브 페이지를 빌드합니다. 정렬 기준은 sort_by에 대해 오름차순입니다. sort_by에는 해당 페이지를 나타내는 파일에서 front matter에 정의한 변수명을 넣으면 됩니다. sort_by 대신 order를 사용하면 하드코딩할 수 있습니다.
 
-⠀Collection을 정의한 후, Collection을 파일로 만들어야 합니다. _pages/를 만든 것과 같이 언더스코어+Collection이름으로 이름을 짓습니다.
+⠀Collection을 정의한 후,  _pages/를 만든 것과 같이 Collection을 파일로 만들어야 합니다. 언더스코어+Collection이름으로 이름을 짓습니다. 그리고 안에 해당 Collection에 포함하고 싶은 post를 넣습니다.
 
 ⠀_config.yml에서 collections_dir를 이용하면 Collection들을 한 폴더에 넣어줄 수 있습니다.
 ```yml
 collections_dir : my_collections
 ```
-⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 _posts/도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다.
+⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 _posts/도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. 예상인데 _pages/도 아마 Collection 아닐까 합니다.
 
-⠀결과는 이런 식으로 됩니다.  
-(Collections 사진)
+⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 post를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 여러분께만 알려 드립니다.
 
 ### page와 post에 대해 제공하는 속성들
 이건 나중에 할래......

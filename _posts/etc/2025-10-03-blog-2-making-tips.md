@@ -2,6 +2,7 @@
 title:  "[Blog]2. Github Pages 시작하기"
 excerpt: "블로그를 Github Pages로 시작하는 방법, 팁."
 
+sort_key : 0102
 categories:
   - Blog
 tags:
