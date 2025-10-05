@@ -21,7 +21,9 @@ last_modified_at: 2025-10-05
 ⠀Github Pages는 Jekyll을 기본적으로 지원합니다. Jekyll은  Liquid와 Markdown을 해석해 HTML로 바꾸는 빌더의 일종으로, _site` 폴더를 만들어 웹 사이트를 구동합니다. 내부적으로는 Ruby라는 언어를 사용합니다.
 
 ### 언더스코어 `_`
-⠀파일들의 이름을 보면 앞에 언더스코어`_`가 붙는 게 있고 안 붙는 게 있는데, 붙으면 대충 딴 코드에서 접근하겠다는 뜻, 안 붙으면 알아서 살겠다는 뜻입니다. 정확히는, 언더스코어 파일은 Jekyll이 렌더링하여 site.data나 site.posts처럼 접근하게 되고, 언더스코어가 아닌 파일은 site.static_files로 접근하게 됩니다. site.static_files에 들어있는 file은 다음과 같은 속성을 갖습니다.
+⠀파일 또는 폴더들의 이름을 보면 앞에 언더스코어`_`가 붙는 게 있고 안 붙는 게 있는데, 붙으면 대충 딴 코드에서 접근하겠다는 뜻, 안 붙으면 알아서 살겠다는 뜻입니다.
+
+⠀정확히는, 언더스코어 파일or폴더는 Jekyll이 렌더링하여 site.data나 site.posts처럼 접근하게 되고, 언더스코어가 아닌 파일or폴더는 Jekyll이 정적 파일로 저장해 site.static_files로 접근하게 됩니다. site.static_files에 들어있는 파일은 다음과 같은 속성을 갖습니다.
 
 |속성|의미|
 |:---:|:---|
@@ -31,8 +33,15 @@ last_modified_at: 2025-10-05
 | basename | 확장자 제외한 파일명|
 | extname | 확장자명|
 
+e.g.
+```liquid
+{% for nav_button in site.data.navigation.main %}
+  {{ nav_button }}
+{% endfor %}
+```
+
 ### front matter
-⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 import하지 않은 파일은 빌드를 거치지 않고 저장됩니다.
+⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 import하지 않은 파일은 빌드를 거치지 않고 저장됩니다. front matter를 달아놓고 언더스코어를 두면 에러가 났던 것 같습니다.
 
 ⠀다음과 같이 --- 두 개 사이는 frontmatter가 됩니다.
 ```markdown
@@ -47,8 +56,39 @@ permalink: /title/
 여러분 화이팅!!
 ```
 
-### 변수 접근
+### Collections
+⠀Jekyll은 post들을 `_posts`에 나열하는데, 이를 다른 방식으로도 묶을 수 있도록 Collections를 지원합니다. `_config.yml`에 다음과 같이 적으면 됩니다.
+```yml
+collections :
+  development :
+    output : true
+    permalink : /development/:name/
+    sort_by : chapter
+  literature :
+    output : true
+    permalink : /literature/:name/
+    order : 
+      - korean-poem.md
+      - english-poem.md
+      - poem-theory.md
+```
+⠀dev와 literature라는 Collection이 만들어졌습니다. output이 true면 permalink에 정의된 대로 정렬 페이지를 빌드합니다. 정렬 기준은 sort_by에 대해 오름차순입니다. sort_by에는 해당 페이지를 나타내는 파일에서 front matter에 정의한 변수명을 넣으면 됩니다. sort_by 대신 order를 사용하면 하드코딩할 수 있습니다.
 
+⠀Collection을 정의한 후, Collection을 파일로 만들어야 합니다. _pages/를 만든 것과 같이 언더스코어+Collection이름으로 이름을 짓습니다.
+
+⠀_config.yml에서 collections_dir를 이용하면 Collection들을 한 폴더에 넣어줄 수 있습니다.
+```yml
+collections_dir : my_collections
+```
+⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 _posts/도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다.
+
+⠀결과는 이런 식으로 됩니다.  
+(Collections 사진)
+
+### page와 post에 대해 제공하는 속성들
+이건 나중에 할래......
+
+## Minimal-Mistakes의 폴더 구조
 
 ### `_data/`
 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
@@ -97,12 +137,14 @@ permalink: /title/
 - `main.scss`는 언더바된 다른 `.scss`들을 @import해줍니다. CSS 함수가 어디있는지 몰라서 수정이 어려울 때 여기에다가 선언해주면 override 할 수 있는 것 같습니다.
 
 ### `_config.yml`
-사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다.
+사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다. [YAML에 대하여]()
 
 ### 기타 파일들
 이 중 `index.html`은 퍼마링크 없는 순수한 사이트주소에서 뜨는 화면입니다. 나머지는 딱히 알 필요 없을 듯합니다.
 
-***
-⠀이제 좀 익숙해져서 따로 블로그를 찾아보진 않았습니다. Jekyll 공식사이트의 내용과 수많은 에러메시지에게 배웠습니다.
+## 마무리
+⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다. 이렇게 수능공부를 해야 하는데......(중졸티 내기) 뭐 수능은 사실 이런 거 배우듯 공부하는 게 아니니까요. 그냥 열심히 살아야죠.
 
-⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다. 이렇게 수능공부를 해야 하는데......(중졸티 내기) 뭐 수능은 사실 이런 거 배우듯 공부하는 게 아니니까요.
+⠀이제 좀 익숙해져서 따로 블로그를 찾아보진 않았습니다. [Jekyll 공식사이트]()의 내용과 수많은 에러메시지에게 배웠습니다.
+
+<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>

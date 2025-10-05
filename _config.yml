@@ -258,7 +258,16 @@ pagination:
     before: 2
     after: 2
 
-
+collections:
+  dev:
+    output      : true
+    permalink   : /dev/:name/
+    sort_by     : chapter
+  lit:
+    output      : true
+    permalink   : /lit/:name/
+    sort_by     : chapter
+    
 # Plugins (previously gems:)
 plugins:
   - jekyll-paginate
