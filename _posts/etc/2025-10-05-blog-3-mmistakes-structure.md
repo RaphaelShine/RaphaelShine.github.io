@@ -1,6 +1,6 @@
 ---
-title:  "[Blog]3. Jekyll의 구조 ( + Minimal Mistakes )"
-excerpt: "Jekyll에 대해 배운 후, Minimal Mistakes의 기본 폴더 구조를 정리한다."
+title:  "[Blog]3. Jekyll의 구조 ( + Minimal-Mistakes )"
+excerpt: "Jekyll에 대해 배운 후, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 0103
 categories:
@@ -10,21 +10,22 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+
 date: 2025-10-05
 last_modified_at: 2025-10-05
 ---
 
 ## 시작하며
-⠀이 포스트에서는 먼저 Jekyll이 무엇인지 설명한 후, Minimal Mistakes의 파일의 구조를 겉핥기로 알아보겠습니다. 구조의 상세한 내용은 계속되는 포스트에서 설명하겠습니다. 오늘의 내용을 이해하는 데는 파일이 무엇인지만 알면 충분하리라 생각합니다. (Jekyll은 좀 어려울 수 있으니 넘어가도 됩니다.)
+⠀이 포스트에서는 먼저 Jekyll이 무엇인지 설명한 후, Minimal-Mistakes의 디렉토리 구조를 겉핥기로 알아보겠습니다. 구조의 상세한 내용은 계속되는 포스트에서 설명하겠습니다. 오늘의 내용을 이해하는 데는 파일이 무엇인지만 알면 충분하리라 생각합니다. (Jekyll은 좀 어려울 수 있으니 넘어가도 됩니다.)
 
 ## Jekyll에 대하여
-⠀Github Pages는 Jekyll을 기본적으로 지원합니다. Jekyll은  Liquid와 Markdown을 해석해 HTML로 바꾸는 빌더의 일종으로, _site` 폴더를 만들어 웹 사이트를 구동합니다. 내부적으로는 Ruby라는 언어를 사용합니다.
+⠀Github Pages는 Jekyll을 기본적으로 지원합니다. Jekyll은  Liquid와 Markdown을 해석해 HTML로 바꾸는 빌더의 일종으로, 디렉토리에 `_site` 폴더를 만들어 웹 사이트를 구동합니다. 내부적으로는 Ruby라는 언어를 사용합니다.
 
 ### 언더스코어 `_`
 ⠀파일 또는 폴더들의 이름을 보면 앞에 언더스코어`_`가 붙는 게 있고 안 붙는 게 있는데, 붙으면 대충 딴 코드에서 접근하겠다는 뜻, 안 붙으면 알아서 살겠다는 뜻입니다.
 
-⠀정확히는, 언더스코어 파일or폴더는 Jekyll이 렌더링하여 site.data나 site.posts처럼 접근하게 되고, 언더스코어가 아닌 파일or폴더는 Jekyll이 정적 파일로 저장해 site.static_files로 접근하게 됩니다. site.static_files에 들어있는 파일은 다음과 같은 속성을 갖습니다.
+(hard)
+⠀정확히는, 언더스코어 파일or폴더는 Jekyll이 렌더링하여 `site.data`나 `site.posts`처럼 접근하게 되고, 언더스코어가 아닌 파일은 Jekyll이 정적 파일로 저장해 `site.static_files`로 접근하게 됩니다. `site.static_files`에 들어있는 파일은 다음과 같은 속성을 갖습니다.
 
 |속성|의미|
 |:---:|:---|
@@ -36,8 +37,22 @@ last_modified_at: 2025-10-05
 
 e.g.
 ```liquid
+{% raw %}
 {% for nav_button in site.data.navigation.main %}
-  {{ nav_button }}
+  {{ nav_button.title }}
+{% endfor %}
+{% for file in site.static_files %}
+  {{ file.name }}
+{% endfor %}
+{% endraw %}
+```
+결과 (post에서 직접 코드를 돌리는 중)
+```
+{% for nav_button in site.data.navigation.main %}
+  {{ nav_button.title }}
+{% endfor %}
+{% for file in site.static_files %}
+  {{ file.name }}
 {% endfor %}
 ```
 
@@ -57,7 +72,7 @@ permalink: /title/
 여러분 화이팅!!
 ```
 
-### Collections
+### Collections (hard)
 ⠀post들은 기본적으로 `_posts` 안에 저장되는데, post를 다른 폴더로도 묶을 수 있도록 Jekyll에서 Collections를 지원합니다. `_config.yml`에 다음과 같이 적으면 됩니다.
 ```yml
 collections :
@@ -73,23 +88,87 @@ collections :
       - english-poem.md
       - poem-theory.md
 ```
-⠀development와 literature라는 Collection이 만들어졌습니다. output이 true면 permalink에 정의된 대로 아카이브 페이지를 빌드합니다. 정렬 기준은 sort_by에 대해 오름차순입니다. sort_by에는 해당 페이지를 나타내는 파일에서 front matter에 정의한 변수명을 넣으면 됩니다. sort_by 대신 order를 사용하면 하드코딩할 수 있습니다.
+⠀development와 literature라는 Collection이 만들어졌습니다. output이 true면 permalink에 정의된 대로 아카이브 페이지를 빌드합니다. 정렬 기준은 sort_by에 대해 오름차순입니다. `sort_by`에는 해당 페이지를 나타내는 파일에서 front matter에 정의한 변수명을 넣으면 됩니다. `sort_by` 대신 `order`를 사용하면 하드코딩할 수 있습니다.
 
-⠀Collection을 정의한 후,  _pages/를 만든 것과 같이 Collection을 파일로 만들어야 합니다. 언더스코어+Collection이름으로 이름을 짓습니다. 그리고 안에 해당 Collection에 포함하고 싶은 post를 넣습니다.
+⠀Collection을 정의한 후, `_pages/`를 만든 것과 같이 Collection을 파일로 만들어야 합니다. `언더스코어+Collection이름`으로 이름을 짓습니다. 그리고 안에 해당 Collection에 포함하고 싶은 post를 넣습니다.
 
-⠀_config.yml에서 collections_dir를 이용하면 Collection들을 한 폴더에 넣어줄 수 있습니다.
+⠀`_config.yml`에서 collections_dir를 이용하면 Collection들을 한 폴더에 넣어줄 수 있습니다.
 ```yml
 collections_dir : my_collections
 ```
-⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 _posts/도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. 예상인데 _pages/도 아마 Collection 아닐까 합니다.
+⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. 예상인데 `_pages/`도 Collection인지는 잘 모르겠습니다.
 
-⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 post를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 여러분께만 알려 드립니다.
+⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 post를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 저 대신 여러분들 쓰시라고 알려 드립니다.
 
-### page와 post에 대해 제공하는 속성들
-이건 나중에 할래......
+### drafts
+⠀다 쓰진 않아서 올리지는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.
 
-## Minimal-Mistakes의 폴더 구조
+### page와 post에 대해 제공하는 속성들 (hard)
+⠀post는 page와 다 똑같은데 포스팅 날짜 관련 속성이 더해진 형태입니다.
+- title : 제목
+- excerpt : 발췌 요약을 직접 작성 가능
+- excerpt_seperator : `<!--이런 html 주석을 넣으면 본문에서 같은 주석이 달린 부분까지를 발췌요약으로 만듭니다.-->`
+- categories : 카테고리. site.categories.카테고리이름을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.
+- tags : 태그. site.tags.태그이름을 이용해 위와 같습니다.
+- toc : true, false 오른쪽에 따라다니는 On This Page가 toc입니다.
+- toc_sticky : true, false 따라다닐지 결정합니다.
+⠀post 속성
+- date : 개시 날짜
+- last_modified_at : 마지막 수정 날짜  
+e.g. 이 포스트의 front matter
 
+```markdown
+---
+title:  "[Blog]3. Jekyll의 구조 ( + Minimal-Mistakes )"
+excerpt: "Jekyll에 대해 배운 후, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
+
+sort_key : 0103
+categories:
+  - Blog
+tags:
+  - [Blog-뼈대부터, Blog-초보, MMistakes]
+
+toc: true
+toc_sticky: true
+ 
+date: 2025-10-05
+last_modified_at: 2025-10-05
+---
+```
+
+### 기본적인 Jekyll의 디렉토리 구조
+[Jekyll 공식사이트](https://jekyllrb.com/docs/structure/){:target="_blank" rel="noopener noreferrer"}에 이렇게 소개하고 있습니다.
+```
+.
+├── _config.yml
+├── _data
+│   └── members.yml
+├── _drafts
+│   ├── begin-with-the-crazy-ideas.md
+│   └── on-simplicity-in-technology.md
+├── _includes
+│   ├── footer.html
+│   └── header.html
+├── _layouts
+│   ├── default.html
+│   └── post.html
+├── _posts
+│   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+│   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass
+│   ├── _base.scss
+│   └── _layout.scss
+├── _site
+├── .jekyll-cache
+│   └── Jekyll
+│       └── Cache
+│           └── [...]
+├── .jekyll-metadata
+└── index.html # can also be an 'index.md' with valid front matter
+```
+
+## Minimal-Mistakes의 디렉토리 구조
+템플릿이 다르더라도 위 Jekyll 구조에 포함되는 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
 ### `_data/`
 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
 
@@ -115,7 +194,7 @@ collections_dir : my_collections
 여러 HTML이 담겨 있습니다. 포스트나 페이지를 만들면 그 레이아웃을 정할 수 있습니다. [HTML에 대하여]() 
 
 ### `_pages/`
-여러분이 만든 페이지들을 담으시면 됩니다. 파일이 많아지면 안에 폴더를 또 만들어서 세부화 시켜도 됩니다. [Markdown에 대하여]()
+여러분이 만든 페이지들을 담으시면 됩니다. [Markdown에 대하여]()
 
 ### `_posts`
 여러분이 만든 포스트들을 담으시면 됩니다. **포스트 제목은 항상 xxxx-xx-xx-title.md로 짓습니다.** 그래야 Jekyll이 정확히 인식해야 하기 때문입니다. [Markdown에 대하여]()
@@ -145,6 +224,6 @@ collections_dir : my_collections
 ## 마무리
 ⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다. 이렇게 수능공부를 해야 하는데......(중졸티 내기) 뭐 수능은 사실 이런 거 배우듯 공부하는 게 아니니까요. 그냥 열심히 살아야죠.
 
-⠀이제 좀 익숙해져서 따로 블로그를 찾아보진 않았습니다. [Jekyll 공식사이트]()의 내용과 수많은 에러메시지에게 배웠습니다.
+⠀이제 좀 익숙해져서 이젠 따로 다른 블로그를 찾아보진 않습니다. [Jekyll 공식사이트](https://jekyllrb.com/){:target="_blank" rel="noopener noreferrer"}의 내용과 수많은 에러메시지에게 배웠습니다.
 
 <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>

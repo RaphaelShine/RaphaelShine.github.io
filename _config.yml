@@ -10,26 +10,26 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
+# theme                  : "minimal-mistakes-jekyll" # theme와 remote_theme를 동시에 설정하면 아마 충돌. 그냥 이대로.
 remote_theme             : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark" # "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark" # 배경색. "default" "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise" 중 택1. _sass/minimal-mistakes/skins/에서 자세한 내용을 편집.
 
 # Site Settings
-locale                   : "ko-KR"
-rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
+locale                   : "ko-KR" # 사이트 기본단어를 무슨 언어로 할지 선택. 기본단어 목록은 _data/ui-text.yml에서 확인.
+rtl                      : # true, false (default) 우횡서
 title                    : "가려 꺾은 묏버들"
 title_separator          : "-"
-subtitle                 : "컴퓨터든 문학이든, 언어에 대한 기억 저장소" # site tagline that appears below site title in masthead
+subtitle                 : "컴퓨터든 문학이든, 언어에 대한 기억 저장소"
 name                     : "RaphaelShine"
 description              : "컴퓨터, 문학 등의 기억 저장소"
 url                      : "https://RaphaelShine.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
+baseurl                  : # 순수 사이트 주소에서 url 뒤에 더 붙일 부분
 repository               : "RaphaelShine/RaphaelShine.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs              : true # true, false (default)
-words_per_minute         : 200
+breadcrumbs              : true # true, false (default) post나 page 제일 위에 파일경로 표시
+words_per_minute         : 200 # post 읽기소요시간 계산에 사용 난 안 씀
 enable_copy_code_button  : true # true, false (default)
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
@@ -81,7 +81,7 @@ algolia:
 google:
   search_engine_id       : # YOUR_SEARCH_ENGINE_ID
   instant_search         : # false (default), true
-# SEO Related
+# SEO Related 검색엔진 연결
 google_site_verification :
 bing_site_verification   :
 naver_site_verification  :

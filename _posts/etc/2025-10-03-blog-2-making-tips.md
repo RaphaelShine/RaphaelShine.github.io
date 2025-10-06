@@ -10,7 +10,7 @@ tags:
 
 toc: true
 toc_sticky: true
- 
+
 date: 2025-10-03
 last_modified_at: 2025-10-03
 ---
@@ -45,31 +45,27 @@ last_modified_at: 2025-10-03
 
 ### 복붙하기
 
-⠀깃허브에서 마음에 드는 템플릿을 찾습니다.  
-⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다.  
-⠀앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다.
+⠀깃허브에서 마음에 드는 템플릿을 찾습니다. 
 
-(mm repo 사진)
+⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분이 대부분일 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉토리 구조가 어떻게 생겼는지는 다른 곳에서 찾아야 할 겁니다.
+
+![image](https://github.com/user-attachments/assets/7e294187-cc3b-4fef-8177-1b36b631c39a){: .align-center width="70%" height="70%"}
 
 ⠀Fork 버튼을 눌러 해당 repository를 fork합니다.
 
-(fork 사진)
+![image](https://github.com/user-attachments/assets/f2aa9f1a-441c-4430-8b1e-f43a9c62bb72){: .align-center width="70%" height="70%"}
 
 ⠀repository의 이름은 `당신의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. <span style="font-family:OngleipParkDahyeon">(저는 이미 만들어놔서 빨개요...)</span>
 
 ⠀밑에 있는 <span style="color:green">Create Fork</span> 버튼을 누릅니다.
 
-(my repo 사진)
+![image](https://github.com/user-attachments/assets/da6d2e84-2bb0-4fd0-b82f-17b561100dba){: .align-center width="70%" height="70%"}
 
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|Code|Pull requests|Actions|Projects|Security|Insights|**Settings**|
-|||||||여기서|
-
-Code and automation에 있는 Pages를 확인합니다.
+리포지토리 > Settings > Code and automation > Pages를 확인합니다.
 
 ### 설정값 확인하기
 
-(settings 사진)
+![image](https://github.com/user-attachments/assets/9c9d9697-772d-45b9-933e-d7e7d6a8043a){: .align-center width="70%" height="70%"}
 
 - Visit Site 버튼을 누르면 나오는 사이트가 이제 당신의 블로그입니다.  
     <details><summary>(Visit Site 버튼이 나오지 않는다면?)</summary><div markdown="1">
@@ -92,7 +88,7 @@ Code and automation에 있는 Pages를 확인합니다.
 *열린 창에서 Github 로그인 인증합니다.*  
 </div></details>
 
-(VSC 사진)
+![image](https://github.com/user-attachments/assets/5c138d0c-6d25-4cae-b355-e92928cc994d){: .align-center width="70%" height="70%"}
 
 ⠀Minimal-Mistakes의 경우 다음 파일들은 깔끔하게 제거할 수 있습니다. -[공식사이트 왈](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/){:target="_blank" rel="noopener noreferrer"}-
 
@@ -122,18 +118,16 @@ minimal_mistakes_skin    : "default" #  "air", "aqua", "contrast", "dark", "dirt
   - 블로그 프로필
 ```yml
 # Site Settings
-locale                   : "ko-KR" # 언어별로 기본단어가 내장돼 있습니다. (여기에: _data/ui-text.yml)
-rtl                      : # true, false (default) # 오른쪽에서 왼쪽으로 읽는 문자일 경우 사용합니다.
+locale                   : "ko-KR"
 title                    : "블로그 제목"
 title_separator          : "-"
-subtitle                 : "블로그 부제목" # site tagline that appears below site title in masthead
+subtitle                 : "블로그 부제목"
 name                     : "여러분 Github 아이디"
 description              : "블로그 설명"
 url                      : "https://여러분 Github 아이디.github.io"
-baseurl                  : # url 뒤에 기본으로 붙이는 주소, e.g. "/blog"
 repository               : "여러분 Github 아이디/여러분 Github 아이디.github.io" # repository 이름을 변경했다면 변경해야 합니다.
 ```
-  - 검색엔진 연동  
+  - 검색엔진 연동 <span style="font-family:OngleipParkDahyeon">나중에 다른 포스트로 빼야지...</span>  
     <span style="font-family:OngleipParkDahyeon">블로그가 검색엔진에서 발견되도록 합니다.</span>
 ```yml
 # SEO Related
@@ -207,9 +201,10 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 
     ```
 - `_pages`  
-  - 필수 페이지 만들기  
+  - (거의) 필수 페이지 만들기  
     >`_pages/` 폴더가 없다면 새로 만듭니다.  
-    >`_posts/` 폴더 안에 `404.md` 파일을 넣습니다.  
+    >`_posts/` 폴더 안에 `404.md` 파일을 넣습니다. 
+    >주소를 찾지 못할 때 뜨는 페이지 입니다. 
     >`404.md` 파일이 없다면 새로 만듭니다.  
     >다음 코드를 파일에 복붙하십시오.
 
@@ -239,6 +234,7 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     ```  
     >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
     >***이름은 `category-archive.md`라고 짓습니다.***  
+    >카테고리 목록이 뜰 페이지입니다.
     >다음 코드를 파일에 복붙하십시오.
     
     ```markdown
@@ -271,7 +267,9 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
   - cmd에 여러분의 branch에 따라 `git push origin master` 또는 `git push origin main`을 입력합니다.  
     <span style="font-family:OngleipParkDahyeon">여러분의 branch가 무엇인지는 `git status`를 입력해 나온 정보 중 찾거나 [repository setting](#설정값-확인하기){:target="_blank" rel="noopener noreferrer"}에서 찾을 수 있습니다.</span>
   - repository에서 파일 리스트 위에 여러분의 닉네임과 first commit이 적힌 곳 오른쪽, 체크박스가 <span style="color:green">체크</span>되기를 기다립니다.  
-    (check box 사진)  
+    
+    ![image](https://private-user-images.githubusercontent.com/232952473/497614543-ead2c8b8-59b5-4103-a326-60a21d575988.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTk3MTg0MTQsIm5iZiI6MTc1OTcxODExNCwicGF0aCI6Ii8yMzI5NTI0NzMvNDk3NjE0NTQzLWVhZDJjOGI4LTU5YjUtNDEwMy1hMzI2LTYwYTIxZDU3NTk4OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMDA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTAwNlQwMjM1MTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ZmY3MWYxNjM5NjU5NzQxNGIyMWM3ODc1MWVhMWQxZTU0NDYwZTM0ODc0ZGVkZDI2MWViM2RlZTA1OTBiMzQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.O24Y6NlDOMNlOoAYdzMvHVUyAFF0haCLxv9Alshuejg){: .align-center width="70%" height="70%"}
+
     <span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.
 2. <span style="color:pink">로컬서버를 돌린다.</span>  
   - Mac에서 shortcut  
