@@ -57,6 +57,8 @@ e.g.
 ```
 
 ### front matter
+⠀front matter는 HTML의 head와 비슷하게 문서의 메타 데이터를 저장하는 부분입니다.
+
 ⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 import하지 않은 파일은 빌드를 거치지 않고 저장됩니다. front matter를 달아놓고 언더스코어를 두면 에러가 났던 것 같습니다.
 
 ⠀다음과 같이 --- 두 개 사이는 frontmatter가 됩니다.
@@ -96,9 +98,9 @@ collections :
 ```yml
 collections_dir : my_collections
 ```
-⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. 예상인데 `_pages/`도 Collection인지는 잘 모르겠습니다.
+⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. `_pages/`도 Collection인지는 잘 모르겠습니다.
 
-⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 post를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 저 대신 여러분들 쓰시라고 알려 드립니다.
+⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 포스트를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 저 대신 여러분들 쓰시라고 알려 드립니다.
 
 ### drafts
 ⠀다 쓰진 않아서 올리지는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.

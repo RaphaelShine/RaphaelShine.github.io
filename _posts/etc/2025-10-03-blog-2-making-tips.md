@@ -55,7 +55,7 @@ last_modified_at: 2025-10-03
 
 ![image](https://github.com/user-attachments/assets/f2aa9f1a-441c-4430-8b1e-f43a9c62bb72){: .align-center width="70%" height="70%"}
 
-⠀repository의 이름은 `당신의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. <span style="font-family:OngleipParkDahyeon">(저는 이미 만들어놔서 빨개요...)</span>
+⠀repository의 이름은 `여러분의 Github 아이디.github.io`로 짓습니다. 그래야 Github Pages를 이용한다고 인식합니다. <span style="font-family:OngleipParkDahyeon">(저는 이미 만들어놔서 빨개요...)</span>
 
 ⠀밑에 있는 <span style="color:green">Create Fork</span> 버튼을 누릅니다.
 
@@ -67,7 +67,7 @@ last_modified_at: 2025-10-03
 
 ![image](https://github.com/user-attachments/assets/9c9d9697-772d-45b9-933e-d7e7d6a8043a){: .align-center width="70%" height="70%"}
 
-- Visit Site 버튼을 누르면 나오는 사이트가 이제 당신의 블로그입니다.  
+- Visit Site 버튼을 누르면 나오는 사이트가 이제 여러분의 블로그입니다.  
     <details><summary>(Visit Site 버튼이 나오지 않는다면?)</summary><div markdown="1">
     *변경사항을 만들어내야 합니다. 일단 코드를 수정하면 자연스럽게 나타납니다.*  
     *지금 바로 보고싶다면 밑에서 Branch를 None으로 변경했다가 Main(또는 Master)으로 돌아오십시오.*
