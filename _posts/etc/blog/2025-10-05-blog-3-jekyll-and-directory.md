@@ -1,12 +1,12 @@
 ---
-title:  "[Blog]3. Jekyll의 구조 ( + Minimal-Mistakes )"
-excerpt: "Jekyll에 대해 배운 후, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
+title:  "[Blog]3. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
+excerpt: "Jekyll에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 0103
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보, MMistakes]
+  - [Blog-뼈대부터, Blog-고수, MMistakes]
 
 toc: true
 toc_sticky: true
@@ -16,10 +16,10 @@ last_modified_at: 2025-10-05
 ---
 
 ## 시작하며
-⠀이 포스트에서는 먼저 Jekyll이 무엇인지 설명한 후, Minimal-Mistakes의 디렉토리 구조를 겉핥기로 알아보겠습니다. 구조의 상세한 내용은 계속되는 포스트에서 설명하겠습니다. 오늘의 내용을 이해하는 데는 파일이 무엇인지만 알면 충분하리라 생각합니다. (Jekyll은 좀 어려울 수 있으니 넘어가도 됩니다.)
+⠀이 포스트에서는 먼저 Jekyll이 무엇인지 설명한 후, Jekyll의 디렉토리 구조를 Minimal-Mistakes에 초점을 맞춰 겉핥기로 알아보겠습니다. 구조의 상세한 내용은 계속되는 포스트에서 설명하겠습니다. 오늘의 내용을 이해하는 데는 파일이 무엇인지만 알면 충분하리라 생각합니다. (Jekyll 자체에 대한 설명은 좀 어려울 수 있으니 넘어가도 됩니다.)
 
 ## Jekyll에 대하여
-⠀Github Pages는 Jekyll을 기본적으로 지원합니다. Jekyll은  Liquid와 Markdown을 해석해 HTML로 바꾸는 빌더의 일종으로, 디렉토리에 `_site` 폴더를 만들어 웹 사이트를 구동합니다. 내부적으로는 Ruby라는 언어를 사용합니다.
+⠀Github Pages는 Jekyll을 기본적으로 지원합니다. Jekyll은  Liquid와 Markdown을 해석해 HTML로 바꾸는 빌더의 일종으로, `_site` 폴더를 만들어 웹 사이트를 구동합니다. 내부적으로는 Ruby라는 언어를 사용합니다.
 
 ### 언더스코어 `_`
 ⠀파일 또는 폴더들의 이름을 보면 앞에 언더스코어`_`가 붙는 게 있고 안 붙는 게 있는데, 붙으면 대충 딴 코드에서 접근하겠다는 뜻, 안 붙으면 알아서 살겠다는 뜻입니다.
@@ -46,7 +46,7 @@ e.g.
 {% endfor %}
 {% endraw %}
 ```
-결과 (post에서 직접 코드를 돌리는 중)
+결과 (진짜 돌리는 중)
 ```
 {% for nav_button in site.data.navigation.main %}
   {{ nav_button.title }}
@@ -103,15 +103,15 @@ collections_dir : my_collections
 ⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 포스트를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 저 대신 여러분들 쓰시라고 알려 드립니다.
 
 ### drafts
-⠀다 쓰진 않아서 올리지는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.
+⠀포스트를 다 쓰진 않아서 개시는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.
 
 ### page와 post에 대해 제공하는 속성들 (hard)
 ⠀post는 page와 다 똑같은데 포스팅 날짜 관련 속성이 더해진 형태입니다.
 - title : 제목
 - excerpt : 발췌 요약을 직접 작성 가능
 - excerpt_seperator : `<!--이런 html 주석을 넣으면 본문에서 같은 주석이 달린 부분까지를 발췌요약으로 만듭니다.-->`
-- categories : 카테고리. site.categories.카테고리이름을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.
-- tags : 태그. site.tags.태그이름을 이용해 위와 같습니다.
+- categories : 카테고리. `site.categories.카테고리이름`을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.
+- tags : 태그. `site.tags.태그이름`을 이용해 위와 같습니다.
 - toc : true, false 오른쪽에 따라다니는 On This Page가 toc입니다.
 - toc_sticky : true, false 따라다닐지 결정합니다.
 ⠀post 속성
@@ -121,8 +121,8 @@ e.g. 이 포스트의 front matter
 
 ```markdown
 ---
-title:  "[Blog]3. Jekyll의 구조 ( + Minimal-Mistakes )"
-excerpt: "Jekyll에 대해 배운 후, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
+title:  "[Blog]3. Jekyll의 구조"
+excerpt: "Jekyll에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 0103
 categories:
@@ -169,18 +169,18 @@ last_modified_at: 2025-10-05
 └── index.html # can also be an 'index.md' with valid front matter
 ```
 
-## Minimal-Mistakes의 디렉토리 구조
+## Minimal-Mistakes의 구체적인 디렉토리 구조
 템플릿이 다르더라도 위 Jekyll 구조에 포함되는 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
 ### `_data/`
-`navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
+`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
 
 - `navigation.yml`는 네비게이션(상단바)의 정보를 저장합니다.
 
 - `ui-text.yml`는 블로그 기본 단어를 언어별로 저장합니다.
 
 ### `_includes/`
-주로 자주 쓰는 HTML을 꺼내오기 위해 사용합니다.  
-`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML에 대하여]()
+주로 자주 쓰는 HTML을 Liquid에서 &#123;%include%&#125;를 써 꺼내오기 위해 사용합니다.  
+`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML과 Liquid에 대하여]()
 
 - `analytics-providers/`는 블로그의 통계값을 제공하는 provider의 코드를 가져옵니다. 어떤 provider를 쓸지는 `_config.yml`에서 정합니다.
 
@@ -193,7 +193,7 @@ last_modified_at: 2025-10-05
 - `copyright.js` : 저작권은 지키는 게 좋을 겁니다.
 
 ### `_layouts/`
-여러 HTML이 담겨 있습니다. 포스트나 페이지를 만들면 그 레이아웃을 정할 수 있습니다. [HTML에 대하여]() 
+문서를 유형별로 기본적인 형태를 만들어 layout으로 이곳에 담습니다. 포스트나 페이지를 만들고 front matter에서 그 레이아웃을 선택할 수 있습니다. [HTML과 Liquid에 대하여]() 
 
 ### `_pages/`
 여러분이 만든 페이지들을 담으시면 됩니다. [Markdown에 대하여]()
@@ -202,13 +202,13 @@ last_modified_at: 2025-10-05
 여러분이 만든 포스트들을 담으시면 됩니다. **포스트 제목은 항상 xxxx-xx-xx-title.md로 짓습니다.** 그래야 Jekyll이 정확히 인식해야 하기 때문입니다. [Markdown에 대하여]()
 
 ### `_sass/`
-`minimal-mistakes/`가 거의 본체입니다. 그 안에는 `skins/`, `vendor/`가 있습니다. [CSS에 대하여]()
+CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거의 본체일 겁니다. 템플릿 파일인 `minimal-mistakes/` 안에는 `skins/`, `vendor/`가 있습니다. [CSS에 대하여]()
 
 - `skins/`는 `_config.yml`에서 지정할 수 있는 테마들이 저장됩니다.
 
 - `vendor/`는 저도 잘 모릅니다. `breakpoint/`라는 폴더가 있는데, CSS의 breakpoint를 선언하는 것 같습니다. 열심히 부딪혀 보니 알게된 사실: breakpoint가 화면의 크기를 받아서 사이트의 폰트 크기를 조절합니다. 이게 다른 폰트크기선언보다 중요도가 높아서 저는 여기서 조절해야 해야 했습니다. 다른 기능도 있겠지만 아직 모르겠습니다.
 
-- `minimal-mistakes/` 바로 밑에 있는 많은 `.scss`가 있는데, 이들은 사이트의 파츠별로 잘 나뉘어 있어서 그냥 수정하고 싶은 부분 찾아서 여기서 수정하면 되겠습니다.
+- `minimal-mistakes/` 밑에 많은 `.scss`가 있는데, 이들은 사이트의 파츠별로 잘 나뉘어 있어서 그냥 수정하고 싶은 부분 찾아서 여기서 수정하면 되겠습니다.
 
 - 그 많은 `.scss`중 `_variables.scss`는 직접 HTML 파츠에 대응하는 아이가 아니라 CSS에서 쓸 변수들을 담는 파일입니다.
 
@@ -224,7 +224,7 @@ last_modified_at: 2025-10-05
 이 중 `index.html`은 퍼마링크 없는 순수한 사이트주소에서 뜨는 화면입니다. 나머지는 딱히 알 필요 없을 듯합니다.
 
 ## 마무리
-⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다. 이렇게 수능공부를 해야 하는데......(중졸티 내기) 뭐 수능은 사실 이런 거 배우듯 공부하는 게 아니니까요. 그냥 열심히 살아야죠.
+⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다.
 
 ⠀이제 좀 익숙해져서 이젠 따로 다른 블로그를 찾아보진 않습니다. [Jekyll 공식사이트](https://jekyllrb.com/){:target="_blank" rel="noopener noreferrer"}의 내용과 수많은 에러메시지에게 배웠습니다.
 

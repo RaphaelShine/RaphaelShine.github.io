@@ -22,11 +22,11 @@ last_modified_at: 2025-10-03
 ## Github Pages란?
 ⠀우선 이 글을 열심히 읽고 계신 분들은 아마도 블로그를 시작하고 싶은 마음을 한아름 안고 계신 분들일 겁니다.
 
-⠀블로그를 하려면 본인이 서버를 돌리거나 서버를 돌려주는 인터넷 서비스를 이용해야 합니다. 본인이 서버를 돌린다면 열심히 하는 만큼 다채롭고 자유로운 블로그를 만들 수 있겠지만, 인터넷 서비스를 이용하면 쉽고 편한 대신 정해진 템플릿을 벗어나는 데 어려움이 있습니다.
+⠀블로그를 하려면 본인이 서버를 돌리거나 서버를 돌려주는 인터넷 서비스를 이용해야 합니다. 본인이 서버를 돌린다면 열심히 하는 만큼 다채롭고 자유로운 블로그를 만들 수 있겠지만, 인터넷 서비스를 이용하면 쉽고 편한 대신 정해진 템플릿을 벗어나는 데 어려움이 있거나 인터넷 서비스의 광고가 삽입됩니다.
 
-⠀Github Pages는 Github에서 제공하는 인터넷 서비스입니다. 따라서 본인이 서버를 운영하는데 드는 부담이 없지만 다른 서비스들과 비교하여 차이가 있다면, Github에서는 <span style="color:yellow">**서버만**</span> 제공하기 때문에 <span style="color:yellow">**나머지는 스스로**</span> 코드를 올려줘야 합니다. 그래서 웬만한 다른 서비스들보다 훨씬 자유도가 높습니다.
+⠀Github Pages는 Github에서 제공하는 인터넷 서비스입니다. 따라서 본인이 서버를 운영하는데 드는 부담이 없지만 다른 서비스들과 비교하여 차이가 있다면, Github에서는 <span style="color:yellow">**서버만**</span> 제공하기 때문에 <span style="color:yellow">**나머지는 스스로**</span> 코드를 올려줘야 합니다. 따라서 강제 광고도 없고 밑바닥부터 고칠 수 있습니다. 또한 기본적으로 Jekyll이라는 웹사이트 빌더를 사용합니다. 따라서 이후 포스팅은 Jekyll에 대한 설명이 주를 이룰 것이고, Github Pages가 아니더라도 Jekyll을 이용한다면 이 블로그의 내용이 도움을 줄 수 있습니다.
 
-⠀만약 조금 수고하더라도 더 높은 자유도를 원한다면 Github Pages를 선택하시면 되겠습니다.
+⠀만약 조금 수고하더라도 내가 밑바닥부터 다 뜯어 고칠 수 있길 바란다면 Github Pages를 선택하시면 되겠습니다.
 
 ## 준비물
 
@@ -47,7 +47,7 @@ last_modified_at: 2025-10-03
 
 ⠀깃허브에서 마음에 드는 템플릿을 찾습니다. 
 
-⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분이 대부분일 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉토리 구조가 어떻게 생겼는지는 다른 곳에서 찾아야 할 겁니다.
+⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분을 중심으로 설명할 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉토리 구조를 설명할 때는 들어맞지 않을 수 있습니다.
 
 ![image](https://github.com/user-attachments/assets/7e294187-cc3b-4fef-8177-1b36b631c39a){: .align-center width="70%" height="70%"}
 
@@ -107,15 +107,15 @@ last_modified_at: 2025-10-03
 
 ⠀여러분께서 깊이있게 들어가고 싶으시다면 다른 파일들도 건드리게 되겠지만, 기본적으로 수정해야 하는 부분은 다음 세 파트; `_config.yml`, `_posts`, `_pages` 입니다.
 
-- `_config.yml`
-  - 테마 설정  
-    <span style="font-family:OngleipParkDahyeon">똑같이 해도 됩니다.</span>
+#### `_config.yml`
+- 테마 설정  
+  <span style="font-family:OngleipParkDahyeon">똑같이 해도 됩니다.</span>
 ```yml
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme             : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" #  "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 ```
-  - 블로그 프로필
+- 블로그 프로필
 ```yml
 # Site Settings
 locale                   : "ko-KR"
@@ -127,8 +127,8 @@ description              : "블로그 설명"
 url                      : "https://여러분 Github 아이디.github.io"
 repository               : "여러분 Github 아이디/여러분 Github 아이디.github.io" # repository 이름을 변경했다면 변경해야 합니다.
 ```
-  - 검색엔진 연동 <span style="font-family:OngleipParkDahyeon">나중에 다른 포스트로 빼야지...</span>  
-    <span style="font-family:OngleipParkDahyeon">블로그가 검색엔진에서 발견되도록 합니다.</span>
+- 검색엔진 연동 <span style="font-family:OngleipParkDahyeon">나중에 다른 포스트로 빼야지...</span>  
+  <span style="font-family:OngleipParkDahyeon">블로그가 검색엔진에서 발견되도록 합니다.</span>
 ```yml
 # SEO Related
 google_site_verification :
@@ -137,24 +137,24 @@ naver_site_verification  :
 yandex_site_verification :
 baidu_site_verification  :
 ```
-  - 여러분 프로필  
-    <span style="font-family:OngleipParkDahyeon">좌측바에 보입니다.</span>
-    <div markdown="1">
-    ```yml
-    # Site Author
-    author:
-      name             : "프로필에 걸고 싶은 여러분 이름"
-      avatar           : # 프로필 사진, e.g. "/assets/images/프로필사진.png"
-      bio              : "여러분 biography"
-      location         : "Seoul, Korea"
-      email            : "말그대로 email 주소"
-      links: # 추가하고픈 건 추가할 수 있습니다.
-        - label: "Email"
-          icon: "fas fa-fw fa-envelope-square" # fas나 far는 기본 기호를 불러오는 아이입니다.
-          url: "mailto:여러분.메일이름@이메일.com"
-    ```
-    </div>
-  - Outputting
+- 여러분 프로필  
+  <span style="font-family:OngleipParkDahyeon">좌측바에 보입니다.</span>
+  <div markdown="1">
+  ```yml
+  # Site Author
+  author:
+    name             : "프로필에 걸고 싶은 여러분 이름"
+    avatar           : # 프로필 사진, e.g. "/assets/images/프로필사진.png"
+    bio              : "여러분 biography"
+    location         : "Seoul, Korea"
+    email            : "말그대로 email 주소"
+    links: # 추가하고픈 건 추가할 수 있습니다.
+      - label: "Email"
+        icon: "fas fa-fw fa-envelope-square" # fas나 far는 기본 기호를 불러오는 아이입니다.
+        url: "mailto:여러분.메일이름@이메일.com"
+  ```
+  </div>
+- Outputting
 ```yml
 # Outputting
 permalink: /:categories/:title/
@@ -174,78 +174,79 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     |축약영문| |`%b`| |`%a`|  
     |->| |Oct| |Fri|
 
-- `_posts`
-  - 포스팅 해보기  
-    >`_posts/` 폴더가 없다면 새로 만듭니다.  
-    >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
-    >***파일의 이름은 `날짜-제목.md`으로 짓습니다.(`xxxx-xx-xx-title.md`)***  
-    >다음 코드를 파일에 복붙하고 아무 글을 쓰십시오.
-    
-    ```markdown
-    ---
-    title:  "포스트 제목"
-    excerpt: "포스트 소개"
+#### `_posts`
+- 포스팅 해보기  
+  >`_posts/` 폴더가 없다면 새로 만듭니다.  
+  >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
+  >***파일의 이름은 `날짜-제목.md`으로 짓습니다.(`xxxx-xx-xx-title.md`)***  
+  >다음 코드를 파일에 복붙하고 아무 글을 쓰십시오.
+  
+  ```markdown
+  ---
+  title:  "포스트 제목"
+  excerpt: "포스트 소개"
 
-    categories:
-      - A_Category
-    tags:
-      - [A_Tag, B_Tag, C_Tag]
+  categories:
+    - A_Category
+  tags:
+    - [A_Tag, B_Tag, C_Tag]
 
-    toc: true
-    toc_sticky: true
-    
-    date: 2001-01-01
-    last_modified_at: 2001-01-01
-    ---
-    <!--여기가 본문입니다. 이 밑으로 뭐든 써 보십시오.-->
+  toc: true
+  toc_sticky: true
+  
+  date: 2001-01-01
+  last_modified_at: 2001-01-01
+  ---
+  <!--여기가 본문입니다. 이 밑으로 뭐든 써 보십시오.-->
 
-    ```
-- `_pages`  
-  - (거의) 필수 페이지 만들기  
-    >`_pages/` 폴더가 없다면 새로 만듭니다.  
-    >`_posts/` 폴더 안에 `404.md` 파일을 넣습니다. 
-    >주소를 찾지 못할 때 뜨는 페이지 입니다. 
-    >`404.md` 파일이 없다면 새로 만듭니다.  
-    >다음 코드를 파일에 복붙하십시오.
+  ```
 
-    ```markdown
-    ---
-    title: "Page Not Found"
-    excerpt: "Page not found. Your pixels are in another canvas."
-    sitemap: false
-    permalink: /404.html
+#### `_pages`  
+- 필수 페이지 만들기  
+  >`_pages/` 폴더가 없다면 새로 만듭니다.  
+  >`_posts/` 폴더 안에 `404.md` 파일을 넣습니다. 
+  >주소를 찾지 못할 때 뜨는 페이지 입니다. 
+  >`404.md` 파일이 없다면 새로 만듭니다.  
+  >다음 코드를 파일에 복붙하십시오.
 
-    layout: single
-    ---
+  ```markdown
+  ---
+  title: "Page Not Found"
+  excerpt: "Page not found. Your pixels are in another canvas."
+  sitemap: false
+  permalink: /404.html
 
-    <!--안타까운 메시지를 적어주십시오.-->
-    아..! 정말 안타깝다!  
-    페이지가 없다니..!  
-    있는 줄 알고 들어온 내 페이지가..  
-    내 페이지가...  
-    페이지가 없다니...!
+  layout: single
+  ---
 
-    <script>
-    var GOOG_FIXURL_LANG = 'en';
-    var GOOG_FIXURL_SITE = '{{ site.url }}'
-    </script>
-    <script src="https://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js">
-    </script>
-    ```  
-    >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
-    >***이름은 `category-archive.md`라고 짓습니다.***  
-    >카테고리 목록이 뜰 페이지입니다.
-    >다음 코드를 파일에 복붙하십시오.
-    
-    ```markdown
-    ---
-    title: "Category"
-    layout: categories
-    permalink: /categories/
-    author_profile: true
-    sidebar_main: true
-    ---
-    ```
+  <!--안타까운 메시지를 적어주십시오.-->
+  아..! 정말 안타깝다!  
+  페이지가 없다니..!  
+  있는 줄 알고 들어온 내 페이지가..  
+  내 페이지가...  
+  페이지가 없다니...!
+
+  <script>
+  var GOOG_FIXURL_LANG = 'en';
+  var GOOG_FIXURL_SITE = '{{ site.url }}'
+  </script>
+  <script src="https://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js">
+  </script>
+  ```  
+  >`_posts/` 폴더 안에 파일을 새로 만듭니다.  
+  >***이름은 `category-archive.md`라고 짓습니다.***  
+  >카테고리 목록이 뜰 페이지입니다.
+  >다음 코드를 파일에 복붙하십시오.
+  
+  ```markdown
+  ---
+  title: "Category"
+  layout: categories
+  permalink: /categories/
+  author_profile: true
+  sidebar_main: true
+  ---
+  ```
 
 ## 확인한다
 ⠀수정 사항을 블로그에 반영하는 데 두 가지 방법이 있습니다. 
@@ -268,7 +269,7 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
     <span style="font-family:OngleipParkDahyeon">여러분의 branch가 무엇인지는 `git status`를 입력해 나온 정보 중 찾거나 [repository setting](#설정값-확인하기){:target="_blank" rel="noopener noreferrer"}에서 찾을 수 있습니다.</span>
   - repository에서 파일 리스트 위에 여러분의 닉네임과 first commit이 적힌 곳 오른쪽, 체크박스가 <span style="color:green">체크</span>되기를 기다립니다.  
     
-    ![image](https://private-user-images.githubusercontent.com/232952473/497614543-ead2c8b8-59b5-4103-a326-60a21d575988.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTk3MTg0MTQsIm5iZiI6MTc1OTcxODExNCwicGF0aCI6Ii8yMzI5NTI0NzMvNDk3NjE0NTQzLWVhZDJjOGI4LTU5YjUtNDEwMy1hMzI2LTYwYTIxZDU3NTk4OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUxMDA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MTAwNlQwMjM1MTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03ZmY3MWYxNjM5NjU5NzQxNGIyMWM3ODc1MWVhMWQxZTU0NDYwZTM0ODc0ZGVkZDI2MWViM2RlZTA1OTBiMzQ3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.O24Y6NlDOMNlOoAYdzMvHVUyAFF0haCLxv9Alshuejg){: .align-center width="70%" height="70%"}
+    ![image](https://github.com/user-attachments/assets/54ee3ec5-0773-4bdc-9c32-f6a1f9026d7f){: .align-center width="70%" height="70%"}
 
     <span style="color:orange">O</span>는 대기중, <span style="color:red">X</span>은 실패입니다.
 2. <span style="color:pink">로컬서버를 돌린다.</span>  
@@ -311,7 +312,7 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 ⠀계속되는 포스트에서 그 상상을 실현해 보겠습니다.
 
 ## 마무리
-⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 이번 포스트에서 빠르게 넘어간 부분들을 하나하나 세심하게 짚어 갈 예정입니다. 일단 page와 post의 구조부터 markdown 문법이나 liquid 문법, Minimal-Mistakes의 구조, 제가 만든 여러 기능들도 소개해 보겠습니다.
+⠀이상 Github Pages를 시작하는 법이었습니다. 이후의 Blog 카테고리에선 Jekyll을 다룰 때 알아야 하는 부분들을 하나하나 세심하게 짚어 갈 예정입니다. 일단 Jekyll의 구조부터 markdown 문법이나 liquid 문법, 제가 만든 여러 기능들도 소개해 보겠습니다.
 
 ⠀사실은 저도 지금 막 배우는 중이라 오류도 있을 수 있고 중요한 걸 빠뜨릴 수도 있습니다. 코드만 잘 굴러 가면 막 엄청난 문제야 없겠죠? 다만 그런 게 보이는 똑똑이라면 꼭 **댓글**이나 [**메일**]({{site.author.email}}) 남겨 주셨으면 좋겠습니다. 감사합니다.
 

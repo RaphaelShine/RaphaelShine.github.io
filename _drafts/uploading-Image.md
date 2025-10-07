@@ -26,16 +26,16 @@ markdown에서 다음과 같이 작성합니다.
 출력 :
 ![이미지](/assets/images/TheEarthCapture.png){: .align-center width="70%"}
 
-붙일 수 있는 html 속?성?
+붙일 수 있는 HTML Attribute
 - 정렬
 `.align-left` : 왼쪽으로 붙이기
 `.align-right` : 오른쪽 붙이기
 `.align-center` : 가운데
 - 크기
-`width` : 가로 길이. `="70%"`처럼도 되고 `="400"`(픽셀)처럼도 된다.
-`hight` : 세로 길이
+`width=""` : 가로 길이. `="70%"`처럼도 되고 `="400"`(픽셀)처럼도 된다.
+`hight=""` : 세로 길이
 참고로 둘 중 하나만 적어도 알아서 맞춰집니다.
 
 ## Github Project Issues 이용
-issue에 comment로 이미지를 달아 자동으로 생성되는 url을 이용하는 살짝의 편법입니다. 이미지가 뜨기까지 1초정도 걸리는 것 같습니다.
+Issue에 comment로 이미지를 달아 자동으로 생성되는 url을 이용하는 살짝의 편법입니다. 이미지가 뜨기까지 1초정도 걸리는 것 같습니다.
 
