@@ -1,10 +1,10 @@
 ---
-title:  "[Blog]1. 블로그로 첫발"
+title:  "[ManagingBlog]1. 블로그로 첫발"
 excerpt: "블로그를 만드는 중, 첫 포스트를 올린다."
 
-sort_key : 0101
+sort_key : 1
 categories:
-  - Blog
+  - ManagingBlog
 tags:
   - [주절주절]
 

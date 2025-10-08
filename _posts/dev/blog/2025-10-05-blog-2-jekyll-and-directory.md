@@ -1,8 +1,8 @@
 ---
-title:  "[Blog]3. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
+title:  "[Blog]2. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
 excerpt: "Jekyll에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
-sort_key : 0103
+sort_key : 2
 categories:
   - Blog
 tags:
@@ -170,9 +170,9 @@ last_modified_at: 2025-10-05
 ```
 
 ## Minimal-Mistakes의 구체적인 디렉토리 구조
-템플릿이 다르더라도 위 Jekyll 구조에 포함되는 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
+템플릿이 다르더라도 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
 ### `_data/`
-`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
+`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. Minimal-Mistakes에선 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
 
 - `navigation.yml`는 네비게이션(상단바)의 정보를 저장합니다.
 

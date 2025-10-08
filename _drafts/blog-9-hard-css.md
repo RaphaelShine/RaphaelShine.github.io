@@ -1,8 +1,8 @@
 ---
-title:  "[Blog]. CSS에 대한 짧고 얉은 설명"
+title:  "[Blog]9. 고수용 CSS 설명"
 excerpt: ""
 
-sort_key : 0103
+sort_key : 9
 categories:
   - Blog
 tags:
@@ -14,3 +14,5 @@ toc_sticky: true
 date: 2025-10-07
 last_modified_at: 2025-10-07
 ---
+## 시작하며
+CSS는 HTML

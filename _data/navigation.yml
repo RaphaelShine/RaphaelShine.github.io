@@ -13,6 +13,9 @@ main:
       - title: "C"
         name: "C"
         url: /development/c/
+      - title: "블로그"
+        name: "Blog"
+        url: /development/blog/
   - title: "문학"
     name: "literature"
     url: /literature/
@@ -34,9 +37,9 @@ main:
     name: "etc"
     url: /etc/
     children:
-      - title: "블로그"
-        name: "Blog"
-        url: /etc/blog/
+      - title: "블로그운영기록"
+        name: "ManagingBlog"
+        url: /etc/managingblog/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"

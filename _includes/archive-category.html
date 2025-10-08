@@ -1,4 +1,6 @@
-<h3 class="archive__subtitle"><a href="{{include.caturl}}">{{ include.cat }}</a></h3>
-{% assign posts = site.categories[include.catname] %}
+<section id={{include.cat.name}} class="taxonomy__section">
+<h2 class="archive__subtitle"><a href="{{include.cat.url | downcase}}">{{ include.cat.title }}</a></h2>
+{% assign posts = site.categories[include.cat.name] %}
 {% for post in posts | sort: "sort_key" %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
-<br>
+<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+</section>

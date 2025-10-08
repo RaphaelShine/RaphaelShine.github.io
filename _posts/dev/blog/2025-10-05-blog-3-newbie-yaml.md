@@ -1,12 +1,12 @@
 ---
-title:  "[Blog]4. YAML에 대한 짧고 얕은 설명"
+title:  "[Blog]3. 초보용 YAML 설명"
 excerpt: "YAML을 통한 데이터 저장 방법을 배우고, Jekyll에서의 구체적인 활용을 알아본다."
 
-sort_key : 0104
+sort_key : 3
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보, MMistakes]
+  - [Blog-뼈대부터, Blog-초보]
 
 toc: true
 toc_sticky: true
@@ -15,7 +15,7 @@ date: 2025-10-05
 last_modified_at: 2025-10-05
 ---
 ## YAML
-⠀YAML은 JSON의 상위호환 데이터 직렬화 양식입니다.`.yml`, `.yaml`와 같은 확장자(둘 다 똑같습니다)를 사용합니다. 데이터 직렬화라는 것은 그냥 데이터 저장하기라고 생각하면 됩니다.
+⠀YAML은 JSON의 상위호환 데이터 직렬화 양식입니다.`.yml`, `.yaml`와 같은 확장자(둘 다 똑같습니다)를 사용합니다. 데이터 직렬화라는 것은 그냥 데이터 저장하기라고 생각하면 됩니다. 엄청 쉬우니 고수용은 따로 만들지 않겠습니다.
 
 ### 주석  
 ⠀#을 달면 주석처리 됩니다.
@@ -51,7 +51,7 @@ time      : 2025-10-05 14:47:15
 ### 속성 접근
 ⠀YAML 파일을 저장한 후, 접근할 때는 `site.fordername.filename.key`와 같이 하면 됩니다. 파일이름 앞에 붙인 `_`는 빼고 적습니다. `_config.yml`은 특수한 파일이므로 `site.`에서 바로 접근합니다.
 ```liquid
-{% raw %}{% if site.key == 1 %}
+{% raw %}{% if page.sort_key == 3 %}
   {{ site.data.navigation.main }}
 {% endif %}{% endraw %}
 ```

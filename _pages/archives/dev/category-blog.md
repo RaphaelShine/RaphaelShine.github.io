@@ -1,7 +1,7 @@
 ---
 title: "Blog"
 layout: archive
-permalink: /etc/blog/
+permalink: /development/blog/
 author_profile: true
 sidebar_main: true
 ---
