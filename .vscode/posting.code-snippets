@@ -50,4 +50,11 @@
 		]
 		"description": "span 끝내기"
 	}
+	"Print cute style": {
+		"prefix": "sc"
+		"body": [
+			"<span style='font-family:OngleipParkDahyeon'></span>"
+		]
+		"description": "글씨 span 시작"
+	}
 }

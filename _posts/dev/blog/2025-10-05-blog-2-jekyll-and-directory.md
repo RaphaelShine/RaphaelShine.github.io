@@ -37,14 +37,12 @@ last_modified_at: 2025-10-05
 
 e.g.
 ```liquid
-{% raw %}
-{% for nav_button in site.data.navigation.main %}
+{% raw %}{% for nav_button in site.data.navigation.main %}
   {{ nav_button.title }}
 {% endfor %}
 {% for file in site.static_files %}
   {{ file.name }}
-{% endfor %}
-{% endraw %}
+{% endfor %}{% endraw %}
 ```
 결과 (진짜 돌리는 중)
 ```
@@ -59,7 +57,7 @@ e.g.
 ### front matter
 ⠀front matter는 HTML의 head와 비슷하게 문서의 메타 데이터를 저장하는 부분입니다.
 
-⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 import하지 않은 파일은 빌드를 거치지 않고 저장됩니다. front matter를 달아놓고 언더스코어를 두면 에러가 났던 것 같습니다.
+⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 include 또는 @import하지 않은 파일은 빌드를 거치지 않고 저장됩니다. front matter를 달아놓고 언더스코어를 두면 에러가 났던 것 같습니다.
 
 ⠀다음과 같이 --- 두 개 사이는 frontmatter가 됩니다.
 ```markdown
@@ -100,7 +98,7 @@ collections_dir : my_collections
 ```
 ⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. `_pages/`도 Collection인지는 잘 모르겠습니다.
 
-⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. 제 코드는 살짝 하드코딩이 필요한데, Collections를 이용했더라면 더 편했을지도 모르겠습니다. 이 포스트를 쓰면서 조금 사용해 봤지만 이걸 지금 바꾸는 건 비효율적이라 생각되어 저 대신 여러분들 쓰시라고 알려 드립니다.
+⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. Collections를 이용했더라면 더 편했을지도 모르겠습니다. 그래서 저 대신 여러분들 쓰시라고 알려 드립니다.
 
 ### drafts
 ⠀포스트를 다 쓰진 않아서 개시는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.
@@ -172,7 +170,7 @@ last_modified_at: 2025-10-05
 ## Minimal-Mistakes의 구체적인 디렉토리 구조
 템플릿이 다르더라도 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
 ### `_data/`
-`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. Minimal-Mistakes에선 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]()
+`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. Minimal-Mistakes에선 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]
 
 - `navigation.yml`는 네비게이션(상단바)의 정보를 저장합니다.
 
@@ -180,7 +178,7 @@ last_modified_at: 2025-10-05
 
 ### `_includes/`
 주로 자주 쓰는 HTML을 Liquid에서 &#123;%include%&#125;를 써 꺼내오기 위해 사용합니다.  
-`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML과 Liquid에 대하여]()
+`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML과 Liquid에 대하여]
 
 - `analytics-providers/`는 블로그의 통계값을 제공하는 provider의 코드를 가져옵니다. 어떤 provider를 쓸지는 `_config.yml`에서 정합니다.
 
@@ -193,16 +191,16 @@ last_modified_at: 2025-10-05
 - `copyright.js` : 저작권은 지키는 게 좋을 겁니다.
 
 ### `_layouts/`
-문서를 유형별로 기본적인 형태를 만들어 layout으로 이곳에 담습니다. 포스트나 페이지를 만들고 front matter에서 그 레이아웃을 선택할 수 있습니다. [HTML과 Liquid에 대하여]() 
+문서를 유형별로 기본적인 형태를 만들어 layout으로 이곳에 담습니다. 포스트나 페이지를 만들고 front matter에서 그 레이아웃을 선택할 수 있습니다. [HTML과 Liquid에 대하여]
 
 ### `_pages/`
-여러분이 만든 페이지들을 담으시면 됩니다. [Markdown에 대하여]()
+여러분이 만든 페이지들을 담으시면 됩니다. [Markdown에 대하여]
 
 ### `_posts`
-여러분이 만든 포스트들을 담으시면 됩니다. **포스트 제목은 항상 xxxx-xx-xx-title.md로 짓습니다.** 그래야 Jekyll이 정확히 인식해야 하기 때문입니다. [Markdown에 대하여]()
+여러분이 만든 포스트들을 담으시면 됩니다. **포스트 제목은 항상 xxxx-xx-xx-title.md로 짓습니다.** 그래야 Jekyll이 정확히 인식해야 하기 때문입니다. [Markdown에 대하여]
 
 ### `_sass/`
-CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거의 본체일 겁니다. 템플릿 파일인 `minimal-mistakes/` 안에는 `skins/`, `vendor/`가 있습니다. [CSS에 대하여]()
+CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거의 본체일 겁니다. 템플릿 파일인 `minimal-mistakes/` 안에는 `skins/`, `vendor/`가 있습니다. [CSS에 대하여]
 
 - `skins/`는 `_config.yml`에서 지정할 수 있는 테마들이 저장됩니다.
 
@@ -213,12 +211,12 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 - 그 많은 `.scss`중 `_variables.scss`는 직접 HTML 파츠에 대응하는 아이가 아니라 CSS에서 쓸 변수들을 담는 파일입니다.
 
 ### `assets/`
-`main.scss`가 담겨있는 `css/` 폴더, `images/`, `js/`가 있습니다. [CSS에 대하여]()
+`main.scss`가 담겨있는 `css/` 폴더, `images/`, `js/`가 있습니다. [CSS에 대하여]
 
 - `main.scss`는 언더바된 다른 `.scss`들을 @import해줍니다. CSS 함수가 어디있는지 몰라서 수정이 어려울 때 여기에다가 선언해주면 override 할 수 있는 것 같습니다.
 
 ### `_config.yml`
-사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다. [YAML에 대하여]()
+사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다. [YAML에 대하여]
 
 ### 기타 파일들
 이 중 `index.html`은 퍼마링크 없는 순수한 사이트주소에서 뜨는 화면입니다. 나머지는 딱히 알 필요 없을 듯합니다.
@@ -227,5 +225,10 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 ⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다.
 
 ⠀이제 좀 익숙해져서 이젠 따로 다른 블로그를 찾아보진 않습니다. [Jekyll 공식사이트](https://jekyllrb.com/){:target="_blank" rel="noopener noreferrer"}의 내용과 수많은 에러메시지에게 배웠습니다.
+
+[HTML과 Liquid에 대하여]:
+[Markdown에 대하여]:
+[CSS에 대하여]:
+[YAML에 대하여]:
 
 <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>

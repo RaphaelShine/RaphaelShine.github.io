@@ -11,7 +11,7 @@ tags:
 toc: true
 toc_sticky: true
 
-date:
+date: 2025-10-08
 last_modified_at: 2025-10-06
 ---
 ## Directory 이용

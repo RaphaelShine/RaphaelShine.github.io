@@ -164,16 +164,18 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 ```
 ***참고 : 날짜 기호 표***
 
-    ||연도|월|일|요일|  
-    |:---:|:---:|:---:|:---:|:---:|  
-    |전체숫자|`%Y`|`%m`|`%d`| |  
-    |->|2025|10|03| |  
-    |축약숫자|`%y`| |`%e`| |  
-    |->|25| |3| |  
-    |전체영문| |`%B`| |`%A`|  
-    |->| |October| |Friday|  
-    |축약영문| |`%b`| |`%a`|  
-    |->| |Oct| |Fri|
+  ||연도|월|일|요일|  
+  |:---:|:---:|:---:|:---:|:---:|  
+  |전체숫자|`%Y`|`%m`|`%d`| |  
+  |->|2025|10|03| |  
+  |축약숫자|`%y`| |`%e`| |  
+  |->|25| |3| |  
+  |전체영문| |`%B`| |`%A`|  
+  |->| |October| |Friday|  
+  |축약영문| |`%b`| |`%a`|  
+  |->| |Oct| |Fri|
+
+  <span style="font-family:OngleipParkDahyeon">뇌절 좋아하는 분들을 위한 [제대로 된 표](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings){:target='_blank' rel='noopener noreferrer'}</span>
 
 #### `_posts`
 - 포스팅 해보기  
@@ -188,9 +190,9 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
   excerpt: "포스트 소개"
 
   categories:
-    - A_Category
+    - Amu_Category
   tags:
-    - [A_Tag, B_Tag, C_Tag]
+    - [Amu_Tag, Babo_Tag, Co_Tagzi]
 
   toc: true
   toc_sticky: true
