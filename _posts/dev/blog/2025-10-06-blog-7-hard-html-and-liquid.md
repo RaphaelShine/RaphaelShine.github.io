@@ -16,13 +16,13 @@ last_modified_at: 2025-10-05
 ---
 
 ## 시작하며
-⠀HTML은 기본적으로는 **정적**이기 때문에 이번 포스트의 길이가 YAML처럼 엄청 짧을 수 있었지만, 개발자들은 **Liquid**를 이용해 HTML을 동적으로 이용하는 방법을 만들었습니다. 그렇게 여러분의 공부량이 늘어나게 되었습니다~! 저도 마찬가지....... 원래는 Liquid만으로 동적 웹이라고 하기는 어렵습니다. Liquid는 동적으로 HTML을 작성해서 결국 정적인 웹이 출력되기 때문입니다. 웹이 동적이려면 JS를 이용하거나 하여 페이지가 변수처리를 해야 한다고 알고 있습니다.
+⠀HTML은 기본적으로는 **정적**이기 때문에 이번 포스트의 길이가 YAML처럼 엄청 짧을 수 있었지만, 개발자들은 **Liquid**를 이용해 HTML을 동적으로 이용하는 방법을 만들었습니다. 그렇게 여러분의 공부량이 늘어나게 되었습니다~! 저도 마찬가지.......
 
 ## HTML
 ⠀<span style='font-family:OngleipParkDahyeon'>HTML을 제대로 한다면 head, body같은 것부터 해야겠지만 지금은 몰라도 알 바 아닙니다. 블로그 만드는 데 꼭 필요한 것만 설명하겠습니다.</span>  
-⠀라고 초보 버전에는 되어 있겠지만 우리는 더 배웁시다. 직접 개발자도구 키고 디버깅 하면서 해보려면 아는 게 좋을 겁니다. 결국엔 다른 모든 것의 결과가 HTML이므로 가장 중요하다고 볼 수도 있겠습니다. 이 포스트도 사실 깊게 들어간 것은 아니니 더 배우고 싶다면 [MDN](https://developer.mozilla.org/ko/){:target="_blank" rel="noopener noreferrer"}을 보십시오.
+⠀라고 초보 버전에는 되어 있겠지만 우리는 더 배웁시다. 직접 개발자도구 켜고 디버깅 하면서 해보려면 아는 게 좋을 겁니다. 결국엔 다른 모든 것의 결과가 HTML이므로 가장 중요하다고 볼 수도 있겠습니다. 이 포스트도 사실 깊게 들어간 것은 아니니 더 배우고 싶다면 [MDN](https://developer.mozilla.org/ko/){:target="_blank" rel="noopener noreferrer"}을 보십시오.
 
-⠀이 페이지의 HTML입니다. 개발자 도구를 잘 활용하십시오.
+⠀이 페이지의 HTML입니다.
 
 (HTML e.g.)
 
@@ -246,13 +246,13 @@ Liquid는 대강
   {% else if handCount == 0 %}
     당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!
   {% else %}
-    당신은 뭐야.
+    당신은 열쇠로 문을 뜯어냈다.
   {% endif %}
 {% endif %}{% endraw %}
 ```
 ```
 {% assign hasKey = true %}{% assign handCount = 2 %}당신은 손{{ handCount }}개의 사나이다
-{% if hasKey %}{% if handCount == 2 %}당신은 열쇠로 손쉽게 문을 열었다.{% else if handCount == 1 %}당신은 열쇠로 손쉽게 문을 열었다.{% else if handCount == 0 %}당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!{% else %}당신은 뭐야.{% endif %}{% endif %}
+{% if hasKey %}{% if handCount == 2 %}당신은 열쇠로 손쉽게 문을 열었다.{% else if handCount == 1 %}당신은 열쇠로 손쉽게 문을 열었다.{% else if handCount == 0 %}당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!{% else %}당신은 열쇠로 문을 뜯어냈다.{% endif %}{% endif %}
 ```
 고수용이니 이정도는 알리라 생각하여 ==, != 같은 operator나 and, or 설명은 뺍니다.
 #### &#123;% case %&#125; - &#123;% when %&#125;  
@@ -269,13 +269,13 @@ Liquid는 대강
   {% when 0 %}
     당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!
   {% else %}
-    당신은 뭐야.
+    당신은 열쇠로 문을 뜯어냈다.
   {% endcase %}
 {% endif %}{% endraw %}
 ```
 ```
 {% assign hasKey = true %}{% assign handCount = 0 %}당신은 손{{ handCount }}개의 사나이다
-{% if hasKey %}{% case handCount %}{% when 2 %}당신은 열쇠로 손쉽게 문을 열었다.{% when 1 %}당신은 열쇠로 손쉽게 문을 열었다.{% when 0 %}당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!{% else %}당신은 뭐야.{% endcase %}{% endif %}
+{% if hasKey %}{% case handCount %}{% when 2 %}당신은 열쇠로 손쉽게 문을 열었다.{% when 1 %}당신은 열쇠로 손쉽게 문을 열었다.{% when 0 %}당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!{% else %}당신은 열쇠로 문을 뜯어냈다.{% endcase %}{% endif %}
 ```
 #### &#123;% for %&#125;  
 ```liquid
@@ -293,7 +293,7 @@ Liquid는 대강
     {% when 0 %}
       당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!
     {% else %}
-      당신은 뭐야. 열쇠를 반납하도록 해. 난 당신같은 괴물이 싫어!
+      당신은 괴물이란 오해를 받아 열쇠를 빼앗겼다.
       {% assign hasKey = false %}
     {% endcase %}
   {% else %}
@@ -307,7 +307,7 @@ Liquid는 대강
 {% if hasKey %}{% case handCount %}{% when 2 %}당신은 열쇠로 손쉽게 문을 열었다.
 {% when 1 %}당신은 열쇠로 손쉽게 문을 열었다.
 {% when 0 %}당신은 열쇠로 "입"쉽게 문을 열었다. 두둥탁!
-{% else %}당신은 뭐야. 열쇠를 반납하도록 해. 난 당신같은 괴물이 싫어!
+{% else %}당신은 괴물이란 오해를 받아 열쇠를 빼앗겼다.
 {% assign hasKey = false %}{% endcase %}{% else %}당신은 열쇠가 없다...
 {% endif %}{% endfor %}
 ```
@@ -358,8 +358,10 @@ Liquid는 대강
 ```
 \<strong>안녕?!</strong>
 
+<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 ***
-내가 공부한 포스트!
+내가 공부한 블로그!
 
 |:---:|:---|
-|
+|[MS](https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-overview){:target='_blank' rel='noopener noreferrer'}|블로그는 아니지만 Liquid는 여기서 제일 많이 배웠습니다.|
+|[Higher의 창작소](https://higher77.tistory.com/93){:target='_blank' rel='noopener noreferrer'}|정적인 것과 동적인 것을 설명해 준 곳입니다. 아무래도 이런 건 버그랑만 놀아서는 알 길이 없으니 이렇게 알려주는 블로그가 중요했습니다.|
