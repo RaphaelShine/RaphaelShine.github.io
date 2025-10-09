@@ -42,6 +42,23 @@ last_modified_at: 2025-10-09
 ```
 #### 소제목
 
+### 강조
+```markdown
+*기울게*
+**굵게**
+***굵고 기울게***
+```
+*기울게*
+**굵게**
+***굵고 기울게***
+
+### 밑줄
+⠀Markdown에는 밑줄 문법이 없습니다. 따라서 날것의 HTML을 사용해야 합니다.
+```html
+<u>밑줄</u>
+```
+<u>밑줄</u>
+
 ### 번호 나열, 그냥 나열
 ⠀들여쓰기를 통해 위계를 갖습니다.
 ```markdown
@@ -125,13 +142,25 @@ last_modified_at: 2025-10-09
 ## Attribute 달기
 ⠀링크와 이미지에는 attribute를 달 수 있습니다. HTML 설명할 때 졸았거나 건너 뛰었거나 기억이 안 날 여러분을 위해 설명드리자면, attribute라는 건 한국어로 속성이라고 하고, 그냥 tag에 다는 첨가물입니다. 링크를 눌러 타 사이트로 이동할 때 보안을 지켜주는 기능이나 이미지 크기와 정렬을 결정하는 기능을 합니다. 
 
-⠀\[](){: }이렇게(링크) 또는 !\[](){: }이렇게(이미지) 붙이면 됩니다.
+⠀두가지 방법이 있는데, 그냥 날것의 HTML을 써서 넣어 주는 것과, Markdown 방식으로 넣는 것이 있습니다. 그 중 Markdown 방식은 링크와 이미지에만 사용할 수 있습니다.
+
+### Markdown 방식
+
+⠀`[](){: }`(링크) 또는 `![](){: }`(이미지) 이렇게 붙이면 됩니다.
 ```markdown
 [제 깃허브 프로필입니다.](https://github.com/RaphaelShine){:target='_blank' rel='noopener noreferrer'}
 ```
 [제 깃허브 프로필입니다.](https://github.com/RaphaelShine){:target='_blank' rel='noopener noreferrer'}
 
 ⠀링크로 본인 사이트로 이동 할 때는 그냥 적고, 타 사이트로 이동할 때는 이 attribute를 복사해서 붙여넣으십시오.
+
+### HTML 방식
+
+⠀보통 Markdown에서 이 방식으로 attribute를 달 때는 글의 color, font-family와 같은 문자 스타일을 바꾸기 위함입니다. 그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
+
+```html
+그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
+```
 
 ## 마무리
 ⠀Markdown 파일은 지금 이 포스트를 포함하여, 블로그의 구체적인 모든 문서에 쓰입니다. 

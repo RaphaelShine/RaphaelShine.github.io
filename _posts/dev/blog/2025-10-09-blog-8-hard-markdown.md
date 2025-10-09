@@ -23,6 +23,23 @@ last_modified_at: 2025-10-08
 ### \<p>와 \<br>
 ⠀기본적으로 그냥 텍스트를 쓰면 그대로 \<p> 텍스트가 됩니다. 한 줄 띄어서 단락이 나뉘면 다음\<p>로 넘어가며, space 두 번 enter 한 번은 \<br>이 되어 같은 단락 다음 줄이 됩니다.
 
+### 강조(\<em>, \<strong>)
+```markdown
+*기울게*
+**굵게**
+***굵고 기울게***
+```
+*기울게*
+**굵게**
+***굵고 기울게***
+
+### \<u>
+⠀Markdown에는 밑줄 문법이 없습니다. 따라서 날것의 HTML을 사용해야 합니다.
+```html
+<u>밑줄</u>
+```
+<u>밑줄</u>
+
 ### \<hN>
 ⠀글 앞에 #을 두면 \<hN>이 되며 #의 개수가 N이 됩니다.
 
@@ -126,18 +143,23 @@ CSS와 연결하려면 저리 복잡하게 나온 HTML도 확인합니다.
 ```
 ![지구는 네모낳습니다](/assets/images/TheEarthCapture.png){: .align-center width="50%"}
 ## Attribute 달기
-⠀링크와 이미지에는 Attribute를 달 수 있습니다. 그냥 글에도 달 수 있었다면 참 좋은데, 별의별 방법을 시도했지만 실패했습니다. 그냥 HTML을 쓰는 수밖에요.
+⠀많은 필요에 의해 우리는 attribute를 달 줄 알아야 합니다. 두가지 방법이 있는데, 그냥 날것의 HTML을 써서 넣어 주는 것과, Markdown 방식으로 넣는 것이 있습니다. 그 중 Markdown 방식은 링크와 이미지에만 사용할 수 있습니다. 그냥 글에도 달 수 있었다면 참 좋은데, 별의별 방법을 시도했지만 실패했습니다. 그냥 HTML을 쓰는 수밖에요.
 
-⠀\[](){: }이렇게(링크) 또는 \![](){: }이렇게(이미지) 붙이면 됩니다. 중괄호 안에는 전용 attribute 말고도 아무 거나 들어갈 수 있습니다. attribute의 자세한 종류에 대해서는 [HTML 고수용](/blog/blog-7-hard-html-and-liquid/#내용-tag)을 확인하십시오.
-
+### Markdown 방식
+⠀`[](){: }`(링크) 또는 `![](){: }`(이미지) 이렇게 붙이면 됩니다. 중괄호 안에는 전용 attribute 말고도 아무 거나 들어갈 수 있습니다. attribute의 자세한 종류에 대해서는 [HTML 고수용](/blog/blog-7-hard-html-and-liquid/#내용-tag)을 확인하십시오.
 ```markdown
-[제 깃허브 프로필입니다.][새 탭으로 열리는 링크]{:target='_blank' rel='noopener noreferrer'}
-
-[새 탭으로 열리는 링크]: https://github.com/RaphaelShine
+[제 깃허브 프로필입니다.](https://github.com/RaphaelShine){:target='_blank' rel='noopener noreferrer'}
 ```
-[제 깃허브 프로필입니다.][새 탭으로 열리는 링크]{:target='_blank' rel='noopener noreferrer'}
+[제 깃허브 프로필입니다.](https://github.com/RaphaelShine){:target='_blank' rel='noopener noreferrer'}
 
-[새 탭으로 열리는 링크]: https://github.com/RaphaelShine
+### HTML 방식
+보통 Markdown에서 이 방식으로 attribute를 달 때는 글의 color, font-family와 같은 문자 스타일을 바꾸기 위함입니다. 그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
+```html
+그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
+```
+
+- color는 색을, font-family는 폰트를 결정합니다. 
+- color나 font-family의 자세한 설정은 [CSS의 쓰임]() 포스트에서 확인하십시오.
 
 ## 마무리
 ⠀Markdown 파일은 지금 이 포스트를 포함하여, 블로그의 구체적인 모든 문서에 쓰입니다. 

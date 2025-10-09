@@ -1,8 +1,8 @@
 ---
-title: "[Blog]10. Jekyll의 CSS 파일"
+title: "[Blog]12. Jekyll의 CSS 파일"
 excerpt_separator: 
 
-sort_key : 10
+sort_key : 12
 categories:
   - Blog
 tags:
