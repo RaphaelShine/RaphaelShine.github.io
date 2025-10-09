@@ -20,7 +20,7 @@ layout: archive
     {% for item in cats %}
       {% if site.categories[item.name].size == i %}
         <li>
-          <a href="#{{ item.title | slugify }}">
+          <a href="#{{ item.name | slugify }}">
             <strong>{{ item.title }}</strong> <span class="taxonomy__count">{{ i }}</span>
           </a>
         </li>

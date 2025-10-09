@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]8. 고수용 Markdown 설명"
+title: "[Blog]8. 고수용 Markdown 설명"
 excerpt: "Markdown(마크다운)이 어떻게 HTML로 실현되는지 알아보며 더 다양한 문법을 배운다."
 
 sort_key : 8

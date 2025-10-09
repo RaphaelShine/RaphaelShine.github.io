@@ -26,7 +26,8 @@
       <section id="{{ taxonomy[0] | slugify }}" class="taxonomy__section">
         <h2 class="archive__subtitle">{{ taxonomy[0] }}</h2>
         <div class="entries-{{ entries_layout }}">
-          {% for post in taxonomy.last %}
+          {% assign posts = taxonomy.last | sort: "sort_key" | reverse  %}
+          {% for post in posts %}
             {% include archive-single.html type=entries_layout %}
           {% endfor %}
         </div>

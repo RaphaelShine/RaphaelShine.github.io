@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]1. Github Pages 시작하기"
+title: "[Blog]1. Github Pages 시작하기"
 excerpt: "블로그를 깃허브 페이지(Github Pages)로 시작하는 방법, 팁."
 
 sort_key : 1

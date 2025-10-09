@@ -1,5 +1,5 @@
 ---
-title:  "[Tools]2. VSCode의 단축어, Snippet 설정하기"
+title: "[Tools]2. VSCode의 단축어, Snippet 설정하기"
 excerpt: "HTML과 "
 
 sort_key : 2

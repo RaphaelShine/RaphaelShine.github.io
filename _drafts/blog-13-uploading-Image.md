@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]14. 이미지 올리기"
+title: "[Blog]14. 이미지 올리기"
 excerpt: "Github Pages에 이미지 올리는 친절한 과정"
 
 sort_key : 14

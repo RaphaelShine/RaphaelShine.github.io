@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]10. Jekyll의 HTML 파일"
+title: "[Blog]10. Jekyll의 HTML 파일"
 excerpt: "Jekyll의 HTML 파일들(includes, layouts)에 대해 구체적으로 정리한다."
 
 sort_key : 10

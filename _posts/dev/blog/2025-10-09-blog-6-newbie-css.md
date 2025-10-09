@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]6. 초보용 CSS 설명"
+title: "[Blog]6. 초보용 CSS 설명"
 excerpt: "CSS의 기본 문법을 알아본다."
 
 sort_key : 6

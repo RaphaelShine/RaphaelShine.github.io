@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]5. 초보용 YAML 설명"
+title: "[Blog]5. 초보용 YAML 설명"
 excerpt: "YAML을 통한 데이터 저장 방법을 배운다."
 
 sort_key : 5

@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]9. 고수용 CSS 설명"
+title: "[Blog]9. 고수용 CSS 설명"
 excerpt: "CSS의 기본 문법과 before, after, count 등의 기능, 여러 속성(property)과 CSS의 변수, 함수(function, mixin), 조건문(if), 반복문(for) 사용 방법을 알아본다."
 
 sort_key : 9

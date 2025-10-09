@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]12. Jekyll의 YAML 파일"
+title: "[Blog]12. Jekyll의 YAML 파일"
 excerpt: "Jekyll 디렉토리 구조의 머릿말(front matter), config.yml, data/에 대해 구체적으로 배우고 수정 내용을 알아본다."
 
 sort_key : 12

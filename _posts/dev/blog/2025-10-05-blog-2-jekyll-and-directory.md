@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]2. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
+title: "[Blog]2. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
 excerpt: "지킬(Jekyll)에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 2
@@ -24,8 +24,9 @@ last_modified_at: 2025-10-05
 ### 언더스코어 `_`
 ⠀파일 또는 폴더들의 이름을 보면 앞에 언더스코어`_`가 붙는 게 있고 안 붙는 게 있는데, 붙으면 대충 딴 코드에서 접근하겠다는 뜻, 안 붙으면 알아서 살겠다는 뜻입니다.
 
-(hard)
-⠀정확히는, 언더스코어 파일or폴더는 Jekyll이 렌더링하여 `site.data`나 `site.posts`처럼 접근하게 되고, 언더스코어가 아닌 파일은 Jekyll이 정적 파일로 저장해 `site.static_files`로 접근하게 됩니다. `site.static_files`에 들어있는 파일은 다음과 같은 속성을 갖습니다.
+<details><summary>정확히는(어려운 소리니 넘어가도 됩니다.)</summary><div markdown="1">
+
+⠀언더스코어 파일or폴더는 Jekyll이 렌더링하여 `site.data`나 `site.posts`처럼 접근하게 되고, 언더스코어가 아닌 파일은 Jekyll이 정적 파일로 저장해 `site.static_files`로 접근하게 됩니다. `site.static_files`에 들어있는 파일은 다음과 같은 속성을 갖습니다.
 
 |속성|의미|
 |:---:|:---|
@@ -53,13 +54,14 @@ e.g.
   {{ file.name }}
 {% endfor %}
 ```
+</div></details>
 
 ### front matter
 ⠀front matter는 HTML의 head와 비슷하게 문서의 메타 데이터를 저장하는 부분입니다.
 
 ⠀Jekyll은 파일이 `.yml` 또는 `.yaml`이 아니더라도 front matter를 갖고 있으면 front matter 내부 내용을 YAML로 처리합니다. 또한 그 파일을 빌드 대상으로 판단하는 역할도 합니다. 따라서 front matter를 갖고 있거나 빌드 대상 파일이 include 또는 @import하지 않은 파일은 빌드를 거치지 않고 저장됩니다. front matter를 달아놓고 언더스코어를 두면 에러가 났던 것 같습니다.
 
-⠀다음과 같이 --- 두 개 사이는 frontmatter가 됩니다.
+⠀다음과 같이 `---` 두 개 사이는 frontmatter가 됩니다.
 ```markdown
 ---
 # 여기가 front matter
@@ -72,7 +74,9 @@ permalink: /title/
 여러분 화이팅!!
 ```
 
-### Collections (hard)
+### Collections (어려운 소리니 넘어가도 됩니다.)
+<details><div markdown="1">
+
 ⠀post들은 기본적으로 `_posts` 안에 저장되는데, post를 다른 폴더로도 묶을 수 있도록 Jekyll에서 Collections를 지원합니다. `_config.yml`에 다음과 같이 적으면 됩니다.
 ```yml
 collections :
@@ -99,15 +103,18 @@ collections_dir : my_collections
 ⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. `_pages/`도 Collection인지는 잘 모르겠습니다.
 
 ⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. Collections를 이용했더라면 더 편했을지도 모르겠습니다. 그래서 저 대신 여러분들 쓰시라고 알려 드립니다.
+</div></details>
 
 ### drafts
 ⠀포스트를 다 쓰진 않아서 개시는 못하지만 저장은 하고싶은 경우: 초안으로 저장할 수 있습니다. `_drafts` 폴더를 만들어 안에 넣어두면 됩니다. 작명은 날짜 빼고 `title.md`로 합니다. 기본적으론 사이트에 보이지 않고 로컬 서버 실행 시 `jekyll serve --drafts`를 쓰면 초안을 볼 수 있습니다.
 
-### page와 post에 대해 제공하는 속성들 (hard)
+### page와 post에 대해 제공하는 속성들 (어려운 소리니 넘어가도 됩니다.)
+<details><div markdown="1">
+
 ⠀post는 page와 다 똑같은데 포스팅 날짜 관련 속성이 더해진 형태입니다.
 - title : 제목
 - excerpt : 발췌 요약을 직접 작성 가능
-- excerpt_seperator : `<!--이런 html 주석을 넣으면 본문에서 같은 주석이 달린 부분까지를 발췌요약으로 만듭니다.-->`
+- excerpt_separator : 본문에서 여기 넣은 문자가 나올 때까지를 발췌 요약으로 설정. 주석도 감지되기에 보통 `"<!--more-->"를 사용.
 - categories : 카테고리. `site.categories.카테고리이름`을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.
 - tags : 태그. `site.tags.태그이름`을 이용해 위와 같습니다.
 - toc : true, false 오른쪽에 따라다니는 On This Page가 toc입니다.
@@ -135,6 +142,7 @@ date: 2025-10-05
 last_modified_at: 2025-10-05
 ---
 ```
+</div></details>
 
 ### 기본적인 Jekyll의 디렉토리 구조
 [Jekyll 공식사이트](https://jekyllrb.com/docs/structure/){:target="_blank" rel="noopener noreferrer"}에 이렇게 소개하고 있습니다.
@@ -231,7 +239,7 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 ||초보용|고수용|Jekyll 파일에서|
 |:---|:---|:---|:---|
 |HTML|[이동]()|[이동]()|[이동]()|
-|Markdown|[이동]()|[이동]()|여러분이 처음부터 쓰니까 없음|
+|Markdown|[이동]()|[이동]()|여러분이 처음부터 쓰는 거라 없음|
 |YAML|[이동]()|쉬워서 없음|[이동]()|
 |CSS|[이동]()|[이동]()|[이동]()|
 

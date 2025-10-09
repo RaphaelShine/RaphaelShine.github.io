@@ -1,5 +1,5 @@
 ---
-title:  "[Blog]7. 고수용 HTML과 Liquid 설명"
+title: "[Blog]7. 고수용 HTML과 Liquid 설명"
 excerpt: "HTML의 태그(tag)와 속성(attribute)의 종류를 자세히 정리하고 Liquid의 문법을 배운다."
 
 sort_key : 7
