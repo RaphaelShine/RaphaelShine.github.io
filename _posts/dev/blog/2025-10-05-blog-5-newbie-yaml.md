@@ -1,6 +1,6 @@
 ---
 title:  "[Blog]5. 초보용 YAML 설명"
-excerpt: "YAML을 통한 데이터 저장 방법을 배우고, Jekyll에서의 구체적인 활용을 알아본다."
+excerpt: "YAML을 통한 데이터 저장 방법을 배운다."
 
 sort_key : 5
 categories:
@@ -37,17 +37,17 @@ collections :
 ```
 ### 자료형
 ```yml
-integer   : 3
-string    : "엣헴" # " 없어도 string으로 인식합니다.
-boolian   : true
-array1 :
+integer   : 3 # 수 입니다. 부동소수점도 사용 가능합니다.
+string    : "엣헴" # 문자열입니다. " 없어도 문자열로 인식합니다.
+boolian   : true # 진리값입니다. true or false를 나타냅니다.
+array1 : # 배열입니다.
   - a1    : 1
   - b1    : 2
-array2    : [1,"2",3,"4"]
-date      : 2025-10-05
-time      : 2025-10-05 14:47:15
+array2    : [1,"2",3,"4"] # 이것도 배열입니다.
+date      : 2025-10-05 # 날짜입니다.
+time      : 2025-10-05 14:47:15 # ISO 8601을 사용하므로 이렇게 구체적인 시각도 표현 가능합니다.
 ```
-⠀자세한 내용은 [나무위키](https://namu.wiki/w/YAML#s-3){:target="_blank" rel="noopener noreferrer"}에 되게 잘 되어 있습니다.
+⠀그냥 그렇구나~ 하고 넘어가면 되지만 혹시 더 필요하다면, 자세한 내용은 [나무위키](https://namu.wiki/w/YAML#s-3){:target="_blank" rel="noopener noreferrer"}에 되게 잘 되어 있습니다.
 ### 속성 접근
 ⠀YAML 파일을 저장한 후, 접근할 때는 `site.fordername.filename.key`와 같이 하면 됩니다. 파일이름 앞에 붙인 `_`는 빼고 적습니다. `_config.yml`은 특수한 파일이므로 `site.`에서 바로 접근합니다.
 ```liquid

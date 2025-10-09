@@ -1,12 +1,12 @@
 ---
 title:  "[Blog]1. Github Pages 시작하기"
-excerpt: "블로그를 Github Pages로 시작하는 방법, 팁."
+excerpt: "블로그를 깃허브 페이지(Github Pages)로 시작하는 방법, 팁."
 
 sort_key : 1
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보]
+  - [Blog-뼈대부터]
 
 toc: true
 toc_sticky: true
@@ -46,7 +46,7 @@ last_modified_at: 2025-10-03
 
 ### 복붙하기
 
-⠀깃허브에서 마음에 드는 템플릿을 찾습니다. 
+⠀[깃허브](https://github.com/topics/jekyll-theme){:target='_blank' rel='noopener noreferrer'}에서 마음에 드는 템플릿을 찾습니다. 혹시 템플릿을 기반하여 스스로 만드는 것도 귀찮거나 어렵다면 [이 블로그를 복사]()하는 것도 방법입니다. 이 경우, 다 필요 없고 그냥 [Markdown 작성법]()과 [자잘한 팁]()만 읽으셔도 되겠습니다.
 
 ⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분을 중심으로 설명할 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉토리 구조를 설명할 때는 들어맞지 않을 수 있습니다.
 

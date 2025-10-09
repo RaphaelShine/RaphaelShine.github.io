@@ -1,12 +1,12 @@
 ---
 title:  "[Blog]2. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
-excerpt: "Jekyll에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
+excerpt: "지킬(Jekyll)에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 2
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-고수, MMistakes]
+  - [Blog-뼈대부터, MMistakes]
 
 toc: true
 toc_sticky: true
@@ -225,6 +225,15 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 ⠀진짜 이걸 내가 하루아침에 다 배운 거라니 뇌가 참 말랑말랑해진 기분입니다.
 
 ⠀이제 좀 익숙해져서 이젠 따로 다른 블로그를 찾아보진 않습니다. [Jekyll 공식사이트](https://jekyllrb.com/){:target="_blank" rel="noopener noreferrer"}의 내용과 수많은 에러메시지에게 배웠습니다.
+
+⠀이후 포스트들은 먼저 초보용과 고수용으로 나누어 이론을 설명한 후 구체적으로 Jekyll에서 어떻게 쓰이는지를 알아볼 것입니다. 여러분은 열정!을 챙기고 시작하신 분들이니 포기 마시고 열심히 해 봅시다.
+
+||초보용|고수용|Jekyll 파일에서|
+|:---|:---|:---|:---|
+|HTML|[이동]()|[이동]()|[이동]()|
+|Markdown|[이동]()|[이동]()|여러분이 처음부터 쓰니까 없음|
+|YAML|[이동]()|쉬워서 없음|[이동]()|
+|CSS|[이동]()|[이동]()|[이동]()|
 
 [HTML과 Liquid에 대하여]:
 [Markdown에 대하여]:

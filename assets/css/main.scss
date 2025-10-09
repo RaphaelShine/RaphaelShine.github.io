@@ -13,7 +13,10 @@ $right-sidebar-width:        220px;  // x-large에서도 같은 폭 원하면 �
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-@import "custom";
+//custom
+
+@import "fontsize";
+@import "navigationhover";
 
 @font-face {
     font-family: 'D2Coding';

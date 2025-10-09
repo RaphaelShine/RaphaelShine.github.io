@@ -1,6 +1,6 @@
 ---
 title:  "[Blog]4. 초보용 Markdown 설명"
-excerpt: "Markdown(마크다운)의 기본 작성법과 tip"
+excerpt: "Markdown(마크다운)의 기본 작성법과 팁."
 
 sort_key : 4
 categories:

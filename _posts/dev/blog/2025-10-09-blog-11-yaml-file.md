@@ -1,22 +1,19 @@
 ---
 title:  "[Blog]12. Jekyll의 YAML 파일"
-excerpt: ""
+excerpt: "Jekyll 디렉토리 구조의 머릿말(front matter), config.yml, data/에 대해 구체적으로 배우고 수정 내용을 알아본다."
 
 sort_key : 12
 categories:
   - Blog
 tags:
-  - [Blog-구체적으로, Blog-고수, MMistakes]
+  - [Blog-구체적으로, MMistakes]
 
 toc: true
 toc_sticky: true
 
-date: 2025-10-08
-last_modified_at: 2025-10-08
+date: 2025-10-09
+last_modified_at: 2025-10-09
 ---
-## 구체적인 쓰임
-
-
 ## Jekyll 디렉토리의 파일
 ### front matter
 ⠀이전 포스트에서 설명했지만, Jekyll은 어떤 파일이든 front matter 안의 내용을 YAML으로 처리합니다. 여기서 정의한 속성은 문서 내부나 외부에서 변수로 쓸 수 있습니다. 해당 페이지의 front matter 변수는 `page.변수명`으로 접근하고 사이트 범위의 변수는 `site.변수명`으로 접근합니다.
@@ -97,7 +94,7 @@ last_modified_at: 2025-10-05
   ```
   </div></details>
 
-- `ui-text.yml`에는 사이트 기본 단어들이 언어(컴퓨터 말고 자연어)별로 저장됩니다. 사이트 언어는 `_config.yml`에서 정하고, page나 post의 언어를 각각 따로 설정할 수도 있는 듯합니다.
+- `ui-text.yml`에는 사이트 기본 단어들이 언어(컴퓨터 말고 자연어)별로 저장됩니다. 사이트 언어는 `_config.yml`에서 정하고, page나 post의 언어를 각각 따로 설정할 수도 있는 듯합니다. 저는 딱히 변경할 필요가 있어보이지 않아서 그대로 뒀습니다.
 
 
 [CSS]:

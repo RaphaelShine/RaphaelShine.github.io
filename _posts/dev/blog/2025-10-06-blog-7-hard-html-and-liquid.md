@@ -90,6 +90,8 @@ HTML은 대강
 가로줄 (내용물이 없습니다.)
 - &lt;strong&gt; :
 굵게 (&lt;b&gt;와 비슷한데, &lt;b&gt;와 달리 나레이터가 읽을 때도 강조해 읽는 효과가 있는 차이가 있다고 합니다.)
+- \<u> :
+<u>밑줄</u>입니다.
 - &lt;a&gt; :
   링크 연결된 글.
 
@@ -359,9 +361,11 @@ Liquid는 대강
 \<strong>안녕?!</strong>
 
 <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+
 ***
+
 내가 공부한 블로그!
 
 |:---:|:---|
 |[MS](https://learn.microsoft.com/en-us/power-pages/configure/liquid/liquid-overview){:target='_blank' rel='noopener noreferrer'}|블로그는 아니지만 Liquid는 여기서 제일 많이 배웠습니다.|
-|[Higher의 창작소](https://higher77.tistory.com/93){:target='_blank' rel='noopener noreferrer'}|정적인 것과 동적인 것을 설명해 준 곳입니다. 아무래도 이런 건 버그랑만 놀아서는 알 길이 없으니 이렇게 알려주는 블로그가 중요했습니다.|
+|[Higher의 창작소](https://higher77.tistory.com/93){:target='_blank' rel='noopener noreferrer'}|정적인 것과 동적인 것을 설명해 준 곳입니다. 아무래도 이런 건 코딩만 열심히 해서는 알 길이 없으니 이렇게 알려주는 블로그가 중요한 것 같습니다.|
