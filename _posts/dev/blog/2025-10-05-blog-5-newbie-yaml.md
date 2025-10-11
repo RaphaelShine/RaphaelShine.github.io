@@ -6,7 +6,7 @@ sort_key : 5
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보]
+  - [Blog-뼈대, 프론트엔드, Blog-초보]
 
 toc: true
 toc_sticky: true

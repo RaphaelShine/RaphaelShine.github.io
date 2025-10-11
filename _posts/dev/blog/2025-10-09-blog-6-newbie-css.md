@@ -1,12 +1,12 @@
 ---
 title: "[Blog]6. 초보용 CSS 설명"
-excerpt: "CSS의 기본 문법을 알아본다."
+excerpt: "CSS의 기본 문법(선택자(selector), 속성(property))을 알아본다."
 
 sort_key : 6
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보]
+  - [Blog-뼈대, 프론트엔드, Blog-초보]
 
 toc: true
 toc_sticky: true
@@ -83,7 +83,7 @@ selector {
 ⠀CSS에서 tag명을 이용해 특정할 때는 태그명을 그대로 적고, class명을 이용해 특정할 때는 `.`을 찍고 적으면 됩니다. 합집합으로 선택 시에는 `,`로 연결하고, 교집합으로 선택 시에는 띄어쓰기로 연결합니다. 특정 선택자와 다른 선택자를 갖고 있는데 그 둘 사이의 관계가 어떻게 되는지까지 고려하여 선택할 수도 있습니다.
 
 ## 속성(Property)
-⠀CSS는 이게 중요합니다. CSS가 결국에 건들이는 부분은 속성이 전부기 때문입니다.
+⠀CSS는 이게 중요합니다. CSS가 결국에 건들이는 부분은 속성이 전부기 때문입니다. 이 블로그에서 모든 속성을 다룰 순 없으니 그때그때 필요한 property 인터넷에 검색하면 나옵니다.
 ### width, height
 ```html
 <div class="example-4">
@@ -199,6 +199,9 @@ selector {
   }
 </style>
 테두리는 padding, border, margin이 있습니다.
+
+### font-align
+⠀`center`하면 가운데 정렬됩니다.
 
 ## 마무리
 ⠀CSS는 딱히 깊게 알 필요가 없다고 생각해서 이정도에서 끝내겠습니다. 이제 이론은 끝났고 다음 포스트부터는 Jekyll에 적용해 보겠습니다. 고수용도 읽어볼 자신이 있으시다면 고수용도 읽어 보십시오. [그냥 적용 배우러 가기]()

@@ -6,7 +6,7 @@ sort_key : 3
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-초보]
+  - [Blog-뼈대, 프론트엔드, Blog-초보]
 
 toc: true
 toc_sticky: true
@@ -109,7 +109,7 @@ Liquid는 대강
 ⠀이제 중요한 tag들을 소개할 예정인데, 이건 어려우면 건너뛰고 나중에 필요할 때 어쩔 수 없이 돌아와도 됩니다.
 
 ### &#123;% assign %&#125;  
-⠀Liquid는 숫자, 문자열, 배열, object, nill를 변수에 담을 수 있습니다. nill은 값이 존재하지 않음을 뜻합니다.
+⠀Liquid는 숫자, 문자열, 배열, object, nil를 변수에 담을 수 있습니다. nil은 값이 존재하지 않음을 뜻합니다.
 ```liquid
 {% raw %}{% assign One = 1 %}
 {{ One }}은 1입니다
@@ -139,7 +139,7 @@ Liquid는 대강
 {% endif %}
 ```
 &#123;% if %&#125;는 조건문입니다. if 다음에 있는 변수가 true이면 내용물을 실행하고 false이면 실행하지 않습니다.
-true나 false가 아니더라도 값이 존재하면 true로 판단하고 nill이면 false로 판단합니다.
+true나 false가 아니더라도 값이 존재하면 true로 판단하고 nil이면 false로 판단합니다.
 ### &#123;% for %&#125;  
 ```liquid
 {% raw %}{% for field in site.data.navigation.main %}
@@ -161,7 +161,7 @@ true나 false가 아니더라도 값이 존재하면 true로 판단하고 nill�
 ## 유의점, tip
 ⠀HTML의 tag 때문에 진짜 <>는 본문에 쓰기 어려워 집니다. 그래서 이를 회피하기 위해 `&#123;`와 같이 HTML에서 지원하는 특수문자 치환 양식을 쓸 수 있습니다. [특수문자 치환표](https://dev-handbook.tistory.com/23){:target='_blank' rel='noopener noreferrer'}
 
-⠀Markdown에서 HTML tag는 `\`를 이용해서도 작성이 가능합니다. Liquid의 중괄호엔 적용되지 못하지만 어차피 이중 중괄호나 중괄호 퍼센트를 쓸 일은 없어 보입니다. 그럼에도 쓰고싶다면 [고수 포스트]()를 확인하십시오.
+⠀Markdown에서는 `\`를 이용해서도 작성이 가능합니다. Liquid의 중괄호엔 적용되지 못하지만 어차피 이중 중괄호나 중괄호 퍼센트를 쓸 일은 없어 보입니다. 그럼에도 그런 것까지 쓰고싶다면 [고수 포스트]()를 확인하십시오.
 ```markdown
 \<strong>안녕?!</strong>
 ```

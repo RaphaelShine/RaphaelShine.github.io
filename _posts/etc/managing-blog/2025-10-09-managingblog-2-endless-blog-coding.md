@@ -1,10 +1,10 @@
 ---
 title: "[ManagingBlog]2. 끝나지 않는 블로그 코딩코딩코딩코딩"
-excerpt: ""
+excerpt: "블로그 개발이 끝나지 않아서 궁시렁 대다."
 
 sort_key : 2
 categories:
-  - Blog
+  - ManagingBlog
 tags:
   - [주절주절]
 

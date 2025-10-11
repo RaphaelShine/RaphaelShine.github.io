@@ -6,7 +6,7 @@ sort_key : 2
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, MMistakes]
+  - [Blog-뼈대, MMistakes, Blog-날먹, Blog-초보]
 
 toc: true
 toc_sticky: true

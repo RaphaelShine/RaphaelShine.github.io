@@ -1,12 +1,12 @@
 ---
-title: "[Blog]11. Jekyll의 YAML 파일"
-excerpt: "Jekyll 디렉토리 구조의 머릿말(front matter), config.yml, data/에 대해 구체적으로 배우고 수정 내용을 알아본다."
+title: "[Blog]11. Jekyll의 YAML 파일 정리 (Minimal-Mistakes)"
+excerpt: "Jekyll 디렉토리 구조의 머릿말(front matter), config.yml, data/에 대해 구체적으로 배우고 이 블로그에서 수정된 내용을 알아본다."
 
 sort_key : 11
 categories:
   - Blog
 tags:
-  - [Blog-구체적으로, MMistakes]
+  - [Blog-구체적으로, MMistakes, Blog-날먹, Blog-초보]
 
 toc: true
 toc_sticky: true
@@ -15,10 +15,11 @@ date: 2025-10-09
 last_modified_at: 2025-10-09
 ---
 ## Jekyll 디렉토리의 파일
+⠀YAML 문법에 대해 이해가 필요하다면 [여기](/blog/blog-5-newbie-yaml/)에 준비되어 있습니다.
 ### front matter
 ⠀이전 포스트에서 설명했지만, Jekyll은 어떤 파일이든 front matter 안의 내용을 YAML으로 처리합니다. 여기서 정의한 속성은 문서 내부나 외부에서 변수로 쓸 수 있습니다. 해당 페이지의 front matter 변수는 `page.변수명`으로 접근하고 사이트 범위의 변수는 `site.변수명`으로 접근합니다.
-```Markdown
----
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><button title="Copy to clipboard" class="clipboard-copy-button"><span class="sr-only">Copy code</span><i class="far fa-fw fa-copy"></i><i class="fas fa-fw fa-check copied"></i></button><code>---
 title:  "[Blog]12. Jekyll의 YAML 파일"
 excerpt: ""
 
@@ -38,7 +39,8 @@ last_modified_at: 2025-10-05
 {{tag}}
 {{site.tags[tag].size}}
 {% endfor %}{% endraw %}
-```
+</code></pre></div></div>
+
 ```
 {% for tag in page.tags %}
 {{tag}}

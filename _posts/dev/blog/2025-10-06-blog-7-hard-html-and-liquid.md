@@ -6,7 +6,7 @@ sort_key : 7
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-고수]
+  - [Blog-뼈대, 프론트엔드]
 
 toc: true
 toc_sticky: true
@@ -76,6 +76,8 @@ HTML은 대강
   하나의 챕터 e.g. 소제목을 header로 갖는 여러 단락의 묶음
 - &lt;footer&gt; :
   꼬리말 e.g. 출처
+- \<figure> :
+  이미지와 같은 독립자료 구역. \<figcaption>으로 설명 달 수 있다.
 
 ### 내용 tag
 - &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;, &lt;h6&gt; :
@@ -92,6 +94,15 @@ HTML은 대강
 굵게 (&lt;b&gt;와 비슷한데, &lt;b&gt;와 달리 나레이터가 읽을 때도 강조해 읽는 효과가 있는 차이가 있다고 합니다.)
 - \<u> :
 <u>밑줄</u>입니다.
+
+  <li><details><summary>&lt;details&gt; : 이렇게</summary>
+내용을 숨겨줄 수 있습니다. 참고로 날것의 HTML 안에서는 **Markdown 문법**이 먹지 않기 때문에 <div markdown="1">**이런 처리**를 해줘야 합니다. 
+```html
+참고로 날것의 HTML 안에서는 **Markdown 문법**이 먹지 않기 때문에 <div markdown="1">**이런 처리**를 해줘야 합니다.</div>
+```
+`site.kramdown.input`을 Kramdown으로 바꿨다면 `{::options parse_block_html="true" /}`만 적어줘도 전역에 효과가 있습니다.
+  </div></details></li>
+
 - &lt;a&gt; :
   링크 연결된 글.
 
@@ -160,14 +171,14 @@ Liquid는 대강
 
 ### variable types
 - variable  
-  ⠀Liquid는 숫자, 문자열, 배열, object를 변수에 담을 수 있습니다. null이나 None은 nill이라고 하며 if문에서 false로 처리됩니다. 나머지는 전부 true입니다.
+  ⠀Liquid는 숫자, 문자열, 배열, object를 변수에 담을 수 있습니다. null이나 None은 nil이라고 하며 if문에서 false로 처리됩니다. 나머지는 전부 true입니다. array는 직접 쓰지 않고 split filter를 이용합니다.
   ```liquid
   {% raw %}{% assign number = 1 %}
   {% assign floatingPoint = 3.1415926535897932384626 %}
   {% assign string = "히히" %}
   {% assign array = "첫째, 둘째, 셋째" | split:", "%}
   {% assign object = site.author %}
-  {% assign void = nill %}
+  {% assign void = nil %}
   {{ number }}
   {{ floatingPoint }}
   {{ string }}
@@ -176,7 +187,7 @@ Liquid는 대강
   {{ void }}{% endraw %}
   ```
   ```
-  {% assign number = 1 %}{% assign floatingPoint = 3.141592653589793238462643383279502884197169399375 %}{% assign string = "히히" %}{% assign array = "첫째, 둘째, 셋째" | split:", "%}{% assign object = site.author %}{% assign void = nill %}{{ number }}
+  {% assign number = 1 %}{% assign floatingPoint = 3.141592653589793238462643383279502884197169399375 %}{% assign string = "히히" %}{% assign array = "첫째, 둘째, 셋째" | split:", "%}{% assign object = site.author %}{% assign void = nil %}{{ number }}
   {{ floatingPoint }}
   {{ string }}
   {{ array }}
@@ -318,7 +329,11 @@ Liquid는 대강
 {% raw %}{% include page__meta.html %}{% endraw %}
 ```
 {% include page__meta.html %}
-`_include/` 디렉토리에 저장된 `page__meta.html` 파일을 가져와 붙여넣는 코드입니다. 파일 안에는 이 출력물의 HTML이 담겨 있고, 원래는 포스트 최상단에 있는 아이입니다.
+`_include/` 디렉토리에 저장된 `page__meta.html` 파일을 가져와 붙여넣는 코드입니다. 파일 안에는 이 출력물의 HTML이 담겨 있고, 원래는 포스트 최상단에 있는 아이입니다. 안에 parameter도 넣을 수 있습니다.
+```liquid
+{% raw %}{% include filename.html parameter=value %}{% endraw %}
+```
+이렇게 파면 included file에서 `include.parameter`로 접근할 수 있습니다. 추가로, &#123;% include_cached %&#125;도 있는데, 이걸 이용하면 반복적으로 같은 파일을 가져와야 할 때 cach해둔 파일을 사용하여 효율을 높일 수 있습니다.
 #### &#123;% comment %&#125;  
 ```liquid
 {% raw %}{% comment %}
@@ -354,7 +369,7 @@ Liquid는 대강
 ## 유의점, tip
 ⠀HTML이나 Liquid의 tag 때문에 진짜 <>나 {}는 본문에 쓰기 어려워 집니다. 그래서 이를 회피하기 위해 `&lt;`와 같이 HTML에서 지원하는 특수문자 치환 양식을 쓸 수 있습니다. [특수문자 치환표](https://dev-handbook.tistory.com/23){:target='_blank' rel='noopener noreferrer'}
 
-⠀Markdown에서 HTML tag는 `\`를 이용해서도 작성이 가능합니다.
+⠀Markdown에서는 `\`를 이용해서도 작성이 가능합니다.
 ```markdown
 \<strong>안녕?!</strong>
 ```

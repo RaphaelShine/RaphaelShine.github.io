@@ -6,7 +6,7 @@ sort_key : 9
 categories:
   - Blog
 tags:
-  - [Blog-뼈대부터, Blog-고수]
+  - [Blog-뼈대, 프론트엔드, Blog-고수]
 
 toc: true
 toc_sticky: true
@@ -323,6 +323,9 @@ selector {
 </style>
 테두리는 padding, border, margin이 있습니다.
 
+### font-align
+⠀`center`하면 가운데 정렬됩니다.
+
 ## 변수
 SCSS는 변수를 `$변수명`으로 작성합니다.
 ```scss
@@ -361,7 +364,6 @@ $var: "값";
   }
 }
 ```
-이걸 이용하면 위 테두리속성 예시가 더 개선될 겁니다. <span style='font-family:OngleipParkDahyeon'>개인적으로 조금 신기했던 게 저 위에 #{}입니다. 전 attribute를 변수명같이 생각중이었는데 변수값으로 변수명을 때워서 접근하다니... 다른 언어 쓰면서 하고 싶던 건데 이런 거 처음 봅니다. attribute가 변수명이 아니라 값같은 거였을까요? 모르겠네요.</span>
-
+⠀이걸 이용하면 위 테두리속성 예시가 더 개선될 겁니다. <span style='font-family:OngleipParkDahyeon'>개인적으로 조금 신기했던 게 저 위에 #{}입니다. 전 attribute를 변수명같이 생각중이었는데 변수값으로 변수명을 때워서 접근하다니... 다른 언어 쓰면서 하고 싶던 건데 이런 거 처음 봅니다. attribute가 변수명이 아니라 값같은 거였을까요? 모르겠네요.</span>
 ## 마무리
 ⠀CSS는 딱히 깊게 알 필요가 없다고 생각해서 이정도에서 끝내겠습니다. 이제 이론은 끝났고 다음 포스트부터는 Jekyll에 적용해 보겠습니다. 더 알고싶다면 [여기](https://www.heropy.dev/p/yUnC6g){:target='_blank' rel='noopener noreferrer'}가 상당히 좋아 보입니다.
