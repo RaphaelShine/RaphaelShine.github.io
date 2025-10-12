@@ -1,3 +1,53 @@
 <!-- start custom comments snippet -->
-
+<div id="comments">
+    <h3>Comments</h3>
+    <input id="nickname" placeholder="닉네임" maxlength="80" />
+    <textarea id="comment_input" placeholder="내용" maxlength="2000"></textarea>
+    <button id="comment-registration">등록</button>
+    <ul id="comment-list"></ul>
+  </div>
+  
+  <script>
+  (function(){
+    const API_BASE = "https://wandering-cake-347a.raphaelshine.workers.dev";
+    const postId = "{{ page.id | slugify }}"; // 포스트 식별자 (규칙은 원하는 대로)
+  
+    const $list = document.getElementById('comment-list');
+    const $nick = document.getElementById('nickname');
+    const $text = document.getElementById('comment_input');
+  
+    function addItem({title, body, created_at, user}) {
+      const li = document.createElement('li');
+      li.innerHTML = `<p><strong>${title}</strong> <small>${new Date(created_at).toLocaleString()}</small> ${user?.login ? `(@${user.login})` : ""}</p>
+                      <p>${(body||"").replaceAll("<","&lt;")}</p>`;
+      $list.appendChild(li);
+    }
+  
+    async function load() {
+      $list.textContent = '';
+      const res = await fetch(`${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}`);
+      const j = await res.json();
+      (j.items || []).sort((a,b)=> new Date(a.created_at)-new Date(b.created_at));
+      (j.items || []).forEach(addItem);
+    }
+  
+    async function submit() {
+      const title = ($nick.value||'').trim();
+      const body  = ($text.value||'').trim();
+      if (!title) return alert('닉네임을 입력해주세요!');
+      if (!body)  return alert('내용을 입력해주세요!');
+      const res = await fetch(`${API_BASE}/api/comments`, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ title, body, postId })
+      });
+      if (!res.ok) return alert('등록 실패');
+      $nick.value=''; $text.value='';
+      await load();
+    }
+  
+    document.getElementById('comment-registration').addEventListener('click', submit);
+    load();
+  })();
+  </script>
 <!-- end custom comments snippet -->
