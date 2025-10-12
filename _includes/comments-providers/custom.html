@@ -18,20 +18,23 @@
   const $text = document.getElementById('comment_input');
   const $btn  = document.getElementById('comment-registration');
 
-  // 아직 서버에 반영되지 않은 낙관적 아이템을 보관
+  // 아직 서버에 반영되지 않은 낙관적 아이템 보관
   const pendingItems = new Map(); // tempId -> item
+
+  // ★ 진행 중인 목록 로드를 취소하기 위한 AbortController
+  let loadController = null;
 
   // --- util: escape + dom builders ---
   function escapeHTML(s='') {
     return String(s)
-      .replaceAll('&','&amp;')
-      .replaceAll('<','&lt;')
-      .replaceAll('>','&gt;')
-      .replaceAll('"','&quot;')
-      .replaceAll("'",'&#39;');
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
   }
 
-  // 🔧 작성자 표시는 항상 "이슈 제목(title) = 닉네임"
+  // 작성자 표시는 항상 "이슈 제목(title) = 닉네임"
   function buildCommentLI(item) {
     const { id, title, body, created_at, pending } = item;
     const li = document.createElement('li');
@@ -40,7 +43,7 @@
     if (pending) li.dataset.pending = '1';
 
     const when = created_at ? new Date(created_at).toLocaleString() : '';
-    const displayName = escapeHTML(title || ''); // ← 핵심 변경: user.login 사용 안 함
+    const displayName = escapeHTML(title || '');
 
     li.innerHTML = `
       <article>
@@ -49,7 +52,7 @@
           <small class="comment-time">${when}</small>
           ${pending ? '<em class="comment-status"> (등록 중)</em>' : ''}
         </header>
-        <div class="content">${escapeHTML(body || '').replaceAll('\n','<br>')}</div>
+        <div class="content">${escapeHTML(body || '').replace(/\n/g,'<br>')}</div>
       </article>
     `;
     return li;
@@ -57,14 +60,14 @@
 
   // --- render helpers ---
   function renderReplace(items) {
-    // 서버 아이템을 오래된→최신으로 정렬
-    const ordered = (items || []).slice()
-      .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at));
+    const ordered = (items || [])
+      .slice()
+      .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at)); // 오래된→최신
 
     $list.textContent = '';
     ordered.forEach(it => $list.appendChild(buildCommentLI(it)));
 
-    // 아직 서버에 반영되지 않은 낙관적 아이템은 맨 뒤(최신 위치)에 다시 붙여준다
+    // 서버 반영 전 낙관적 아이템 유지(맨 뒤 = 최신 위치)
     for (const [tempId, pendingItem] of pendingItems.entries()) {
       if (![...$list.querySelectorAll('li.comment')].some(li => li.dataset.commentId === tempId)) {
         $list.appendChild(buildCommentLI(pendingItem));
@@ -73,7 +76,10 @@
   }
 
   function renderAppend(item) {
-    $list.appendChild(buildCommentLI(item)); // 맨 뒤에 추가 (최신이 맨 뒤)
+    const li = buildCommentLI(item);
+    $list.appendChild(li);
+    // ★ 방금 추가한 낙관적 아이템이 바로 보이도록 스크롤
+    li.scrollIntoView({ block: 'end', behavior: 'instant' });
   }
 
   function replacePendingWithReal(tempId, realItem) {
@@ -81,38 +87,51 @@
     if (li) {
       const newLi = buildCommentLI(realItem);
       $list.replaceChild(newLi, li);
+      newLi.scrollIntoView({ block: 'end', behavior: 'instant' }); // ★ 가시성 보장
     }
     pendingItems.delete(tempId);
   }
 
-  // --- load (항상 최신) ---
+  // --- load (항상 최신, 취소 가능) ---
   async function load() {
-    const res = await fetch(
-      `${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`,
-      { cache: 'no-store' }
-    );
-    const j = await res.json();
-    renderReplace(j.items || []);
+    try {
+      // ★ 이전 load가 진행 중이면 취소
+      if (loadController) loadController.abort();
+      loadController = new AbortController();
+
+      const res = await fetch(
+        `${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`,
+        { cache: 'no-store', signal: loadController.signal }
+      );
+      const j = await res.json();
+      renderReplace(j.items || []);
+    } catch (e) {
+      // AbortError면 무시
+    } finally {
+      loadController = null;
+    }
   }
 
-  // --- submit with TRUE optimistic UI kept until server confirms ---
+  // --- submit with TRUE optimistic UI (race-free) ---
   async function submit() {
     const title = ($nick.value||'').trim(); // 닉네임(=이슈 제목)
     const body  = ($text.value||'').trim(); // 내용
     if (!title) return alert('닉네임을 입력해주세요!');
     if (!body)  return alert('내용을 입력해주세요!');
 
-    // 즉시 화면 반영용 임시 아이디
+    // ★ 낙관적 반영 전에 진행 중인 load를 취소해서 '덮어쓰기' 레이스 차단
+    if (loadController) loadController.abort();
+
     const tempId = `temp-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const optimisticItem = {
       id: tempId,
-      title,          // 작성자 표시는 title만 사용
+      title,
       body,
       created_at: new Date().toISOString(),
       pending: true
     };
 
-    // ① 맨 뒤(최신 위치)에 즉시 보이게
+    // ① 맨 뒤(최신)에 즉시 보이게
     pendingItems.set(tempId, optimisticItem);
     renderAppend(optimisticItem);
 
@@ -138,20 +157,18 @@
       // 입력창 초기화
       $nick.value=''; $text.value='';
 
-      // ② 성공: 서버가 준 실제 아이템으로 교체하고 pending 제거
+      // ② 성공: 실제 아이템으로 교체
       if (data.item) {
         replacePendingWithReal(tempId, data.item);
       } else {
-        // 드물게 item 미포함이면 전체 새로고침
+        // 드물게 item 미포함이면 전체 재로딩
         pendingItems.delete(tempId);
         await load();
       }
 
-      // ③ 백그라운드 재동기화(혹시 GitHub 전파 지연 대비)
-      fetch(`${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`, { cache:'no-store' })
-        .then(r => r.json())
-        .then(j => renderReplace(j.items || []))
-        .catch(()=>{ /* 네트워크 오류는 무시 */ });
+      // ③ 백그라운드 재동기화(캐시 우회)
+      //    load()는 새 컨트롤러로 동작하므로 방금 append한 항목이 사라지지 않음
+      load();
 
     } catch (e) {
       alert(e && e.message ? e.message : '등록 실패');
