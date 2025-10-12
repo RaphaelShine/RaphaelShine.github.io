@@ -10,44 +10,103 @@
   <script>
   (function(){
     const API_BASE = "https://wandering-cake-347a.raphaelshine.workers.dev";
-    const postId = "{{ page.id | slugify }}"; // 포스트 식별자 (규칙은 원하는 대로)
+    const postId = "{{ page.id | slugify }}"; // 포스트 식별자
   
     const $list = document.getElementById('comment-list');
     const $nick = document.getElementById('nickname');
     const $text = document.getElementById('comment_input');
+    const $btn  = document.getElementById('comment-registration');
   
-    function addItem({title, body, created_at, user}) {
+    // --- util: escape + dom builders ---
+    function escapeHTML(s='') {
+      return String(s)
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#39;');
+    }
+    function liFromItem({title, body, created_at, user}) {
       const li = document.createElement('li');
-      li.innerHTML = `<p><strong>${title}</strong> <small>${new Date(created_at).toLocaleString()}</small> ${user?.login ? `(@${user.login})` : ""}</p>
-                      <p>${(body||"").replaceAll("<","&lt;")}</p>`;
-      $list.appendChild(li);
+      const when = created_at ? new Date(created_at).toLocaleString() : '';
+      const author = user && user.login ? ` (@${escapeHTML(user.login)})` : '';
+      li.innerHTML =
+        `<p><strong>${escapeHTML(title)}</strong>
+           <small>${when}</small>${author}</p>
+         <p>${escapeHTML(body).replaceAll('\n','<br>')}</p>`;
+      return li;
     }
   
-    async function load() {
+    // --- render helpers ---
+    function renderReplace(items) {
       $list.textContent = '';
-      const res = await fetch(`${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}`);
-      const j = await res.json();
-      (j.items || []).sort((a,b)=> new Date(a.created_at)-new Date(b.created_at));
-      (j.items || []).forEach(addItem);
+      items.forEach(it => $list.appendChild(liFromItem(it)));
+    }
+    function renderPrepend(item) {
+      const li = liFromItem(item);
+      $list.insertBefore(li, $list.firstChild);
     }
   
+    // --- load (no-store + cache-bust) ---
+    async function load() {
+      const res = await fetch(
+        `${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`,
+        { cache: 'no-store' }
+      );
+      const j = await res.json();
+      const items = (j.items || [])
+        .slice()
+        .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at)); // 오래된→최신
+      renderReplace(items);
+    }
+  
+    // --- submit with optimistic UI + background resync ---
     async function submit() {
       const title = ($nick.value||'').trim();
       const body  = ($text.value||'').trim();
       if (!title) return alert('닉네임을 입력해주세요!');
       if (!body)  return alert('내용을 입력해주세요!');
-      const res = await fetch(`${API_BASE}/api/comments`, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ title, body, postId })
-      });
-      if (!res.ok) return alert('등록 실패');
-      $nick.value=''; $text.value='';
-      await load();
+  
+      $btn.disabled = true; $btn.textContent = '등록 중...';
+  
+      try {
+        const res = await fetch(`${API_BASE}/api/comments`, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ title, body, postId })
+        });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.error || '등록 실패');
+  
+        // 입력창 초기화
+        $nick.value=''; $text.value='';
+  
+        // C-1) 낙관적 반영: 서버가 돌려준 방금 생성된 item을 즉시 prepend
+        if (data.item) {
+          renderPrepend(data.item);
+        }
+  
+        // C-2) 백그라운드 동기화 (항상 최신화 보장)
+        fetch(`${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`, { cache:'no-store' })
+          .then(r => r.json())
+          .then(j => {
+            const items = (j.items || [])
+              .slice()
+              .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at));
+            renderReplace(items);
+          })
+          .catch(()=>{ /* 네트워크 오류는 무시 */ });
+  
+      } catch (e) {
+        alert(e && e.message ? e.message : '등록 실패');
+      } finally {
+        $btn.disabled = false; $btn.textContent = '등록';
+      }
     }
   
-    document.getElementById('comment-registration').addEventListener('click', submit);
+    $btn.addEventListener('click', submit);
     load();
   })();
   </script>
-<!-- end custom comments snippet -->
+  <!-- end custom comments snippet -->
+  
