@@ -4,6 +4,7 @@
     <input id="nickname" placeholder="닉네임" maxlength="80" />
     <textarea id="comment_input" placeholder="내용" maxlength="2000"></textarea>
     <button id="comment-registration">등록</button>
+  
     <ul id="comment-list"></ul>
   </div>
   
@@ -26,28 +27,48 @@
         .replaceAll('"','&quot;')
         .replaceAll("'",'&#39;');
     }
-    function liFromItem({title, body, created_at, user}) {
+  
+    function buildCommentLI(item) {
+      const { id, title, body, created_at, user, pending } = item;
       const li = document.createElement('li');
+      li.className = 'comment';
+      li.dataset.commentId = id || '';
+      if (pending) li.dataset.pending = '1';
+  
       const when = created_at ? new Date(created_at).toLocaleString() : '';
-      const author = user && user.login ? ` (@${escapeHTML(user.login)})` : '';
-      li.innerHTML =
-        `<p><strong>${escapeHTML(title)}</strong>
-           <small>${when}</small>${author}</p>
-         <p>${escapeHTML(body).replaceAll('\n','<br>')}</p>`;
+      const author = user && user.login ? `@${escapeHTML(user.login)}` : escapeHTML(title || '');
+  
+      li.innerHTML = `
+        <article>
+          <header>
+            <strong class="comment-author">${author}</strong>
+            <small class="comment-time">${when}</small>
+            ${pending ? '<em class="comment-status"> (등록 중)</em>' : ''}
+          </header>
+          <div class="content">${escapeHTML(body || '').replaceAll('\n','<br>')}</div>
+        </article>
+      `;
       return li;
     }
   
-    // --- render helpers ---
     function renderReplace(items) {
       $list.textContent = '';
-      items.forEach(it => $list.appendChild(liFromItem(it)));
+      items.forEach(it => $list.appendChild(buildCommentLI(it)));
     }
+  
     function renderPrepend(item) {
-      const li = liFromItem(item);
+      const li = buildCommentLI(item);
       $list.insertBefore(li, $list.firstChild);
     }
   
-    // --- load (no-store + cache-bust) ---
+    function replacePendingWithReal(pendingId, realItem) {
+      const li = $list.querySelector(`li.comment[data-comment-id="${pendingId}"]`);
+      if (!li) return; // 이미 재로딩으로 교체된 경우
+      const newLi = buildCommentLI(realItem);
+      $list.replaceChild(newLi, li);
+    }
+  
+    // --- load (항상 최신) ---
     async function load() {
       const res = await fetch(
         `${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`,
@@ -60,13 +81,26 @@
       renderReplace(items);
     }
   
-    // --- submit with optimistic UI + background resync ---
+    // --- submit with TRUE optimistic UI (+ rollback) ---
     async function submit() {
       const title = ($nick.value||'').trim();
       const body  = ($text.value||'').trim();
       if (!title) return alert('닉네임을 입력해주세요!');
       if (!body)  return alert('내용을 입력해주세요!');
   
+      const tempId = `temp-${Date.now()}`;
+      const optimisticItem = {
+        id: tempId,
+        title, body,
+        created_at: new Date().toISOString(),
+        user: null,
+        pending: true
+      };
+  
+      // ① 즉시 화면에 보이게 (응답 기다리지 않음)
+      renderPrepend(optimisticItem);
+  
+      // UI 잠깐 잠금
       $btn.disabled = true; $btn.textContent = '등록 중...';
   
       try {
@@ -76,17 +110,31 @@
           body: JSON.stringify({ title, body, postId })
         });
         const data = await res.json();
-        if (!res.ok || data.error) throw new Error(data.error || '등록 실패');
+  
+        if (!res.ok || data.error) {
+          // 실패: 낙관적 항목 롤백
+          const li = $list.querySelector(`li.comment[data-comment-id="${tempId}"]`);
+          if (li) li.remove();
+          throw new Error(data.error || '등록 실패');
+        }
   
         // 입력창 초기화
         $nick.value=''; $text.value='';
   
-        // C-1) 낙관적 반영: 서버가 돌려준 방금 생성된 item을 즉시 prepend
+        // ② 성공: 서버가 준 real item으로 자리 교체
         if (data.item) {
-          renderPrepend(data.item);
+          replacePendingWithReal(tempId, data.item);
+        } else {
+          // 혹시 item을 안 준 경우에도 최소한 타이틀에 "(등록됨)" 표시
+          const li = $list.querySelector(`li.comment[data-comment-id="${tempId}"]`);
+          if (li) {
+            li.removeAttribute('data-pending');
+            const status = li.querySelector('.comment-status');
+            if (status) status.textContent = ' (등록됨)';
+          }
         }
   
-        // C-2) 백그라운드 동기화 (항상 최신화 보장)
+        // ③ 백그라운드 재동기화 (캐시 우회)
         fetch(`${API_BASE}/api/comments?postId=${encodeURIComponent(postId)}&ts=${Date.now()}`, { cache:'no-store' })
           .then(r => r.json())
           .then(j => {
