@@ -7,6 +7,7 @@
 
   <ul id="comment-list"></ul>
 </div>
+
 <script>
 (function(){
   const API_BASE = "https://wandering-cake-347a.raphaelshine.workers.dev";
@@ -17,7 +18,7 @@
   const $text = document.getElementById('comment_input');
   const $btn  = document.getElementById('comment-registration');
 
-  // tempId -> item 데이터 (백업용)
+  // tempId -> item (대기 중인 낙관적 아이템)
   const pendingItems = new Map();
 
   function escapeHTML(s='') {
@@ -27,14 +28,15 @@
   }
 
   function buildCommentLI(item) {
-    const { id, title, body, created_at, pending } = item;
+    const { id, title, body, created_at, pending, recent } = item;
     const li = document.createElement('li');
     li.className = 'comment';
     li.dataset.commentId = id || '';
     if (pending) li.dataset.pending = '1';
+    if (recent)  li.dataset.recent  = '1';
 
     const when = created_at ? new Date(created_at).toLocaleString() : '';
-    const displayName = escapeHTML(title || '');
+    const displayName = escapeHTML(title || ''); // 작성자 = 이슈 제목
 
     li.innerHTML = `
       <article>
@@ -50,48 +52,28 @@
   }
 
   function renderReplace(items) {
-    // ★ 현재 DOM에 있는 '등록중' 노드를 보존(노드 자체 백업)
-    const pendingNodes = Array.from($list.querySelectorAll('li.comment[data-pending="1"]'))
-      .map(node => node); // shallow copy
-
-    // 서버 아이템 오래된→최신 정렬
     const ordered = (items || [])
       .slice()
-      .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at));
+      .sort((a,b)=> new Date(a.created_at) - new Date(b.created_at)); // 오래된→최신
 
-    // 새 목록 그리기
+    // 현재 화면에 있는 '보존 대상' 노드 수집: pending + recent
+    const keepNodes = Array.from($list.querySelectorAll('li.comment[data-pending="1"], li.comment[data-recent="1"]'));
+
     $list.textContent = '';
     ordered.forEach(it => $list.appendChild(buildCommentLI(it)));
 
-    // ★ 보존해 둔 '등록중' 노드를 그대로 뒤에 다시 붙임(사라질 일 없음)
-    pendingNodes.forEach(node => {
-      // 혹시 같은 tempId가 이미 서버에 반영되어 있다면(교체되었다면) 중복 방지
+    // 보존 노드 복원 (서버 목록에 아직 안 뜨더라도 지우지 않음)
+    keepNodes.forEach(node => {
       const id = node.dataset.commentId || '';
       const exists = $list.querySelector(`li.comment[data-comment-id="${id}"]`);
       if (!exists) $list.appendChild(node);
     });
 
-    // ★ 백업 Map에 있지만 화면에 없는 pending이 있으면(예외 상황) 새로 만들어서 보강
+    // Map엔 있는데 DOM에 없는 pending이 있으면 보강
     for (const [tempId, pi] of pendingItems.entries()) {
       const exists = $list.querySelector(`li.comment[data-comment-id="${tempId}"]`);
       if (!exists) $list.appendChild(buildCommentLI(pi));
     }
-  }
-
-  function renderAppend(item) {
-    const li = buildCommentLI(item);
-    $list.appendChild(li); // 최신이 맨 뒤
-    li.scrollIntoView({ block: 'end' });
-  }
-
-  function replacePendingWithReal(tempId, realItem) {
-    const li = $list.querySelector(`li.comment[data-comment-id="${tempId}"]`);
-    if (li) {
-      const newLi = buildCommentLI(realItem);
-      $list.replaceChild(newLi, li);
-      newLi.scrollIntoView({ block: 'end' });
-    }
-    pendingItems.delete(tempId);
   }
 
   async function load() {
@@ -101,6 +83,42 @@
     );
     const j = await res.json();
     renderReplace(j.items || []);
+    return j.items || [];
+  }
+
+  function renderAppend(item) {
+    const li = buildCommentLI(item);
+    $list.appendChild(li); // 최신이 맨 뒤
+    li.scrollIntoView({ block: 'end' });
+  }
+
+  function markRecentForAWhile(li, ms=10000) {
+    // 성공 직후 일정 시간 보존되도록 recent 마크
+    li.dataset.recent = '1';
+    setTimeout(() => { li.removeAttribute('data-recent'); }, ms);
+  }
+
+  function replacePendingWithReal(tempId, realItem) {
+    const li = $list.querySelector(`li.comment[data-comment-id="${tempId}"]`);
+    if (li) {
+      const newLi = buildCommentLI({ ...realItem, recent: true });
+      $list.replaceChild(newLi, li);
+      newLi.scrollIntoView({ block: 'end' });
+      // recent 보존 타이머
+      markRecentForAWhile(newLi);
+    }
+    pendingItems.delete(tempId);
+  }
+
+  // 서버 목록에 특정 id가 나타날 때까지 '새로고침하듯' 재시도
+  async function refreshUntilAppears(realId, timeoutMs=10000, intervalMs=1000) {
+    const deadline = Date.now() + timeoutMs;
+    while (Date.now() < deadline) {
+      const items = await load();
+      if (items.some(it => String(it.id) === String(realId))) return true;
+      await new Promise(r => setTimeout(r, intervalMs));
+    }
+    return false; // 타임아웃
   }
 
   async function submit() {
@@ -111,14 +129,12 @@
 
     const tempId = `temp-${Date.now()}-${Math.random().toString(36).slice(2)}`;
     const optimisticItem = {
-      id: tempId,
-      title,
-      body,
+      id: tempId, title, body,
       created_at: new Date().toISOString(),
       pending: true
     };
 
-    // ① 즉시 맨 뒤에 보이게 + Map에도 보관
+    // 즉시 맨 뒤에 보이게 + Map에도 보관
     pendingItems.set(tempId, optimisticItem);
     renderAppend(optimisticItem);
 
@@ -143,16 +159,17 @@
       // 입력창 초기화
       $nick.value=''; $text.value='';
 
-      // ② 성공: 실제 아이템으로 교체
+      // 성공: 실제 아이템으로 교체 + recent 보존
       if (data.item) {
         replacePendingWithReal(tempId, data.item);
+
+        // 새로고침하듯: 서버 목록에 나타날 때까지 폴링(최대 10초)
+        refreshUntilAppears(data.item.id).finally(()=>{ /* no-op */ });
       } else {
+        // 안전망: item이 없으면 전체 새로고침
         pendingItems.delete(tempId);
         await load();
       }
-
-      // ③ 배경 재동기화(혹시 깃헙 전파 지연 대비) — 보존 로직으로 인해 pending이 지워지지 않음
-      load();
 
     } catch (e) {
       alert(e && e.message ? e.message : '등록 실패');
@@ -165,5 +182,6 @@
   load();
 })();
 </script>
+
 
 <!-- end custom comments snippet -->
