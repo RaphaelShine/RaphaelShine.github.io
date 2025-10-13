@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "가려 꺾은 묏버들",
+  "short_name": "Willow Blog",
   "icons": [
     {
       "src": "/willow-blog-favicon/web-app-manifest-192x192.png",

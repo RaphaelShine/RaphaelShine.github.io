@@ -1,9 +1,17 @@
 <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
-<link rel="icon" type="image/png" href="/willow-blog-favicon/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/willow-blog-favicon/favicon.svg" />
-<link rel="shortcut icon" href="/willow-blog-favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/willow-blog-favicon/apple-touch-icon.png" />
-<link rel="manifest" href="/willow-blog-favicon/site.webmanifest" />
+<!-- iOS 홈화면 이름(경고 해결) -->
+<meta name="apple-mobile-web-app-title" content="가려 꺾은 묏버들">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/willow-blog-favicon/favicon-96x96.png' | relative_url }}">
+<link rel="icon" type="image/svg+xml" href="{{ '/willow-blog-favicon/favicon.svg' | relative_url }}">
+<link rel="shortcut icon" href="{{ '/willow-blog-favicon/favicon.ico' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/willow-blog-favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="manifest" href="{{ '/willow-blog-favicon/site.webmanifest' | relative_url }}">
+
+<!-- (선택) 사파리 핀 탭 -->
+<link rel="mask-icon" href="{{ '/willow-blog-favicon/safari-pinned-tab.svg' | relative_url }}" color="#5bbad5">
+
 <!-- end custom head snippets -->
