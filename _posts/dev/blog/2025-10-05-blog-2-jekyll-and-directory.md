@@ -47,12 +47,8 @@ e.g.
 ```
 결과 (진짜 돌리는 중)
 ```
-{% for nav_button in site.data.navigation.main %}
-  {{ nav_button.title }}
-{% endfor %}
-{% for file in site.static_files %}
-  {{ file.name }}
-{% endfor %}
+{% for nav_button in site.data.navigation.main %}{{ nav_button.title }}{% endfor %}
+{% for file in site.static_files %}{{ file.name }}{% endfor %}
 ```
 </div></details>
 
@@ -102,7 +98,7 @@ collections_dir : my_collections
 ```
 ⠀위와 같이 정의할 경우, Collection들을 묶는 폴더의 이름이 my_collections가 되어야 합니다. 참고로 `_posts/`도 Collection입니다. Jekyll에서 그렇게 하드코딩되어 있습니다. 따라서 폴더에 같이 넣어줍니다. `_pages/`도 Collection인지는 잘 모르겠습니다.
 
-⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. Collections를 이용했더라면 더 편했을지도 모르겠습니다. 그래서 저 대신 여러분들 쓰시라고 알려 드립니다.
+<span style='font-family:OngleipParkDahyeon'>⠀저는 이걸 알게 되기 전에 이미 post들을 나누는 체계를 만들어버렸기 때문에 조금 슬펐습니다. Collections를 이용했더라면 더 편했을지도 모르겠습니다. 그래서 저 대신 여러분들 쓰시라고 알려 드립니다.</span>
 </div></details>
 
 ### drafts
@@ -112,17 +108,21 @@ collections_dir : my_collections
 <details><div markdown="1">
 
 ⠀post는 page와 다 똑같은데 포스팅 날짜 관련 속성이 더해진 형태입니다.
-- title : 제목
-- excerpt : 발췌 요약을 직접 작성 가능
-- excerpt_separator : 본문에서 여기 넣은 문자가 나올 때까지를 발췌 요약으로 설정. 주석도 감지되기에 보통 `"<!--more-->"를 사용.
-- categories : 카테고리. `site.categories.카테고리이름`을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.
-- tags : 태그. `site.tags.태그이름`을 이용해 위와 같습니다.
-- toc : true, false 오른쪽에 따라다니는 On This Page가 toc입니다.
-- toc_sticky : true, false 따라다닐지 결정합니다.
-⠀post 속성
-- date : 개시 날짜
-- last_modified_at : 마지막 수정 날짜  
-e.g. 이 포스트의 front matter
+
+|:---:|:---|
+|title|제목|
+|excerpt|발췌 요약을 직접 작성 가능|
+|excerpt_separator|본문에서 여기 넣은 문자가 나올 때까지를 발췌 요약으로 설정. 주석도 감지되기에 보통 `"<!--more-->"`를 사용.|
+|categories|카테고리. `site.categories.카테고리이름`을 이용해 해당 카테고리를 가진 문서 리스트를 얻을 수 있습니다.|
+|tags|태그. `site.tags.태그이름`을 이용해 위와 같습니다.|
+|toc|true, false 오른쪽에 따라다니는 On This Page가 toc입니다.|
+|toc_sticky|true, false 따라다닐지 결정합니다.|
+
+post 속성
+
+|:---:|:---|
+|date|개시 날짜|
+|last_modified_at|마지막 수정 날짜 <br> e.g. 이 포스트의 front matter|
 
 ```markdown
 ---
@@ -178,7 +178,7 @@ last_modified_at: 2025-10-05
 ## Minimal-Mistakes의 구체적인 디렉토리 구조
 템플릿이 다르더라도 상위 폴더들의 기능은 같습니다. 하위 파일은 무시하고 보면 됩니다.
 ### `_data/`
-`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. Minimal-Mistakes에선 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML에 대하여]
+`_config.yml`이라는 특별한 파일이 아닌 다른 YAML 파일들을 담습니다. Minimal-Mistakes에선 `navigation.yml`과 `ui-text.yml`이 들어있습니다. [YAML 파일]
 
 - `navigation.yml`는 네비게이션(상단바)의 정보를 저장합니다.
 
@@ -186,7 +186,7 @@ last_modified_at: 2025-10-05
 
 ### `_includes/`
 주로 자주 쓰는 HTML을 Liquid에서 &#123;%include%&#125;를 써 꺼내오기 위해 사용합니다.  
-`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML과 Liquid에 대하여]
+`analytics-providers/`, `comments-providers/`, `search/`와 같은 외계어파일, 여러 HTML, `copyright.js`가 있습니다. [HTML 파일]
 
 - `analytics-providers/`는 블로그의 통계값을 제공하는 provider의 코드를 가져옵니다. 어떤 provider를 쓸지는 `_config.yml`에서 정합니다.
 
@@ -194,12 +194,12 @@ last_modified_at: 2025-10-05
 
 - `search/`는 검색기능을 제공하는 코드를 가져옵니다.
 
-- 여러분이 가장 많이 쓸 것은 수많은 HTML들입니다. 여기 있는 파일은 liquid의 include를 사용해 다른 코드로 꺼내올 수 있습니다. 그러면 사이트에서 그 영역에 해당 HTML이 들어갑니다.
+- 여러분이 가장 많이 쓸 것은 종류별로 다양하게 있는 HTML 조각들입니다. 여기 있는 파일은 liquid의 include를 사용해 다른 코드로 꺼내올 수 있습니다. 그러면 사이트에서 그 영역에 해당 HTML 조각이 들어갑니다.
 
 - `copyright.js` : 저작권은 지키는 게 좋을 겁니다.
 
 ### `_layouts/`
-문서를 유형별로 기본적인 형태를 만들어 layout으로 이곳에 담습니다. 포스트나 페이지를 만들고 front matter에서 그 레이아웃을 선택할 수 있습니다. [HTML과 Liquid에 대하여]
+문서를 유형별로 기본적인 형태를 만들어 layout으로 이곳에 담습니다. 포스트나 페이지를 만들고 front matter에서 그 레이아웃을 선택할 수 있습니다. [HTML 파일]
 
 ### `_pages/`
 여러분이 만든 페이지들을 담으시면 됩니다. [Markdown에 대하여]
@@ -208,7 +208,7 @@ last_modified_at: 2025-10-05
 여러분이 만든 포스트들을 담으시면 됩니다. **포스트 제목은 항상 xxxx-xx-xx-title.md로 짓습니다.** 그래야 Jekyll이 정확히 인식해야 하기 때문입니다. [Markdown에 대하여]
 
 ### `_sass/`
-CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거의 본체일 겁니다. 템플릿 파일인 `minimal-mistakes/` 안에는 `skins/`, `vendor/`가 있습니다. [CSS에 대하여]
+CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거의 본체일 겁니다. 템플릿 파일인 `minimal-mistakes/` 안에는 `skins/`, `vendor/`가 있습니다. [CSS 파일]
 
 - `skins/`는 `_config.yml`에서 지정할 수 있는 테마들이 저장됩니다.
 
@@ -219,12 +219,12 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 - 그 많은 `.scss`중 `_variables.scss`는 직접 HTML 파츠에 대응하는 아이가 아니라 CSS에서 쓸 변수들을 담는 파일입니다.
 
 ### `assets/`
-`main.scss`가 담겨있는 `css/` 폴더, `images/`, `js/`가 있습니다. [CSS에 대하여]
+`main.scss`가 담겨있는 `css/` 폴더, `images/`, `js/`가 있습니다. [CSS 파일]
 
 - `main.scss`는 언더바된 다른 `.scss`들을 @import해줍니다. CSS 함수가 어디있는지 몰라서 수정이 어려울 때 여기에다가 선언해주면 override 할 수 있는 것 같습니다.
 
 ### `_config.yml`
-사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다. [YAML에 대하여]
+사이트의 기본 변수를 담습니다. 여러분이 수정하고 싶은 사이트 설정은 여기서 변수를 수정하면 적용됩니다. [YAML 파일]
 
 ### 기타 파일들
 이 중 `index.html`은 퍼마링크 없는 순수한 사이트주소에서 뜨는 화면입니다. 나머지는 딱히 알 필요 없을 듯합니다.
@@ -245,9 +245,7 @@ CSS 파일을 담습니다. 템플릿을 선택했다면 템플릿 파일이 거
 |YAML|[이동]()|쉬워서 없음|[이동]()|
 |CSS|[이동]()|[이동]()|[이동]()|
 
-[HTML과 Liquid에 대하여]:
-[Markdown에 대하여]:
-[CSS에 대하여]:
-[YAML에 대하여]:
-
-<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+[HTML 파일]:https://raphaelshine.github.io/blog/blog-10-html-file/
+[Markdown에 대하여]:https://raphaelshine.github.io/blog/blog-4-newbie-markdown/
+[CSS 파일]:https://raphaelshine.github.io/blog/blog-12-css-file/
+[YAML 파일]:https://raphaelshine.github.io/blog/blog-11-yaml-file/

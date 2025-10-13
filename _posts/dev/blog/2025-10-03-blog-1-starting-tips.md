@@ -326,8 +326,6 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 
 ⠀저도 웹은 문외한이라 틀린 부분이나 개선사항이 있을 수 있습니다. 정정할 점이 보이는 똑똑이라면 꼭 **댓글**이나 [**메일**]({{site.author.email}}) 남겨 주셨으면 좋겠습니다. 그럼 칭찬과 감사 받으실 수 있겠습니다.
 
-<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
-
 ***
 내가 공부한 포스트 중 좋은 곳!  
 

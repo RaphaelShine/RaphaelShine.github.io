@@ -89,6 +89,44 @@ gallery:
 ⠀home이나 collection [layout](#_layouts)에서 문서 나열을 위해 사용합니다.
 ## `head.html`
 ⠀모든 문서의 \<head>에 들어갑니다. 수정 사항이 있으면 `_includes/head/custom.html`을 이용하십시오.
+
+⠀빠비콘(favicon)(로고같은 거) 붙일 때 사용합니다.
+
+⠀그냥 <https://realfavicongenerator.net/>에서 하라는 대로 하면 되는 줄 알았는데 안 되서 별짓을 다 했습니다.
+```html
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<!-- iOS 홈 화면 이름(추가 경고 해결용) -->
+<meta name="apple-mobile-web-app-title" content="당신의 사이트명">
+
+<!-- Favicon (캐시버스터 포함) -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/willow-blog-favicon/favicon-32x32.png?v=2' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/willow-blog-favicon/favicon-16x16.png?v=2' | relative_url }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/willow-blog-favicon/favicon-96x96.png?v=2' | relative_url }}">
+<link rel="icon" type="image/svg+xml" href="{{ '/willow-blog-favicon/favicon.svg?v=2' | relative_url }}">
+<link rel="shortcut icon" href="{{ '/willow-blog-favicon/favicon.ico?v=2' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/willow-blog-favicon/apple-touch-icon.png?v=2' | relative_url }}">
+<link rel="manifest" href="{{ '/willow-blog-favicon/site.webmanifest?v=2' | relative_url }}">
+
+<!-- (선택) 사파리 핀 탭 -->
+<link rel="mask-icon" href="{{ '/willow-blog-favicon/safari-pinned-tab.svg?v=2' | relative_url }}" color="#5bbad5">
+```
+⠀사이트에서 주는 파일에 더해 16x16, 32x32까지 만들어서 저장하고, `site.webmanifest`파일에 front matter까지 붙였더니 됩니다. <span style='font-family:OngleipParkDahyeon'>빨간줄까지 뜨지만 귀찮으므로 그냥 이렇게 했습니다.</span>
+```json
+---
+---
+{
+  "name": "가려 꺾은 묏버들",
+  "short_name": "Willow Blog",
+  "start_url": "{{ '/' | relative_url }}",
+  "icons": [
+    { "src": "{{ '/willow-blog-favicon/android-chrome-192x192.png?v=2' | relative_url }}", "sizes": "192x192", "type": "image/png" },
+    { "src": "{{ '/willow-blog-favicon/android-chrome-512x512.png?v=2' | relative_url }}", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
+```
 ## `footer.html`
 ⠀모든 문서의 \<footer>에 들어갑니다. 소환 :
 {% include footer.html %}

@@ -58,6 +58,7 @@ layout: default
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
         <!--마지막말 코멘트-->
+        <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
       </footer>
 
       {% if page.share %}{% include social-share.html %}{% endif %}

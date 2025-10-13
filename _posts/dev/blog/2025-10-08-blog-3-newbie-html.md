@@ -167,8 +167,6 @@ true나 false가 아니더라도 값이 존재하면 true로 판단하고 nil이
 ```
 \<strong>안녕?!</strong>
 
-⠀
-<a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
 ***
 내가 공부한 블로그!
 
