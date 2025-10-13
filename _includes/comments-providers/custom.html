@@ -130,16 +130,19 @@
 
     const when = created_at ? new Date(created_at).toLocaleString() : '';
     const displayName = escapeHTML(title || ''); // 작성자 = 이슈 제목
-
+    const avatar = item.author && item.author.avatar_url
+        ? `<img class="comment-avatar" src="${item.author.avatar_url}" alt="">`
+        : '';
     li.innerHTML = `
-      <article>
+    <article>
         <header>
-          <strong class="comment-author">${displayName}</strong>
-          <small class="comment-time">${when}</small>
-          ${pending ? '<em class="comment-status"> (등록 중)</em>' : ''}
+            ${avatar}
+            <strong class="comment-author">${displayName}</strong>
+            <small class="comment-time">${when}</small>
+            ${pending ? '<em class="comment-status"> (등록 중)</em>' : ''}
         </header>
         <div class="content">${escapeHTML(body || '').replace(/\n/g,'<br>')}</div>
-      </article>
+    </article>
     `;
     return li;
   }
@@ -222,7 +225,8 @@
       title: currentUser.name || 'Google User',
       body,
       created_at: new Date().toISOString(),
-      pending: true
+      pending: true,
+      author: { avatar_url: currentUser.picture || currentUser.avatar_url || '' }
     };
 
     pendingItems.set(tempId, optimisticItem);
