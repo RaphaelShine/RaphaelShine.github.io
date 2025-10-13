@@ -22,7 +22,7 @@ title_separator          : "-"
 subtitle                 : "컴퓨터든 문학이든, 언어에 대한 기억 저장소"
 name                     : "RaphaelShine"
 description              : "컴퓨터, 문학 등의 기억 저장소"
-url                      : "https://RaphaelShine.github.io"
+url                      : "https://raphaelshine.github.io"
 baseurl                  : # 순수 사이트 주소에서 url 뒤에 더 붙일 부분
 repository               : "RaphaelShine/RaphaelShine.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"

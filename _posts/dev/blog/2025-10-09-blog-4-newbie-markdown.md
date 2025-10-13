@@ -162,7 +162,7 @@ ___굵고 기울게___
 
 ### HTML 방식
 
-⠀보통 Markdown에서 이 방식으로 attribute를 달 때는 글의 color, font-family와 같은 문자 스타일을 바꾸기 위함입니다. 그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
+⠀보통 Markdown에서 이 방식으로 attribute를 달 때는 글의 color, font-family와 같은 문자 스타일을 바꾸기 위함입니다. 그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다. [폰트 설정하는 방법](/blog/blog-12-css-file/#폰트-설정하기)
 
 ```html
 그래서 <span style="color:gold">이와</span> <span style='font-family:OngleipParkDahyeon'>같이</span> 작성합니다.
@@ -171,10 +171,9 @@ ___굵고 기울게___
 ## 마무리
 ⠀Markdown 파일은 지금 이 포스트를 포함하여, 블로그의 구체적인 모든 문서에 쓰입니다. 
 
-⠀Markdown도 귀찮은 부분이 많아서 [VSCode의 단축어 snippets]()를 사용하는 것도 좋습니다. 
+⠀Markdown도 귀찮은 부분이 많아서 [VSCode의 단축어 snippets]를 사용하는 것도 좋습니다. 
 
-[이미지]:
-[VSCode의 단축어 snippets]: 
+[이미지]:/blog/blog-13-uploading-Image/
 
 ***
 내가 공부한 포스트 중 좋은 곳!
