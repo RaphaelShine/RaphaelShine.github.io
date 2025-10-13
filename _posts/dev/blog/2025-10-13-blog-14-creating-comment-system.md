@@ -1,6 +1,6 @@
 ---
 title: "[Blog]14. Github Pages 댓글 만들기"
-excerpt: "직접 댓글 기능을 만든다."
+excerpt: "블로그에 직접 댓글 기능을 만든다."
 
 sort_key : 14
 categories:
