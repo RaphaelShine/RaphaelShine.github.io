@@ -172,38 +172,43 @@ $h-size-6: 1em !default; // ~16px
 
 </div></details>
 
-### `_fontsize.scss
+### `_fontsize.scss`
 ⠀제가 직접 만들었습니다. 글씨 크기를 조절하는 파일입니다. 파일 경로는 `_sass/_fontsize.szss`입니다. `breakpoint()`는 화면 크기에 따라 폰트 사이즈를 바꾸는 역할을 합니다. 우선순위가 높아서 폰트 크기 바꾼다고 다른 곳에서 열심히 깨작거려봐도 무시당합니다. 이 아이를 써야 합니다.
 
 <details><div markdown="1">
 
 ```scss
-//글씨 크기 조절 함수
+//글씨 크기 조절
 @mixin set-font-size($size) {
     @include breakpoint($small) {
-      font-size: $size * 0.6;
+      font-size: $size * 0.6 !important;
     }
     @include breakpoint($medium-wide) {
-      font-size: $size * 0.7;
+      font-size: $size * 0.7 !important;
     }
     @include breakpoint($medium) {
-      font-size: $size * 0.8;
+      font-size: $size * 0.8 !important;
     }
     @include breakpoint($large) {
-      font-size: $size * 0.9;
+      font-size: $size * 0.9 !important;
     }
     @include breakpoint($x-large) {
-      font-size: $size;
+      font-size: $size !important;
     }
     @include breakpoint($max-width) {
-      font-size: $size;
+      font-size: $size !important;
     }
 }
 
+//인라인코드
+.language-plaintext, .highlighter-rouge {
+  @include set-font-size(1em);
+}
 //본문 
 .page__content {
     @include set-font-size(0.8em);
-  }
+}
+
 ```
 
 </div></details>

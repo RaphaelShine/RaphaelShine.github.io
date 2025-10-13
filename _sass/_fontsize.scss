@@ -1,26 +1,30 @@
 //글씨 크기 조절
 @mixin set-font-size($size) {
     @include breakpoint($small) {
-      font-size: $size * 0.6;
+      font-size: $size * 0.6 !important;
     }
     @include breakpoint($medium-wide) {
-      font-size: $size * 0.7;
+      font-size: $size * 0.7 !important;
     }
     @include breakpoint($medium) {
-      font-size: $size * 0.8;
+      font-size: $size * 0.8 !important;
     }
     @include breakpoint($large) {
-      font-size: $size * 0.9;
+      font-size: $size * 0.9 !important;
     }
     @include breakpoint($x-large) {
-      font-size: $size;
+      font-size: $size !important;
     }
     @include breakpoint($max-width) {
-      font-size: $size;
+      font-size: $size !important;
     }
 }
 
+//인라인코드
+.language-plaintext, .highlighter-rouge {
+  @include set-font-size(1em);
+}
 //본문 
 .page__content {
     @include set-font-size(0.8em);
-  }
+}

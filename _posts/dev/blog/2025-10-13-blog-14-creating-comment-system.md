@@ -139,7 +139,7 @@ wrangler secret put SESSION_SECRET
 
 ## src/index.ts (Worker 코드)
 
-⠀코드는 제 repository에서...
+⠀코드는 [제 repository](https://github.com/RaphaelShine/RaphaelShine.github.io){:target='_blank' rel='noopener noreferrer'}에서...
 
 ⠀배포
 ```
@@ -153,7 +153,9 @@ const API_BASE = "https://<your-worker>.workers.dev";
 
 ## 프런트 코드 comments-providers/custom.html
 
-⠀코드는 제 repository에서...
+⠀코드는 [제 repository](https://github.com/RaphaelShine/RaphaelShine.github.io){:target='_blank' rel='noopener noreferrer'}에서...
+
+⠀당연히 `_config.yml` comments-provider 세팅도 해야 합니다.
 
 ## 마무리
 ⠀GPT와 씨름한 이틀 간의 사투를 갈아서 대충 적었습니다. 잘못 적어버린 곳이 있을 수 있으니 의심되는 부분은 말씀 부탁드립니다.

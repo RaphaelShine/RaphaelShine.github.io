@@ -365,5 +365,13 @@ $var: "값";
 }
 ```
 ⠀이걸 이용하면 위 테두리속성 예시가 더 개선될 겁니다. <span style='font-family:OngleipParkDahyeon'>개인적으로 조금 신기했던 게 저 위에 #{}입니다. 전 attribute를 변수명같이 생각중이었는데 변수값으로 변수명을 때워서 접근하다니... 다른 언어 쓰면서 하고 싶던 건데 이런 거 처음 봅니다. attribute가 변수명이 아니라 값같은 거였을까요? 모르겠네요.</span>
+## 우선순위
+⠀CSS는 우선순위가 있어서 코드를 적어도 우선순위가 더 높은 코드가 다른 곳에서 방해하면 원하는 대로 동작할 수 없습니다. 따라서 `!important`를 붙여주어 우선순위를 높일 수 있습니다. 남발하면 안되겠죠?
+```scss
+@include breakpoint($small) {
+  font-size: $size * 0.6 !important;
+}
+```
+
 ## 마무리
 ⠀CSS는 딱히 깊게 알 필요가 없다고 생각해서 이정도에서 끝내겠습니다. 이제 이론은 끝났고 다음 포스트부터는 Jekyll에 적용해 보겠습니다. 더 알고싶다면 [여기](https://www.heropy.dev/p/yUnC6g){:target='_blank' rel='noopener noreferrer'}가 상당히 좋아 보입니다.
