@@ -51,6 +51,93 @@
   #comments .inline-reply { margin:6px 0 0 28px; }
   #comments .inline-reply textarea { width:100%; min-height:68px; margin:4px 0 0; }
   #comments .inline-reply .reply-submit, #comments .inline-reply .reply-cancel { padding:6px 10px; font-size:.92em; }
+  /* ===== Comment cards (soft rounded blocks) ===== */
+/* 기본 카드 */
+#comments li.comment {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 10px 0;               /* 카드 간 간격 */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* 대댓글 카드는 살짝 더 얇게 + 들여쓰기 유지 */
+#comments ul.replies {
+  list-style: none;
+  margin: 6px 0 0 24px;         /* 기존 28→24로 살짝 타이트하게 */
+  padding-left: 0;
+}
+#comments li.comment.reply {
+  background: #fbfbfd;          /* 톤 살짝 다르게 */
+  border-color: #eef0f4;
+  border-radius: 9px;
+  padding: 8px 10px;
+  margin: 6px 0;
+}
+
+/* 헤더/본문 간격(카드 내부) */
+#comments li.comment > article > header { gap: 6px; }
+#comments li.comment > article > .content { margin-top: 4px; line-height: 1.5; }
+
+/* 최근 등록 강조를 카드 스타일에 맞게 */
+#comments li.comment[data-recent="1"]  {
+  box-shadow: 0 0 0 2px #e5f1ff inset, 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* 등록 중 상태는 카드 투명도만 살짝 낮춤 */
+#comments li.comment[data-pending="1"] { opacity: 0.8; }
+
+/* 아바타/배지 유지 */
+#comments .comment-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; margin-right: 8px; flex: 0 0 28px; }
+#comments li.comment.reply .comment-avatar { width: 22px; height: 22px; flex: 0 0 22px; }
+
+/* "답글" 버튼은 카드 우측 정렬 유지 */
+#comments .reply-btn { margin-left: auto; font-size: .85em; color: #2563eb; background: transparent; border: none; cursor: pointer; }
+
+/* (선택) 대댓글 연결 가이드라인 */
+#comments li.comment.reply {
+  position: relative;
+}
+#comments li.comment.reply::before {
+  content: "";
+  position: absolute;
+  left: -14px;                  /* replies 들여쓰기 기준으로 조정 */
+  top: 14px;
+  width: 10px;
+  height: 0;
+  border-top: 1px solid #e5e7eb; /* 부모와 연결되는 가로 선 */
+}
+#comments ul.replies::before {
+  content: "";
+  position: absolute;
+  margin-left: -12px;           /* 들여쓰기 기준으로 세로선 위치 */
+  width: 0;
+  border-left: 1px solid #eef0f4;
+  top: 0; bottom: 0;
+}
+/* replies 컨테이너에 relative 부여(세로선용) */
+#comments ul.replies { position: relative; }
+
+/* 다크 모드 대응(선택) */
+@media (prefers-color-scheme: dark) {
+  #comments li.comment {
+    background: #111318;
+    border-color: #242833;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #comments li.comment.reply {
+    background: #0e1015;
+    border-color: #222632;
+  }
+  #comments li.comment[data-recent="1"]  {
+    box-shadow: 0 0 0 2px #1c334d inset, 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #comments ul.replies::before,
+  #comments li.comment.reply::before {
+    border-color: #2b3240;
+  }
+}
 </style>
 
 <!-- Google Identity Services -->
