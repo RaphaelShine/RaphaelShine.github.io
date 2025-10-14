@@ -8,7 +8,7 @@ layout: default
 <section class="label-lookup">
   <h1>라벨로 포스트 찾기</h1>
   <p>이슈 라벨(예: <code>post:3f6b2d8c1a4e9d10</code>)을 입력하면 해당 포스트를 찾아 링크를 보여줍니다.<br>
-  ※ 댓글 시스템과 동일하게 <strong><code>{{ '{{ page.id | slugify }}' }}</code></strong>를 해시합니다.</p>
+  ※ 댓글 시스템과 동일하게 <strong><code>{% raw %}{{ page.id | slugify }}{% endraw %}</code></strong>를 해시합니다.</p>
 
   <div class="lookup-card">
     <label for="label-input">라벨</label>
