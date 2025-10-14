@@ -1,4 +1,4 @@
-<!-- start custom comments snippet (dark card UI + unified OAuth buttons) -->
+<!-- start custom comments snippet (mobile-ready: dual-session, dark cards, depth-1 replies) -->
 <div id="comments">
   <h3>Comments</h3>
 
@@ -8,7 +8,7 @@
     <div id="auth-area">
       <div id="login-panel" class="oauth-row">
         <div id="google-btn" class="oauth-btn-wrap"></div>
-        <!-- GitHub 로그인 (버튼을 Google과 동일 프레임로 통일) -->
+        <!-- GitHub 로그인 (버튼 프레임 통일) -->
         <a id="github-login-link" class="oauth-btn github" href="#">
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="currentColor" style="margin-right:8px;">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
@@ -62,18 +62,14 @@
     margin: 12px 0 16px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.3);
   }
-  #comments .divider {
-    height: 1px; background: #242833; margin: 12px 0;
-  }
+  #comments .divider { height: 1px; background: #242833; margin: 12px 0; }
 
   /* OAuth row */
-  #comments .oauth-row {
-    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-  }
-  /* 통일 프레임: GitHub 버튼 */
+  #comments .oauth-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  /* GitHub 버튼 (Google과 프레임 맞춤) */
   #comments .oauth-btn.github {
     display: inline-flex; align-items: center; justify-content: center;
-    height: 40px; padding: 0 14px;
+    height: 40px; padding: 0 14px; min-width: 240px;
     background: #0e1015; color: #f8fafc;
     border: 1px solid #2b3240; border-radius: 8px;
     text-decoration: none; font-weight: 600; letter-spacing: .1px;
@@ -88,6 +84,8 @@
     font-size: .75em; line-height:1; padding: 4px 8px; border-radius: 999px;
     background: #1c334d; color: #c7e1ff; border: 1px solid #2b4a6e;
   }
+  #comments .provider-badge.github { background:#1d2230; color:#e5e7eb; border-color:#2b3240; }
+  #comments .provider-badge.google { background:#1c334d; color:#c7e1ff; border-color:#2b4a6e; }
 
   /* Composer */
   #comments #composer textarea {
@@ -103,9 +101,7 @@
     border: 1px solid #2b3240; background: #0e1015; color: #e5e7eb; cursor: pointer;
   }
   #comments .btn:hover { background: #111421; border-color: #344054; }
-  #comments .btn.primary {
-    background: #1e293b; border-color: #334155; color: #e2e8f0;
-  }
+  #comments .btn.primary { background: #1e293b; border-color: #334155; color: #e2e8f0; }
   #comments .btn.primary:hover { background: #243041; }
 
   /* 댓글 카드 (항상 다크) */
@@ -125,9 +121,7 @@
   #comments li.comment > article > .content { margin-top: 4px; line-height: 1.5; color:#e5e7eb; }
 
   /* recent/pending */
-  #comments li.comment[data-recent="1"] {
-    box-shadow: 0 0 0 2px #1c334d inset, 0 1px 2px rgba(0,0,0,0.3);
-  }
+  #comments li.comment[data-recent="1"] { box-shadow: 0 0 0 2px #1c334d inset, 0 1px 2px rgba(0,0,0,0.3); }
   #comments li.comment[data-pending="1"] { opacity: 0.85; }
 
   /* 대댓글 */
@@ -140,17 +134,8 @@
 
   /* 연결 가이드라인(선택) */
   #comments li.comment.reply { position: relative; }
-  #comments li.comment.reply::before {
-    content: ""; position:absolute; left: -14px; top: 14px; width: 10px; height: 0;
-    border-top: 1px solid #2b3240;
-  }
-  #comments ul.replies::before {
-    content:""; position:absolute; margin-left:-12px; width:0; border-left:1px solid #2b3240; top:0; bottom:0;
-  }
-
-  /* 배지(공급자) */
-  #comments .provider-badge.github { background:#1d2230; color:#e5e7eb; border-color:#2b3240; }
-  #comments .provider-badge.google { background:#1c334d; color:#c7e1ff; border-color:#2b4a6e; }
+  #comments li.comment.reply::before { content: ""; position:absolute; left: -14px; top: 14px; width: 10px; height: 0; border-top: 1px solid #2b3240; }
+  #comments ul.replies::before { content:""; position:absolute; margin-left:-12px; width:0; border-left:1px solid #2b3240; top:0; bottom:0; }
 </style>
 
 <!-- Google Identity Services -->
@@ -162,6 +147,23 @@
   const postId = "{{ page.id | slugify }}";
   const RETURN_TO = "{{ page.url | absolute_url }}";
   const GOOGLE_CLIENT_ID = "449329975089-rcthfthhp69fpft6o0lcuqtibc0e4is0.apps.googleusercontent.com";
+
+  // ===== 모바일용 세션 저장/헤더 주입 =====
+  function getSess() { try { return sessionStorage.getItem('sess') || ''; } catch { return ''; } }
+  function setSess(v) { try { sessionStorage.setItem('sess', v || ''); } catch {} }
+  (function pickupHashSess(){
+    if (location.hash && location.hash.includes('sess=')) {
+      const p = new URLSearchParams(location.hash.slice(1));
+      const s = p.get('sess');
+      if (s) { setSess(s); history.replaceState(null, '', location.pathname + location.search); }
+    }
+  })();
+  function withAuthHeaders(headers) {
+    const h = Object.assign({}, headers || {});
+    const s = getSess();
+    if (s) h['Authorization'] = 'Session ' + s;
+    return h;
+  }
 
   // DOM
   const $list = document.getElementById('comment-list');
@@ -175,6 +177,7 @@
   const $logout = document.getElementById('logout-btn');
   const $githubLink = document.getElementById('github-login-link');
 
+  // 상태
   let currentUser = null; // { provider, id, name, login?, picture?, avatar_url? }
   const pendingItems = new Map();
   let activeReplyForm = null;
@@ -189,11 +192,12 @@
       if (!id_token) throw new Error('Google 인증 토큰 수신 실패');
       const res = await fetch(API_BASE + '/auth/google', {
         method:'POST', credentials:'include',
-        headers:{ 'Content-Type':'application/json' },
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
         body: JSON.stringify({ id_token: id_token })
       });
       const j = await res.json().catch(function(){ return {}; });
       if (!res.ok || j.error) throw new Error(j.error || '로그인 실패');
+      if (j.session) setSess(j.session);            // 모바일 세션 저장
       currentUser = j.user || null;
       updateAuthUI();
     } catch (e) {
@@ -203,7 +207,6 @@
   };
   function initGIS() {
     if (!window.google || !google.accounts || !google.accounts.id) return;
-    // 다크 테마에 맞춰 filled_black + 동일 프레임 감각
     google.accounts.id.initialize({
       client_id: GOOGLE_CLIENT_ID,
       callback: window.handleGoogleCredentialResponse,
@@ -213,13 +216,8 @@
     const btn = document.getElementById('google-btn');
     if (btn) {
       google.accounts.id.renderButton(btn, {
-        type:'standard',
-        theme:'filled_black',   // ⬅️ 다크 버튼
-        size:'large',
-        shape:'rectangular',
-        text:'signin_with',
-        logo_alignment:'left',
-        width: 240              // ⬅️ GitHub 버튼과 폭 맞춤
+        type:'standard', theme:'filled_black', size:'large',
+        shape:'rectangular', text:'signin_with', logo_alignment:'left', width: 240
       });
     }
   }
@@ -250,8 +248,8 @@
   }
   function renderBodyHTML(raw) {
     var s = stripSignedMeta(raw || '');
-    s = s.replace(/\s+$/g, '');  // 오른쪽 공백/개행 제거
-    s = s.replace(/\n{2,}/g, '\n'); // 연속 개행 압축
+    s = s.replace(/\s+$/g, '');      // 오른쪽 공백/개행 제거
+    s = s.replace(/\n{2,}/g, '\n');  // 연속 개행 압축
     s = escapeHTML(s).replace(/\n/g, '<br>');
     s = s.replace(/(?:<br>\s*)+$/i, ''); // 끝의 <br> 더미 제거
     return s;
@@ -335,7 +333,9 @@
   }
 
   async function load(){
-    var res = await fetch(API_BASE + '/api/comments?postId=' + encodeURIComponent(postId) + '&ts=' + Date.now(), { cache:'no-store', credentials:'include' });
+    var res = await fetch(API_BASE + '/api/comments?postId=' + encodeURIComponent(postId) + '&ts=' + Date.now(), {
+      cache:'no-store', credentials:'include', headers: withAuthHeaders()
+    });
     var j = await res.json();
     renderGrouped(j.items || []);
     return j.items || [];
@@ -394,7 +394,7 @@
     try {
       var res = await fetch(API_BASE + '/api/comments', {
         method:'POST', credentials:'include',
-        headers:{ 'Content-Type':'application/json' },
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
         body: JSON.stringify({ body: body, postId: postId })
       });
       var data = await res.json();
@@ -402,7 +402,7 @@
         var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]');
         if (li) li.remove();
         pendingItems.delete(tempId);
-        throw new Error(data.error||'등록 실패');
+        throw new Error((data.error||'등록 실패') + (data.details ? `\n${data.details}` : ''));
       }
       $text.value='';
       if (data.item) {
@@ -459,14 +459,14 @@
     try {
       var res = await fetch(API_BASE + '/api/comments', {
         method:'POST', credentials:'include',
-        headers:{ 'Content-Type':'application/json' },
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
         body: JSON.stringify({ body: body, postId: postId, parent: parentNumber })
       });
       var data = await res.json();
       if (!res.ok || data.error) {
         var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]'); if (li) li.remove();
         pendingItems.delete(tempId);
-        throw new Error(data.error || '답글 등록 실패');
+        throw new Error((data.error || '답글 등록 실패') + (data.details ? `\n${data.details}` : ''));
       }
       replacePendingWithReal(tempId, data.item);
       refreshUntilAppears(data.item.id).finally(function(){});
@@ -506,7 +506,9 @@
   }
   async function fetchMe(){
     try {
-      var res = await fetch(API_BASE + '/api/me?ts=' + Date.now(), { method:'GET', credentials:'include', cache:'no-store' });
+      var res = await fetch(API_BASE + '/api/me?ts=' + Date.now(), {
+        method:'GET', credentials:'include', cache:'no-store', headers: withAuthHeaders()
+      });
       var j = await res.json(); currentUser = j && j.user ? j.user : null;
     } catch(e){ currentUser = null; } finally { updateAuthUI(); }
   }
@@ -514,7 +516,12 @@
   // 바인딩
   document.getElementById('comment-registration').addEventListener('click', submit);
   document.getElementById('logout-btn').addEventListener('click', async function(){
-    try { await fetch(API_BASE + '/auth/logout', { method:'POST', credentials:'include', headers:{ 'Content-Type':'application/json' } }); } catch(e){}
+    try {
+      await fetch(API_BASE + '/auth/logout', {
+        method:'POST', credentials:'include', headers: withAuthHeaders({ 'Content-Type':'application/json' })
+      });
+    } catch(e){}
+    sessionStorage.removeItem('sess'); // 모바일 세션 정리
     currentUser = null; updateAuthUI();
   });
 
