@@ -25,8 +25,8 @@ description              : "컴퓨터, 문학 등의 기억 저장소"
 url                      : "https://raphaelshine.github.io"
 baseurl                  : # 순수 사이트 주소에서 url 뒤에 더 붙일 부분
 repository               : "RaphaelShine/RaphaelShine.github.io"
-teaser                   : "assets/images/temporary_teaser.png" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "assets/images/temporary_teaser.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : "https://github.com/user-attachments/assets/a1448b2c-dc73-4028-a45c-eebb6f9a8655" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : "willow-blog-favicon/favicon-96x96.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true # true, false (default) post나 page 제일 위에 파일경로 표시
 words_per_minute         : 200 # post 읽기소요시간 계산에 사용 난 안 씀
