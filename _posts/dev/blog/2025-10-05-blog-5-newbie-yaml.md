@@ -1,18 +1,23 @@
 ---
 title: "[Blog]5. 초보용 YAML 설명"
-excerpt: "YAML을 통한 데이터 저장 방법을 배운다."
+excerpt: "블로그를 위해 YAML을 통한 데이터 저장 방법을 배운다."
 
 sort_key : 5
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드, Blog-초보]
+  - [Blog-뼈대, 프런트엔드, Blog-초보]
+
+header:
+  overlay_image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/YAML_Logo.svg/800px-YAML_Logo.svg.png
+  overlay_filter: 0.3
+  caption: "YAML logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-05
-last_modified_at: 2025-10-05
+last_modified_at: 2025-10-14
 ---
 ## YAML
 ⠀YAML은 JSON의 상위호환 데이터 직렬화 양식입니다.`.yml`, `.yaml`와 같은 확장자(둘 다 똑같습니다)를 사용합니다. 데이터 직렬화라는 것은 그냥 데이터 저장하기라고 생각하면 됩니다. 엄청 쉬우니 고수용은 따로 만들지 않겠습니다.
@@ -27,7 +32,7 @@ last_modified_at: 2025-10-05
 ```yml
 key : value
 ```
-⠀여러 값을 넣는 객체를 선언할 때는 들여쓰기를 이용합니다.
+⠀여러 값을 넣는 객체(object)를 선언할 때는 들여쓰기를 이용합니다.
 ```yml
 collections : 
   staff_members :

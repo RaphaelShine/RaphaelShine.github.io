@@ -6,13 +6,18 @@ sort_key : 8
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드, Blog-고수]
+  - [Blog-뼈대, 프런트엔드, Blog-고수]
+
+header:
+  overlay_image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/2560px-Markdown-mark.svg.png
+  overlay_filter: 0.3
+  caption: "Markdown logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-08
-last_modified_at: 2025-10-08
+last_modified_at: 2025-10-14
 ---
 ## 시작하며
 ⠀Markdown은 HTML을 쉽게 쓰기 위한 텍스트 양식입니다. HTML은 tag붙이고 attribute넣고 하는 수고로움이 많지만 Markdown은 이 중 상당수를 쓰기 쉬운 기호로 대체합니다. 전부는 대체하지 못하므로 글을 이 이상으로 자유롭게 쓰고 싶다면 HTML을 배워야 합니다. `.md`확장자를 사용하며, Markdown 파일에서도 HTML을 직접 쓸 수 있고 따라서 Liquid도 작동합니다. <span style='font-family:OngleipParkDahyeon'>Liquid는 우선순위도 커서 Markdown의 코드블럭으로 봉인할 수 없습니다. 그래서 Liquid 문법 설명할 때 힘들어요ㅠㅠ</span> 또, 해석 방법이 다양해서 조금 들쭉날쭉 할 수 있습니다.

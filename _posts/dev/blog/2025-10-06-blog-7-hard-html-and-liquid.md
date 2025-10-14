@@ -6,13 +6,18 @@ sort_key : 7
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드]
+  - [Blog-뼈대, 프런트엔드]
+
+header:
+  overlay_image: https://kinsta.com/wp-content/uploads/2021/03/HTML-5-Badge-Logo.png
+  overlay_filter: 0.3
+  caption: "HTML5 logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-05
-last_modified_at: 2025-10-05
+last_modified_at: 2025-10-14
 ---
 
 ## 시작하며

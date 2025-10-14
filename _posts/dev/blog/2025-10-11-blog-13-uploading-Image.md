@@ -1,18 +1,18 @@
 ---
 title: "[Blog]13. 이미지 올리기"
-excerpt: "Github Pages에 이미지 올리는 친절한 과정"
+excerpt: "Github Pages 블로그에 이미지 올리는 친절한 과정"
 
 sort_key : 13
 categories:
   - Blog
 tags:
-  - [Blog-포스팅-팁, Blog-초보]
+  - [Blog-구체적으로, Blog-초보]
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-08
-last_modified_at: 2025-10-06
+last_modified_at: 2025-10-14
 
 profiles:
   - image_path: /assets/images/TheEarthCapture.png

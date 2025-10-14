@@ -35,10 +35,10 @@ layout: default
             <a href="{{ page.url | absolute_url }}" itemprop="url">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</a>
           </h1>
           {%- endif %}
-          {% include page__date.html %}
-          {% include page__taxonomy.html %}
         </header>
+        {% include page__date.html %}
       {% endunless %}
+      {% include page__taxonomy.html %}
 
       <section class="page__content" itemprop="text">
         {% if page.toc %}

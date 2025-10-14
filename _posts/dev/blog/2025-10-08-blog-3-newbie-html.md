@@ -1,18 +1,23 @@
 ---
 title: "[Blog]3. 초보용 HTML과 Liquid 설명"
-excerpt: "HTML의 태그(tag)와 속성(attribute)의 종류를 쉽게 정리하고 Liquid의 문법을 간단히 알아본다."
+excerpt: "블로그를 위해 HTML의 태그(tag)와 속성(attribute)의 종류를 쉽게 정리하고 Liquid의 문법을 간단히 알아본다."
 
 sort_key : 3
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드, Blog-초보]
+  - [Blog-뼈대, 프런트엔드, Blog-초보]
+
+header:
+  overlay_image: https://kinsta.com/wp-content/uploads/2021/03/HTML-5-Badge-Logo.png
+  overlay_filter: 0.3
+  caption: "HTML5 logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-08
-last_modified_at: 2025-10-08
+last_modified_at: 2025-10-14
 ---
 
 ## 시작하며

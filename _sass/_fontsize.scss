@@ -21,7 +21,7 @@
 }
 
 //인라인코드
-.language-plaintext, .highlighter-rouge {
+code.language-plaintext.highlighter-rouge {
   @include set-font-size(1em);
 }
 //본문 

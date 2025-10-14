@@ -1,6 +1,6 @@
 ---
 title: "[Blog]2. Jekyll의 디렉토리 구조 ( + Minimal-Mistakes )"
-excerpt: "지킬(Jekyll)에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
+excerpt: "블로그를 만드는 프로그램 지킬(Jekyll)에 대해 배운 후, Jekyll, Minimal-Mistakes의 기본 폴더 구조를 정리한다."
 
 sort_key : 2
 categories:
@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2025-10-05
-last_modified_at: 2025-10-05
+last_modified_at: 2025-10-14
 ---
 
 ## 시작하며

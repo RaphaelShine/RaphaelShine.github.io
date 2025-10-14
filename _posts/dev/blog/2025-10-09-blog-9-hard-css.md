@@ -6,13 +6,18 @@ sort_key : 9
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드, Blog-고수]
+  - [Blog-뼈대, 프런트엔드, Blog-고수]
+
+header:
+  overlay_image: https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png
+  overlay_filter: 0.3
+  caption: "CSS3 logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-09
-last_modified_at: 2025-10-09
+last_modified_at: 2025-10-14
 ---
 ## 시작하며
 ⠀CSS는 HTML을 꾸며주는 아이입니다. 가끔 인터넷이 잘 안될 때 사이트에 들어갔다가 새하얀 창에 맹한 글씨만 뜬 걸 보신 적 있으십니까? CSS가 없는 HTML의 처참한 쌩얼입니다. CSS는 정말 단순하기 때문에 템플릿 가져와서 수정만 하는 수준에서는 딱히 공부 대충 했다고 티 안납니다. 그러니 우리는 고수용 포스트긴 해도 대충대충 기초적인 것만 짚고 넘어가도 되겠습니다.

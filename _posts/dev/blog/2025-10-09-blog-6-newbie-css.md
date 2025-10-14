@@ -1,18 +1,23 @@
 ---
 title: "[Blog]6. 초보용 CSS 설명"
-excerpt: "CSS의 기본 문법(선택자(selector), 속성(property))을 알아본다."
+excerpt: "블로그를 위해 CSS의 기본 문법(선택자(selector), 속성(property))을 알아본다."
 
 sort_key : 6
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, 프론트엔드, Blog-초보]
+  - [Blog-뼈대, 프런트엔드, Blog-초보]
+
+header:
+  overlay_image: https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png
+  overlay_filter: 0.3
+  caption: "CSS3 logo"
 
 toc: true
 toc_sticky: true
 
 date: 2025-10-09
-last_modified_at: 2025-10-09
+last_modified_at: 2025-10-14
 ---
 ## 시작하며
 ⠀CSS는 HTML을 꾸며주는 아이입니다. 가끔 인터넷이 잘 안될 때 사이트에 들어갔다가 새하얀 창에 맹한 글씨만 뜬 걸 보신 적 있으십니까? CSS가 없는 HTML의 처참한 쌩얼입니다. CSS는 HTML에서 \<style>을 써서 작성할 수도 있고 \<tag style="">로 넣을 수도 있고 따로 `.css`나 `.scss`, `.sass` 등의 확장자를 사용해 작성할 수 있습니다. 우리는 포스트를 작성할 때는 \<tag style="">를 이용해 바로 넣기도 하고 사이트 전체를 스타일링 할 때 `.scss`를 이용할 예정입니다.
