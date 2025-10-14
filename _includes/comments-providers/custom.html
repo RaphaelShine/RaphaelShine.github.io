@@ -1,526 +1,536 @@
-<!-- start custom comments snippet (dark card UI + unified OAuth buttons) -->
+<!-- start custom comments snippet (mobile-ready: dual-session, dark cards, depth-1 replies) -->
 <div id="comments">
-    <h3>Comments</h3>
-  
-    <!-- 로그인 + 최상위 입력을 하나의 카드로 -->
-    <div class="panel-card" id="composer-card">
-      <!-- 로그인 영역 -->
-      <div id="auth-area">
-        <div id="login-panel" class="oauth-row">
-          <div id="google-btn" class="oauth-btn-wrap"></div>
-          <!-- GitHub 로그인 (버튼을 Google과 동일 프레임로 통일) -->
-          <a id="github-login-link" class="oauth-btn github" href="#">
-            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="currentColor" style="margin-right:8px;">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
-                0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
-                -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2
-                -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18
-                1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
-                1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
-                8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            GitHub로 로그인
-          </a>
-        </div>
-  
-        <!-- 로그인 후 -->
-        <div id="me-panel" style="display:none;">
-          <img id="me-avatar" alt="">
-          <strong id="me-name"></strong>
-          <span id="me-provider" class="provider-badge"></span>
-          <button id="logout-btn" class="btn subtle">로그아웃</button>
-        </div>
+  <h3>Comments</h3>
+
+  <!-- 로그인 + 최상위 입력을 하나의 카드로 -->
+  <div class="panel-card" id="composer-card">
+    <!-- 로그인 영역 -->
+    <div id="auth-area">
+      <div id="login-panel" class="oauth-row">
+        <div id="google-btn" class="oauth-btn-wrap"></div>
+        <!-- GitHub 로그인 (버튼 프레임 통일) -->
+        <a id="github-login-link" class="oauth-btn github" href="#">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="currentColor" style="margin-right:8px;">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+              -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2
+              -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18
+              1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+              1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
+              8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub로 로그인
+        </a>
       </div>
-  
-      <div class="divider"></div>
-  
-      <!-- 최상위 댓글 입력 -->
-      <div id="composer">
-        <textarea id="comment_input" placeholder="내용" maxlength="2000"></textarea>
-        <div class="row-end">
-          <button id="comment-registration" class="btn primary">등록</button>
-        </div>
+
+      <!-- 로그인 후 -->
+      <div id="me-panel" style="display:none;">
+        <img id="me-avatar" alt="">
+        <strong id="me-name"></strong>
+        <span id="me-provider" class="provider-badge"></span>
+        <button id="logout-btn" class="btn subtle">로그아웃</button>
       </div>
     </div>
-  
-    <!-- 댓글 목록 -->
-    <ul id="comment-list"></ul>
+
+    <div class="divider"></div>
+
+    <!-- 최상위 댓글 입력 -->
+    <div id="composer">
+      <textarea id="comment_input" placeholder="내용" maxlength="2000"></textarea>
+      <div class="row-end">
+        <button id="comment-registration" class="btn primary">등록</button>
+      </div>
+    </div>
   </div>
-  
-  <style>
-    /* ===== Always-dark theme base ===== */
-    #comments { color: #e5e7eb; }
-    #comments h3 { color: #f3f4f6; }
-    #comments a { color: #93c5fd; }
-  
-    /* Panel card (로그인 + 작성) */
-    #comments .panel-card {
-      background: #111318;
-      border: 1px solid #242833;
-      border-radius: 12px;
-      padding: 14px;
-      margin: 12px 0 16px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+
+  <!-- 댓글 목록 -->
+  <ul id="comment-list"></ul>
+</div>
+
+<style>
+  /* ===== Always-dark theme base ===== */
+  #comments { color: #e5e7eb; }
+  #comments h3 { color: #f3f4f6; }
+  #comments a { color: #93c5fd; }
+
+  /* Panel card (로그인 + 작성) */
+  #comments .panel-card {
+    background: #111318;
+    border: 1px solid #242833;
+    border-radius: 12px;
+    padding: 14px;
+    margin: 12px 0 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #comments .divider { height: 1px; background: #242833; margin: 12px 0; }
+
+  /* OAuth row */
+  #comments .oauth-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  /* GitHub 버튼 (Google과 프레임 맞춤) */
+  #comments .oauth-btn.github {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 40px; padding: 0 14px; min-width: 240px;
+    background: #0e1015; color: #f8fafc;
+    border: 1px solid #2b3240; border-radius: 8px;
+    text-decoration: none; font-weight: 600; letter-spacing: .1px;
+  }
+  #comments .oauth-btn.github:hover { background: #111421; border-color: #344054; }
+  #comments .oauth-btn-wrap { display: inline-block; }
+
+  /* 로그인 후 표시 */
+  #comments #me-panel { display: flex; align-items: center; gap: 10px; }
+  #comments #me-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+  #comments .provider-badge {
+    font-size: .75em; line-height:1; padding: 4px 8px; border-radius: 999px;
+    background: #1c334d; color: #c7e1ff; border: 1px solid #2b4a6e;
+  }
+  #comments .provider-badge.github { background:#1d2230; color:#e5e7eb; border-color:#2b3240; }
+  #comments .provider-badge.google { background:#1c334d; color:#c7e1ff; border-color:#2b4a6e; }
+
+  /* Composer */
+  #comments #composer textarea {
+    width: 100%; min-height: 110px;
+    background: #0b0d12; color: #e5e7eb;
+    border: 1px solid #242833; border-radius: 8px;
+    padding: 10px 12px; outline: none;
+  }
+  #comments #composer textarea::placeholder { color: #6b7280; }
+  #comments .row-end { display: flex; justify-content: flex-end; margin-top: 10px; }
+  #comments .btn {
+    height: 36px; padding: 0 14px; border-radius: 8px;
+    border: 1px solid #2b3240; background: #0e1015; color: #e5e7eb; cursor: pointer;
+  }
+  #comments .btn:hover { background: #111421; border-color: #344054; }
+  #comments .btn.primary { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+  #comments .btn.primary:hover { background: #243041; }
+
+  /* 댓글 카드 (항상 다크) */
+  #comments #comment-list { list-style: none; padding-left: 0; margin: 0; }
+  #comments li.comment {
+    background: #111318;
+    border: 1px solid #242833;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin: 10px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  #comments li.comment > article > header { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  #comments .comment-author { font-weight:700; color:#f3f4f6; }
+  #comments .comment-time { color:#9ca3af; font-size:0.9em; }
+  #comments .comment-avatar { width:28px; height:28px; border-radius:50%; object-fit:cover; margin-right:8px; flex:0 0 28px; }
+  #comments li.comment > article > .content { margin-top: 4px; line-height: 1.5; color:#e5e7eb; }
+
+  /* recent/pending */
+  #comments li.comment[data-recent="1"] { box-shadow: 0 0 0 2px #1c334d inset, 0 1px 2px rgba(0,0,0,0.3); }
+  #comments li.comment[data-pending="1"] { opacity: 0.85; }
+
+  /* 대댓글 */
+  #comments ul.replies { position: relative; list-style:none; margin:6px 0 0 24px; padding-left:0; }
+  #comments ul.replies > li.comment { margin: 6px 0; background:#0e1015; border-color:#222632; }
+  #comments li.comment.reply .comment-avatar { width:22px; height:22px; flex:0 0 22px; }
+  #comments li.comment.reply > article > header { gap:5px; }
+  #comments .reply-btn { margin-left:auto; font-size:.85em; color:#93c5fd; background:transparent; border:1px solid transparent; padding:4px 8px; border-radius:6px; cursor:pointer; }
+  #comments .reply-btn:hover { background:#0b0d12; border-color:#2b3240; }
+
+  /* 연결 가이드라인(선택) */
+  #comments li.comment.reply { position: relative; }
+  #comments li.comment.reply::before {
+    content: ""; position:absolute; left: -14px; top: 14px; width: 10px; height: 0; border-top: 1px solid #2b3240;
+  }
+  #comments ul.replies::before {
+    content:""; position:absolute; margin-left:-12px; width:0; border-left:1px solid #2b3240; top:0; bottom:0;
+  }
+</style>
+
+<!-- Google Identity Services -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<script>
+(function(){
+  const API_BASE = "https://wandering-cake-347a.raphaelshine.workers.dev";
+  const postId = "{{ page.id | slugify }}";
+  const RETURN_TO = "{{ page.url | absolute_url }}";
+  const GOOGLE_CLIENT_ID = "여기에_구글_Web_Client_ID";
+
+  // DOM
+  const $list = document.getElementById('comment-list');
+  const $text = document.getElementById('comment_input');
+  const $btn  = document.getElementById('comment-registration');
+  const $login = document.getElementById('login-panel');
+  const $me = document.getElementById('me-panel');
+  const $meName = document.getElementById('me-name');
+  const $meAvatar = document.getElementById('me-avatar');
+  const $meProvider = document.getElementById('me-provider');
+  const $logout = document.getElementById('logout-btn');
+  const $githubLink = document.getElementById('github-login-link');
+
+  // ===== 모바일용 세션 저장/헤더 주입 =====
+  function getSess() { try { return sessionStorage.getItem('sess') || ''; } catch { return ''; } }
+  function setSess(v) { try { sessionStorage.setItem('sess', v || ''); } catch {} }
+  (function pickupHashSess(){
+    if (location.hash && location.hash.includes('sess=')) {
+      const p = new URLSearchParams(location.hash.slice(1));
+      const s = p.get('sess');
+      if (s) { setSess(s); history.replaceState(null, '', location.pathname + location.search); }
     }
-    #comments .divider {
-      height: 1px; background: #242833; margin: 12px 0;
-    }
-  
-    /* OAuth row */
-    #comments .oauth-row {
-      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-    }
-    /* 통일 프레임: GitHub 버튼 */
-    #comments .oauth-btn.github {
-      display: inline-flex; align-items: center; justify-content: center;
-      height: 40px; padding: 0 14px;
-      background: #0e1015; color: #f8fafc;
-      border: 1px solid #2b3240; border-radius: 8px;
-      text-decoration: none; font-weight: 600; letter-spacing: .1px;
-    }
-    #comments .oauth-btn.github:hover { background: #111421; border-color: #344054; }
-    #comments .oauth-btn-wrap { display: inline-block; }
-  
-    /* 로그인 후 표시 */
-    #comments #me-panel { display: flex; align-items: center; gap: 10px; }
-    #comments #me-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-    #comments .provider-badge {
-      font-size: .75em; line-height:1; padding: 4px 8px; border-radius: 999px;
-      background: #1c334d; color: #c7e1ff; border: 1px solid #2b4a6e;
-    }
-  
-    /* Composer */
-    #comments #composer textarea {
-      width: 100%; min-height: 110px;
-      background: #0b0d12; color: #e5e7eb;
-      border: 1px solid #242833; border-radius: 8px;
-      padding: 10px 12px; outline: none;
-    }
-    #comments #composer textarea::placeholder { color: #6b7280; }
-    #comments .row-end { display: flex; justify-content: flex-end; margin-top: 10px; }
-    #comments .btn {
-      height: 36px; padding: 0 14px; border-radius: 8px;
-      border: 1px solid #2b3240; background: #0e1015; color: #e5e7eb; cursor: pointer;
-    }
-    #comments .btn:hover { background: #111421; border-color: #344054; }
-    #comments .btn.primary {
-      background: #1e293b; border-color: #334155; color: #e2e8f0;
-    }
-    #comments .btn.primary:hover { background: #243041; }
-  
-    /* 댓글 카드 (항상 다크) */
-    #comments #comment-list { list-style: none; padding-left: 0; margin: 0; }
-    #comments li.comment {
-      background: #111318;
-      border: 1px solid #242833;
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin: 10px 0;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    }
-    #comments li.comment > article > header { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    #comments .comment-author { font-weight:700; color:#f3f4f6; }
-    #comments .comment-time { color:#9ca3af; font-size:0.9em; }
-    #comments .comment-avatar { width:28px; height:28px; border-radius:50%; object-fit:cover; margin-right:8px; flex:0 0 28px; }
-    #comments li.comment > article > .content { margin-top: 4px; line-height: 1.5; color:#e5e7eb; }
-  
-    /* recent/pending */
-    #comments li.comment[data-recent="1"] {
-      box-shadow: 0 0 0 2px #1c334d inset, 0 1px 2px rgba(0,0,0,0.3);
-    }
-    #comments li.comment[data-pending="1"] { opacity: 0.85; }
-  
-    /* 대댓글 */
-    #comments ul.replies { position: relative; list-style:none; margin:6px 0 0 24px; padding-left:0; }
-    #comments ul.replies > li.comment { margin: 6px 0; background:#0e1015; border-color:#222632; }
-    #comments li.comment.reply .comment-avatar { width:22px; height:22px; flex:0 0 22px; }
-    #comments li.comment.reply > article > header { gap:5px; }
-    #comments .reply-btn { margin-left:auto; font-size:.85em; color:#93c5fd; background:transparent; border:1px solid transparent; padding:4px 8px; border-radius:6px; cursor:pointer; }
-    #comments .reply-btn:hover { background:#0b0d12; border-color:#2b3240; }
-  
-    /* 연결 가이드라인(선택) */
-    #comments li.comment.reply { position: relative; }
-    #comments li.comment.reply::before {
-      content: ""; position:absolute; left: -14px; top: 14px; width: 10px; height: 0;
-      border-top: 1px solid #2b3240;
-    }
-    #comments ul.replies::before {
-      content:""; position:absolute; margin-left:-12px; width:0; border-left:1px solid #2b3240; top:0; bottom:0;
-    }
-  
-    /* 배지(공급자) */
-    #comments .provider-badge.github { background:#1d2230; color:#e5e7eb; border-color:#2b3240; }
-    #comments .provider-badge.google { background:#1c334d; color:#c7e1ff; border-color:#2b4a6e; }
-  </style>
-  
-  <!-- Google Identity Services -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  
-  <script>
-  (function(){
-    const API_BASE = "https://wandering-cake-347a.raphaelshine.workers.dev";
-    const postId = "{{ page.id | slugify }}";
-    const RETURN_TO = "{{ page.url | absolute_url }}";
-    const GOOGLE_CLIENT_ID = "449329975089-rcthfthhp69fpft6o0lcuqtibc0e4is0.apps.googleusercontent.com";
-  
-    // DOM
-    const $list = document.getElementById('comment-list');
-    const $text = document.getElementById('comment_input');
-    const $btn  = document.getElementById('comment-registration');
-    const $login = document.getElementById('login-panel');
-    const $me = document.getElementById('me-panel');
-    const $meName = document.getElementById('me-name');
-    const $meAvatar = document.getElementById('me-avatar');
-    const $meProvider = document.getElementById('me-provider');
-    const $logout = document.getElementById('logout-btn');
-    const $githubLink = document.getElementById('github-login-link');
-  
-    let currentUser = null; // { provider, id, name, login?, picture?, avatar_url? }
-    const pendingItems = new Map();
-    let activeReplyForm = null;
-  
-    // GitHub 로그인 링크
-    if ($githubLink) $githubLink.setAttribute('href', API_BASE + "/auth/login?return_to=" + encodeURIComponent(RETURN_TO));
-  
-    // ---------- Google Sign-In ----------
-    window.handleGoogleCredentialResponse = async function (response) {
-      try {
-        const id_token = response && response.credential;
-        if (!id_token) throw new Error('Google 인증 토큰 수신 실패');
-        const res = await fetch(API_BASE + '/auth/google', {
-          method:'POST', credentials:'include',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ id_token: id_token })
-        });
-        const j = await res.json().catch(function(){ return {}; });
-        if (!res.ok || j.error) throw new Error(j.error || '로그인 실패');
-        currentUser = j.user || null;
-        updateAuthUI();
-      } catch (e) {
-        console.error(e);
-        alert(e && e.message ? e.message : '로그인 실패');
-      }
-    };
-    function initGIS() {
-      if (!window.google || !google.accounts || !google.accounts.id) return;
-      // 다크 테마에 맞춰 filled_black + 동일 프레임 감각
-      google.accounts.id.initialize({
-        client_id: GOOGLE_CLIENT_ID,
-        callback: window.handleGoogleCredentialResponse,
-        auto_select: false,
-        ux_mode: 'popup'
+  })();
+  function withAuthHeaders(headers) {
+    const h = Object.assign({}, headers || {});
+    const s = getSess();
+    if (s) h['Authorization'] = 'Session ' + s;
+    return h;
+  }
+
+  // 상태
+  let currentUser = null; // { provider, id, name, login?, picture?, avatar_url? }
+  const pendingItems = new Map();
+  let activeReplyForm = null;
+
+  // GitHub 로그인 링크
+  if ($githubLink) $githubLink.setAttribute('href', API_BASE + "/auth/login?return_to=" + encodeURIComponent(RETURN_TO));
+
+  // ---------- Google Sign-In ----------
+  window.handleGoogleCredentialResponse = async function (response) {
+    try {
+      const id_token = response && response.credential;
+      if (!id_token) throw new Error('Google 인증 토큰 수신 실패');
+      const res = await fetch(API_BASE + '/auth/google', {
+        method:'POST', credentials:'include',
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
+        body: JSON.stringify({ id_token: id_token })
       });
-      const btn = document.getElementById('google-btn');
-      if (btn) {
-        google.accounts.id.renderButton(btn, {
-          type:'standard',
-          theme:'filled_black',   // ⬅️ 다크 버튼
-          size:'large',
-          shape:'rectangular',
-          text:'signin_with',
-          logo_alignment:'left',
-          width: 240              // ⬅️ GitHub 버튼과 폭 맞춤
-        });
-      }
+      const j = await res.json().catch(function(){ return {}; });
+      if (!res.ok || j.error) throw new Error(j.error || '로그인 실패');
+      if (j.session) setSess(j.session);            // ⬅️ 모바일 세션 저장
+      currentUser = j.user || null;
+      updateAuthUI();
+    } catch (e) {
+      console.error(e);
+      alert(e && e.message ? e.message : '로그인 실패');
     }
-    window.addEventListener('load', function(){
-      if (window.google && google.accounts && google.accounts.id) initGIS();
-      else {
-        const t = setInterval(function(){
-          if (window.google && google.accounts && google.accounts.id) { clearInterval(t); initGIS(); }
-        }, 100);
-        setTimeout(function(){ clearInterval(t); }, 10000);
+  };
+  function initGIS() {
+    if (!window.google || !google.accounts || !google.accounts.id) return;
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: window.handleGoogleCredentialResponse,
+      auto_select: false,
+      ux_mode: 'popup'
+    });
+    const btn = document.getElementById('google-btn');
+    if (btn) {
+      google.accounts.id.renderButton(btn, {
+        type:'standard', theme:'filled_black', size:'large',
+        shape:'rectangular', text:'signin_with', logo_alignment:'left', width: 240
+      });
+    }
+  }
+  window.addEventListener('load', function(){
+    if (window.google && google.accounts && google.accounts.id) initGIS();
+    else {
+      const t = setInterval(function(){
+        if (window.google && google.accounts && google.accounts.id) { clearInterval(t); initGIS(); }
+      }, 100);
+      setTimeout(function(){ clearInterval(t); }, 10000);
+    }
+  });
+
+  // ---------- 표시 유틸 ----------
+  function escapeHTML(s){
+    s = s || '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+  function stripSignedMeta(raw){
+    raw = raw || '';
+    try {
+      var re1 = new RegExp('<!--\\s*signed_by:\\s*(github|google)\\s*:[^>]*-->','gi');
+      var re2 = new RegExp('<!--\\s*parent:\\s*\\d+\\s*-->','gi');
+      return String(raw).replace(re1,'').replace(re2,'');
+    } catch(e) { return String(raw); }
+  }
+  function renderBodyHTML(raw) {
+    var s = stripSignedMeta(raw || '');
+    s = s.replace(/\s+$/g, '');      // 오른쪽 공백/개행 제거
+    s = s.replace(/\n{2,}/g, '\n');  // 연속 개행 압축
+    s = escapeHTML(s).replace(/\n/g, '<br>');
+    s = s.replace(/(?:<br>\s*)+$/i, ''); // 끝의 <br> 더미 제거
+    return s;
+  }
+  function providerBadgeHTML(provider){
+    if (provider==='github') return '<span class="provider-badge github">GitHub</span>';
+    if (provider==='google') return '<span class="provider-badge google">Google</span>';
+    return '';
+  }
+
+  // 댓글 LI 생성
+  function buildCommentLI(item, isReply){
+    var id = item.id, title=item.title, body=item.body, created_at=item.created_at, pending=item.pending, recent=item.recent, author=item.author, number=item.number;
+    var li = document.createElement('li'); li.className='comment' + (isReply?' reply':''); li.dataset.commentId = id || ''; li.dataset.issueNumber = number || '';
+    if (pending) li.dataset.pending='1'; if (recent) li.dataset.recent='1';
+
+    var when = created_at ? new Date(created_at).toLocaleString() : '';
+    var displayName = escapeHTML(title || '');
+    var provider = author && author.provider ? String(author.provider) : null;
+    var badge = providerBadgeHTML(provider);
+    var avatarHTML = author && author.avatar_url ? '<img class="comment-avatar" src="'+author.avatar_url+'" alt="">' : '';
+    var safeBody = renderBodyHTML(body || '');
+
+    var replyBtnHTML = (!isReply) ? '<button class="reply-btn" data-role="reply">답글</button>' : '';
+
+    li.innerHTML = ''
+      + '<article>'
+      +   '<header>'
+      +     avatarHTML
+      +     '<strong class="comment-author">' + displayName + '</strong>'
+      +     badge
+      +     '<small class="comment-time">' + when + '</small>'
+      +     (pending ? '<em class="comment-status"> (등록 중)</em>' : '')
+      +     replyBtnHTML
+      +   '</header>'
+      +   '<div class="content">' + safeBody + '</div>'
+      + '</article>';
+
+    if (!isReply) {
+      var ul = document.createElement('ul'); ul.className = 'replies';
+      li.appendChild(ul);
+    }
+    return li;
+  }
+
+  // 그룹 렌더
+  function renderGrouped(items){
+    items = (items||[]).slice().sort(function(a,b){ return new Date(a.created_at) - new Date(b.created_at); });
+    var parents = items.filter(function(it){ return !it.parent_number; });
+    var children = items.filter(function(it){ return !!it.parent_number; });
+    var byParent = {};
+    children.forEach(function(it){ var p=String(it.parent_number); (byParent[p]||(byParent[p]=[])).push(it); });
+
+    var keepNodes = Array.from($list.querySelectorAll('li.comment[data-pending="1"], li.comment[data-recent="1"]'));
+    $list.textContent = '';
+
+    parents.forEach(function(p){
+      var li = buildCommentLI(p, false);
+      $list.appendChild(li);
+      var ulReplies = li.querySelector('ul.replies');
+      var childs = (byParent[String(p.number)]||[]).sort(function(a,b){ return new Date(a.created_at) - new Date(b.created_at); });
+      childs.forEach(function(c){
+        var cli = buildCommentLI(c, true);
+        ulReplies.appendChild(cli);
+      });
+    });
+
+    keepNodes.forEach(function(node){
+      var id = node.dataset.commentId || '';
+      var exists = $list.querySelector('li.comment[data-comment-id="'+id+'"]');
+      if (!exists) {
+        var parentNum = node.dataset.parentNumber;
+        if (parentNum) {
+          var anchor = $list.querySelector('li.comment:not(.reply)[data-issue-number="'+parentNum+'"] ul.replies');
+          if (anchor) anchor.appendChild(node); else $list.appendChild(node);
+        } else {
+          $list.appendChild(node);
+        }
       }
     });
-  
-    // ---------- 표시 유틸 ----------
-    function escapeHTML(s){
-      s = s || '';
-      return String(s)
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  async function load(){
+    var res = await fetch(API_BASE + '/api/comments?postId=' + encodeURIComponent(postId) + '&ts=' + Date.now(), {
+      cache:'no-store', credentials:'include', headers: withAuthHeaders()
+    });
+    var j = await res.json();
+    renderGrouped(j.items || []);
+    return j.items || [];
+  }
+
+  function renderAppendToRoot(item){
+    var li = buildCommentLI(item, false);
+    $list.appendChild(li);
+    li.scrollIntoView({ block:'end' });
+  }
+  function renderAppendToParent(parentNumber, item){
+    var ul = $list.querySelector('li.comment:not(.reply)[data-issue-number="'+parentNumber+'"] ul.replies');
+    var li = buildCommentLI(item, true);
+    if (ul) ul.appendChild(li); else $list.appendChild(li);
+    li.scrollIntoView({ block:'end' });
+  }
+  function markRecentForAWhile(li, ms){ ms = ms||10000; li.dataset.recent='1'; setTimeout(function(){ li.removeAttribute('data-recent'); }, ms); }
+  function replacePendingWithReal(tempId, realItem){
+    var li = $list.querySelector('li.comment[data-comment-id="' + tempId + '"]');
+    if (li) {
+      var isReply = !!realItem.parent_number;
+      var newLi = buildCommentLI(Object.assign({}, realItem, { recent:true }), isReply);
+      li.parentNode.replaceChild(newLi, li);
+      newLi.scrollIntoView({ block:'end' });
+      markRecentForAWhile(newLi);
     }
-    function stripSignedMeta(raw){
-      raw = raw || '';
-      try {
-        var re1 = new RegExp('<!--\\s*signed_by:\\s*(github|google)\\s*:[^>]*-->','gi');
-        var re2 = new RegExp('<!--\\s*parent:\\s*\\d+\\s*-->','gi');
-        return String(raw).replace(re1,'').replace(re2,'');
-      } catch(e) { return String(raw); }
+    pendingItems.delete(tempId);
+  }
+  async function refreshUntilAppears(realId, timeoutMs, intervalMs){
+    timeoutMs = timeoutMs||10000; intervalMs = intervalMs||1000;
+    var deadline = Date.now()+timeoutMs;
+    while (Date.now() < deadline) {
+      var items = await load();
+      if (items.some(function(it){ return String(it.id) === String(realId); })) return true;
+      await new Promise(function(r){ setTimeout(r, intervalMs); });
     }
-    function renderBodyHTML(raw) {
-      var s = stripSignedMeta(raw || '');
-      s = s.replace(/\s+$/g, '');  // 오른쪽 공백/개행 제거
-      s = s.replace(/\n{2,}/g, '\n'); // 연속 개행 압축
-      s = escapeHTML(s).replace(/\n/g, '<br>');
-      s = s.replace(/(?:<br>\s*)+$/i, ''); // 끝의 <br> 더미 제거
-      return s;
-    }
-    function providerBadgeHTML(provider){
-      if (provider==='github') return '<span class="provider-badge github">GitHub</span>';
-      if (provider==='google') return '<span class="provider-badge google">Google</span>';
-      return '';
-    }
-  
-    // 댓글 LI 생성
-    function buildCommentLI(item, isReply){
-      var id = item.id, title=item.title, body=item.body, created_at=item.created_at, pending=item.pending, recent=item.recent, author=item.author, number=item.number;
-      var li = document.createElement('li'); li.className='comment' + (isReply?' reply':''); li.dataset.commentId = id || ''; li.dataset.issueNumber = number || '';
-      if (pending) li.dataset.pending='1'; if (recent) li.dataset.recent='1';
-  
-      var when = created_at ? new Date(created_at).toLocaleString() : '';
-      var displayName = escapeHTML(title || '');
-      var provider = author && author.provider ? String(author.provider) : null;
-      var badge = providerBadgeHTML(provider);
-      var avatarHTML = author && author.avatar_url ? '<img class="comment-avatar" src="'+author.avatar_url+'" alt="">' : '';
-      var safeBody = renderBodyHTML(body || '');
-  
-      var replyBtnHTML = (!isReply) ? '<button class="reply-btn" data-role="reply">답글</button>' : '';
-  
-      li.innerHTML = ''
-        + '<article>'
-        +   '<header>'
-        +     avatarHTML
-        +     '<strong class="comment-author">' + displayName + '</strong>'
-        +     badge
-        +     '<small class="comment-time">' + when + '</small>'
-        +     (pending ? '<em class="comment-status"> (등록 중)</em>' : '')
-        +     replyBtnHTML
-        +   '</header>'
-        +   '<div class="content">' + safeBody + '</div>'
-        + '</article>';
-  
-      if (!isReply) {
-        var ul = document.createElement('ul'); ul.className = 'replies';
-        li.appendChild(ul);
-      }
-      return li;
-    }
-  
-    // 그룹 렌더
-    function renderGrouped(items){
-      items = (items||[]).slice().sort(function(a,b){ return new Date(a.created_at) - new Date(b.created_at); });
-      var parents = items.filter(function(it){ return !it.parent_number; });
-      var children = items.filter(function(it){ return !!it.parent_number; });
-      var byParent = {};
-      children.forEach(function(it){ var p=String(it.parent_number); (byParent[p]||(byParent[p]=[])).push(it); });
-  
-      var keepNodes = Array.from($list.querySelectorAll('li.comment[data-pending="1"], li.comment[data-recent="1"]'));
-      $list.textContent = '';
-  
-      parents.forEach(function(p){
-        var li = buildCommentLI(p, false);
-        $list.appendChild(li);
-        var ulReplies = li.querySelector('ul.replies');
-        var childs = (byParent[String(p.number)]||[]).sort(function(a,b){ return new Date(a.created_at) - new Date(b.created_at); });
-        childs.forEach(function(c){
-          var cli = buildCommentLI(c, true);
-          ulReplies.appendChild(cli);
-        });
+    return false;
+  }
+
+  // 최상위 제출
+  async function submit(){
+    var body = ($text.value||'').trim();
+    if (!currentUser) { alert('로그인이 필요합니다. 먼저 로그인하세요.'); return; }
+    if (!body) { alert('내용을 입력해주세요!'); return; }
+
+    var tempId = 'temp-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    var optimisticItem = {
+      id: tempId, number: tempId, title: currentUser.name || currentUser.login || 'User',
+      body: body, created_at: new Date().toISOString(), pending:true,
+      author: { provider: currentUser.provider, avatar_url: currentUser.picture || currentUser.avatar_url || '' }
+    };
+    pendingItems.set(tempId, optimisticItem);
+    renderAppendToRoot(optimisticItem);
+
+    $btn.disabled=true; $btn.textContent='등록 중...';
+    try {
+      var res = await fetch(API_BASE + '/api/comments', {
+        method:'POST', credentials:'include',
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
+        body: JSON.stringify({ body: body, postId: postId })
       });
-  
-      keepNodes.forEach(function(node){
-        var id = node.dataset.commentId || '';
-        var exists = $list.querySelector('li.comment[data-comment-id="'+id+'"]');
-        if (!exists) {
-          var parentNum = node.dataset.parentNumber;
-          if (parentNum) {
-            var anchor = $list.querySelector('li.comment:not(.reply)[data-issue-number="'+parentNum+'"] ul.replies');
-            if (anchor) anchor.appendChild(node); else $list.appendChild(node);
-          } else {
-            $list.appendChild(node);
-          }
-        }
-      });
-    }
-  
-    async function load(){
-      var res = await fetch(API_BASE + '/api/comments?postId=' + encodeURIComponent(postId) + '&ts=' + Date.now(), { cache:'no-store', credentials:'include' });
-      var j = await res.json();
-      renderGrouped(j.items || []);
-      return j.items || [];
-    }
-  
-    function renderAppendToRoot(item){
-      var li = buildCommentLI(item, false);
-      $list.appendChild(li);
-      li.scrollIntoView({ block:'end' });
-    }
-    function renderAppendToParent(parentNumber, item){
-      var ul = $list.querySelector('li.comment:not(.reply)[data-issue-number="'+parentNumber+'"] ul.replies');
-      var li = buildCommentLI(item, true);
-      if (ul) ul.appendChild(li); else $list.appendChild(li);
-      li.scrollIntoView({ block:'end' });
-    }
-    function markRecentForAWhile(li, ms){ ms = ms||10000; li.dataset.recent='1'; setTimeout(function(){ li.removeAttribute('data-recent'); }, ms); }
-    function replacePendingWithReal(tempId, realItem){
-      var li = $list.querySelector('li.comment[data-comment-id="' + tempId + '"]');
-      if (li) {
-        var isReply = !!realItem.parent_number;
-        var newLi = buildCommentLI(Object.assign({}, realItem, { recent:true }), isReply);
-        li.parentNode.replaceChild(newLi, li);
-        newLi.scrollIntoView({ block:'end' });
-        markRecentForAWhile(newLi);
+      var data = await res.json();
+      if (!res.ok || data.error) {
+        var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]');
+        if (li) li.remove();
+        pendingItems.delete(tempId);
+        throw new Error(data.error||'등록 실패');
       }
-      pendingItems.delete(tempId);
-    }
-    async function refreshUntilAppears(realId, timeoutMs, intervalMs){
-      timeoutMs = timeoutMs||10000; intervalMs = intervalMs||1000;
-      var deadline = Date.now()+timeoutMs;
-      while (Date.now() < deadline) {
-        var items = await load();
-        if (items.some(function(it){ return String(it.id) === String(realId); })) return true;
-        await new Promise(function(r){ setTimeout(r, intervalMs); });
-      }
-      return false;
-    }
-  
-    // 최상위 제출
-    async function submit(){
-      var body = ($text.value||'').trim();
-      if (!currentUser) { alert('로그인이 필요합니다. 먼저 로그인하세요.'); return; }
-      if (!body) { alert('내용을 입력해주세요!'); return; }
-  
-      var tempId = 'temp-' + Date.now() + '-' + Math.random().toString(36).slice(2);
-      var optimisticItem = {
-        id: tempId, number: tempId, title: currentUser.name || currentUser.login || 'User',
-        body: body, created_at: new Date().toISOString(), pending:true,
-        author: { provider: currentUser.provider, avatar_url: currentUser.picture || currentUser.avatar_url || '' }
-      };
-      pendingItems.set(tempId, optimisticItem);
-      renderAppendToRoot(optimisticItem);
-  
-      $btn.disabled=true; $btn.textContent='등록 중...';
-      try {
-        var res = await fetch(API_BASE + '/api/comments', {
-          method:'POST', credentials:'include',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ body: body, postId: postId })
-        });
-        var data = await res.json();
-        if (!res.ok || data.error) {
-          var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]');
-          if (li) li.remove();
-          pendingItems.delete(tempId);
-          throw new Error(data.error||'등록 실패');
-        }
-        $text.value='';
-        if (data.item) {
-          replacePendingWithReal(tempId, data.item);
-          refreshUntilAppears(data.item.id).finally(function(){});
-        } else {
-          pendingItems.delete(tempId);
-          await load();
-        }
-      } catch(e) {
-        console.error(e);
-        alert(e && e.message ? e.message : '등록 실패');
-      } finally {
-        $btn.disabled=false; $btn.textContent='등록';
-      }
-    }
-  
-    // 대댓글 폼/제출
-    function closeReplyForm(){
-      if (!activeReplyForm) return;
-      activeReplyForm.$wrap.remove(); activeReplyForm = null;
-    }
-    function showReplyForm(parentNumber, anchorLi){
-      closeReplyForm();
-      var wrap = document.createElement('div');
-      wrap.className = 'inline-reply';
-      wrap.innerHTML = ''
-        + '<textarea class="reply-text" placeholder="답글 내용을 입력하세요" maxlength="2000"></textarea>'
-        + '<div class="row-end" style="margin-top:6px;">'
-        + '  <button class="btn primary reply-submit">답글 등록</button>'
-        + '  <button class="btn subtle reply-cancel" style="margin-left:6px;">취소</button>'
-        + '</div>';
-      anchorLi.appendChild(wrap);
-      activeReplyForm = { parentNumber: parentNumber, $wrap: wrap };
-  
-      wrap.querySelector('.reply-cancel').addEventListener('click', function(){ closeReplyForm(); });
-      wrap.querySelector('.reply-submit').addEventListener('click', function(){ submitReply(parentNumber, wrap); });
-    }
-    async function submitReply(parentNumber, wrap){
-      if (!currentUser) { alert('로그인이 필요합니다. 먼저 로그인하세요.'); return; }
-      var $rt = wrap.querySelector('.reply-text');
-      var body = ($rt.value||'').trim();
-      if (!body) { alert('내용을 입력해주세요!'); return; }
-  
-      var tempId = 'temp-reply-' + Date.now() + '-' + Math.random().toString(36).slice(2);
-      var optimisticItem = {
-        id: tempId, number: tempId, title: currentUser.name || currentUser.login || 'User',
-        body: body, created_at: new Date().toISOString(), pending:true, parent_number: parentNumber,
-        author: { provider: currentUser.provider, avatar_url: currentUser.picture || currentUser.avatar_url || '' }
-      };
-      pendingItems.set(tempId, optimisticItem);
-      renderAppendToParent(parentNumber, optimisticItem);
-  
-      try {
-        var res = await fetch(API_BASE + '/api/comments', {
-          method:'POST', credentials:'include',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ body: body, postId: postId, parent: parentNumber })
-        });
-        var data = await res.json();
-        if (!res.ok || data.error) {
-          var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]'); if (li) li.remove();
-          pendingItems.delete(tempId);
-          throw new Error(data.error || '답글 등록 실패');
-        }
+      $text.value='';
+      if (data.item) {
         replacePendingWithReal(tempId, data.item);
         refreshUntilAppears(data.item.id).finally(function(){});
-        closeReplyForm();
-      } catch(e) {
-        console.error(e);
-        alert(e && e.message ? e.message : '답글 등록 실패');
-      }
-    }
-  
-    // 이벤트 위임: 답글 버튼
-    $list.addEventListener('click', function (ev) {
-      var t = ev.target;
-      if (!(t instanceof Element)) return;
-      if (t.getAttribute && t.getAttribute('data-role') === 'reply') {
-        var li = t.closest('li.comment'); if (!li) return;
-        var n = li.getAttribute('data-issue-number');
-        var parentNumber = n ? Number(n) : 0;
-        if (!parentNumber) return;
-        showReplyForm(parentNumber, li);
-      }
-    });
-  
-    // 로그인 UI
-    function updateAuthUI(){
-      if (currentUser) {
-        $login.style.display='none'; $me.style.display='';
-        $meName.textContent = currentUser.name || currentUser.login || 'User';
-        $meProvider.textContent = currentUser.provider==='github' ? 'GitHub' : 'Google';
-        $meProvider.className = 'provider-badge ' + (currentUser.provider==='github' ? 'github' : 'google');
-        var av = currentUser.picture || currentUser.avatar_url;
-        if (av){ $meAvatar.src = av; $meAvatar.style.display=''; } else { $meAvatar.style.display='none'; }
       } else {
-        $login.style.display=''; $me.style.display='none';
-        $meName.textContent=''; $meAvatar.removeAttribute('src'); $meProvider.textContent=''; $meProvider.className='provider-badge';
+        pendingItems.delete(tempId);
+        await load();
       }
+    } catch(e) {
+      console.error(e);
+      alert(e && e.message ? e.message : '등록 실패');
+    } finally {
+      $btn.disabled=false; $btn.textContent='등록';
     }
-    async function fetchMe(){
-      try {
-        var res = await fetch(API_BASE + '/api/me?ts=' + Date.now(), { method:'GET', credentials:'include', cache:'no-store' });
-        var j = await res.json(); currentUser = j && j.user ? j.user : null;
-      } catch(e){ currentUser = null; } finally { updateAuthUI(); }
+  }
+
+  // 대댓글 폼/제출
+  function closeReplyForm(){
+    if (!activeReplyForm) return;
+    activeReplyForm.$wrap.remove(); activeReplyForm = null;
+  }
+  function showReplyForm(parentNumber, anchorLi){
+    closeReplyForm();
+    var wrap = document.createElement('div');
+    wrap.className = 'inline-reply';
+    wrap.innerHTML = ''
+      + '<textarea class="reply-text" placeholder="답글 내용을 입력하세요" maxlength="2000"></textarea>'
+      + '<div class="row-end" style="margin-top:6px;">'
+      + '  <button class="btn primary reply-submit">답글 등록</button>'
+      + '  <button class="btn subtle reply-cancel" style="margin-left:6px;">취소</button>'
+      + '</div>';
+    anchorLi.appendChild(wrap);
+    activeReplyForm = { parentNumber: parentNumber, $wrap: wrap };
+
+    wrap.querySelector('.reply-cancel').addEventListener('click', function(){ closeReplyForm(); });
+    wrap.querySelector('.reply-submit').addEventListener('click', function(){ submitReply(parentNumber, wrap); });
+  }
+  async function submitReply(parentNumber, wrap){
+    if (!currentUser) { alert('로그인이 필요합니다. 먼저 로그인하세요.'); return; }
+    var $rt = wrap.querySelector('.reply-text');
+    var body = ($rt.value||'').trim();
+    if (!body) { alert('내용을 입력해주세요!'); return; }
+
+    var tempId = 'temp-reply-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    var optimisticItem = {
+      id: tempId, number: tempId, title: currentUser.name || currentUser.login || 'User',
+      body: body, created_at: new Date().toISOString(), pending:true, parent_number: parentNumber,
+      author: { provider: currentUser.provider, avatar_url: currentUser.picture || currentUser.avatar_url || '' }
+    };
+    pendingItems.set(tempId, optimisticItem);
+    renderAppendToParent(parentNumber, optimisticItem);
+
+    try {
+      var res = await fetch(API_BASE + '/api/comments', {
+        method:'POST', credentials:'include',
+        headers: withAuthHeaders({ 'Content-Type':'application/json' }),
+        body: JSON.stringify({ body: body, postId: postId, parent: parentNumber })
+      });
+      var data = await res.json();
+      if (!res.ok || data.error) {
+        var li = $list.querySelector('li.comment[data-comment-id="'+tempId+'"]'); if (li) li.remove();
+        pendingItems.delete(tempId);
+        throw new Error(data.error || '답글 등록 실패');
+      }
+      replacePendingWithReal(tempId, data.item);
+      refreshUntilAppears(data.item.id).finally(function(){});
+      closeReplyForm();
+    } catch(e) {
+      console.error(e);
+      alert(e && e.message ? e.message : '답글 등록 실패');
     }
-  
-    // 바인딩
-    document.getElementById('comment-registration').addEventListener('click', submit);
-    document.getElementById('logout-btn').addEventListener('click', async function(){
-      try { await fetch(API_BASE + '/auth/logout', { method:'POST', credentials:'include', headers:{ 'Content-Type':'application/json' } }); } catch(e){}
-      currentUser = null; updateAuthUI();
-    });
-  
-    // 초기 로드
-    fetchMe().then(load);
-  })();
-  </script>
-  <!-- end custom comments snippet -->
-  
+  }
+
+  // 이벤트 위임: 답글 버튼
+  $list.addEventListener('click', function (ev) {
+    var t = ev.target;
+    if (!(t instanceof Element)) return;
+    if (t.getAttribute && t.getAttribute('data-role') === 'reply') {
+      var li = t.closest('li.comment'); if (!li) return;
+      var n = li.getAttribute('data-issue-number');
+      var parentNumber = n ? Number(n) : 0;
+      if (!parentNumber) return;
+      showReplyForm(parentNumber, li);
+    }
+  });
+
+  // 로그인 UI
+  function updateAuthUI(){
+    if (currentUser) {
+      $login.style.display='none'; $me.style.display='';
+      $meName.textContent = currentUser.name || currentUser.login || 'User';
+      $meProvider.textContent = currentUser.provider==='github' ? 'GitHub' : 'Google';
+      $meProvider.className = 'provider-badge ' + (currentUser.provider==='github' ? 'github' : 'google');
+      var av = currentUser.picture || currentUser.avatar_url;
+      if (av){ $meAvatar.src = av; $meAvatar.style.display=''; } else { $meAvatar.style.display='none'; }
+    } else {
+      $login.style.display=''; $me.style.display='none';
+      $meName.textContent=''; $meAvatar.removeAttribute('src'); $meProvider.textContent=''; $meProvider.className='provider-badge';
+    }
+  }
+  async function fetchMe(){
+    try {
+      var res = await fetch(API_BASE + '/api/me?ts=' + Date.now(), {
+        method:'GET', credentials:'include', cache:'no-store', headers: withAuthHeaders()
+      });
+      var j = await res.json(); currentUser = j && j.user ? j.user : null;
+    } catch(e){ currentUser = null; } finally { updateAuthUI(); }
+  }
+
+  // 바인딩
+  document.getElementById('comment-registration').addEventListener('click', submit);
+  document.getElementById('logout-btn').addEventListener('click', async function(){
+    try {
+      await fetch(API_BASE + '/auth/logout', {
+        method:'POST', credentials:'include', headers: withAuthHeaders({ 'Content-Type':'application/json' })
+      });
+    } catch(e){}
+    sessionStorage.removeItem('sess'); // 모바일 세션 정리
+    currentUser = null; updateAuthUI();
+  });
+
+  // 초기 로드
+  fetchMe().then(load);
+})();
+</script>
+<!-- end custom comments snippet -->
