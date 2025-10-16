@@ -20,7 +20,7 @@ date: 2025-10-08
 last_modified_at: 2025-10-14
 ---
 ## 시작하며
-⠀Markdown은 HTML을 쉽게 쓰기 위한 텍스트 양식입니다. HTML은 tag붙이고 attribute넣고 하는 수고로움이 많지만 Markdown은 이 중 상당수를 쓰기 쉬운 기호로 대체합니다. 전부는 대체하지 못하므로 글을 이 이상으로 자유롭게 쓰고 싶다면 HTML을 배워야 합니다. `.md`확장자를 사용하며, Markdown 파일에서도 HTML을 직접 쓸 수 있고 따라서 Liquid도 작동합니다. <span style='font-family:OngleipParkDahyeon'>Liquid는 우선순위도 커서 Markdown의 코드블럭으로 봉인할 수 없습니다. 그래서 Liquid 문법 설명할 때 힘들어요ㅠㅠ</span> 또, 해석 방법이 다양해서 조금 들쭉날쭉 할 수 있습니다.
+⠀Markdown은 HTML을 쉽게 쓰기 위한 텍스트 양식입니다. 지금 이 포스트를 포함하여, 블로그의 구체적인 모든 문서에 쓰입니다. HTML은 tag붙이고 attribute넣고 하는 수고로움이 많지만 Markdown은 이 중 상당수를 쓰기 쉬운 기호로 대체합니다. 전부는 대체하지 못하므로 글을 이 이상으로 자유롭게 쓰고 싶다면 HTML을 배워야 합니다. `.md`확장자를 사용하며, Markdown 파일에서도 HTML을 직접 쓸 수 있고 따라서 Liquid도 작동합니다. <span style='font-family:OngleipParkDahyeon'>Liquid는 우선순위도 커서 Markdown의 코드블럭으로 봉인할 수 없습니다. 그래서 Liquid 문법 설명할 때 힘들어요ㅠㅠ</span> 또, 해석 방법이 다양해서 조금 들쭉날쭉 할 수 있습니다.
 
 ⠀Kramdown은 Markdown의 상위호환으로, Markdown에 여러 기능이 더해집니다. 사실 정확히 이 포스트가 설명하는 것은 Kramdown 문법입니다. 근데 Markdown이란 이름이 너무 유명하니까 그냥 Markdown이라고 합시다. Jekyll은 Kramdown을 사용하기 때문에 우리는 그냥 Markdown이라고 부르면서 Kramdown을 쓰면 됩니다. <span style='font-family:OngleipParkDahyeon'>작명을 어떻게 했는지 바로 보이죠? 그냥 m a r k 뒤집어서 k r a m...</span>
 
@@ -179,12 +179,9 @@ CSS와 연결하려면 저리 복잡하게 나온 HTML도 확인합니다.
 - color나 font-family의 자세한 설정은 [CSS의 쓰임]() 포스트에서 확인하십시오.
 
 ## 마무리
-⠀Markdown 파일은 지금 이 포스트를 포함하여, 블로그의 구체적인 모든 문서에 쓰입니다. 
+⠀Markdown도 귀찮은 부분이 많아서 VSCode의 단축어 snippets를 사용하는 것도 좋습니다. 
 
-⠀Markdown도 귀찮은 부분이 많아서 [VSCode의 단축어 snippets]를 사용하는 것도 좋습니다. 
-
-[\<img>]:
-[VSCode의 단축어 snippets]: 
+[\<img>]:/blog/blog-13-uploading-Image/
 
 ***
 내가 공부한 포스트 중 좋은 곳!

@@ -1,8 +1,8 @@
 ---
-title: "[Blog]12. Jekyll의 CSS 활용, 파일 정리"
-excerpt: "블로그에서 원하는 글꼴(폰트) 설정, 글자 크기 설정, 부가적인 CSS 탑재 방법을 배운다. Jekyll에서 구체적인 CSS 파일들을 Minimal-Mistakes 기준으로 정리한다."
+title: "[Blog]17. Jekyll의 CSS 파일 정리"
+excerpt: "Jekyll에서 구체적인 CSS 파일들을 Minimal-Mistakes 기준으로 정리한다."
 
-sort_key : 12
+sort_key : 17
 categories:
   - Blog
 tags:
@@ -16,68 +16,14 @@ last_modified_at: 2025-10-14
 ---
 
 ## 시작하며
-⠀CSS를 이용하면 원하는 폰트를 설정하고 어떤 요소든 사이즈를 조절할 수 있습니다. 그 방법들을 알려드린 뒤에 파일들을 정리해 둘 테니 사전처럼 쓰시면 되겠습니다. CSS 파일들은 `assets/css/`에 있는 `main.scss`과 `_sass/`에 있는 세부 파일들이 있습니다.
+⠀사전처럼 쓰시면 되겠습니다. CSS 파일들은 `assets/css/`에 있는 `main.scss`과 `_sass/`에 있는 세부 파일들이 있습니다.
+
+⠀참고로 저는 Minimal-Mistakes를 fork해왔기 때문에 Minimal-Mistakes의 파일 기능과 그것을 어떻게 수정했는지를 중심으로 설명합니다. 이 템플릿을 쓰지 않았더라도 원하는 부분은 찾아서 가져가 쓰실 수 있습니다.
 
 ⠀CSS 문법에 대해 이해가 필요하다면 [초보용](/blog/blog-6-newbie-css/)과 [고수용](/blog/blog-9-hard-css)이 준비되어 있습니다. 몰라도 그냥 따라만 하면 됩니다.
-## 활용법
-### 폰트 설정하기
-⠀먼저 인터넷에서 웹 폰트를 url로 얻어 옵니다. 저는 [누누](https://noonnu.cc/index){:target='_blank' rel='noopener noreferrer'}에서 가져왔습니다.
 
-(웹폰트로 사용 사진)
-
-⠀웹폰트로 사용으로 복사해 텍스트를 [`assets/css/main.scss`](#mainscss)에 넣습니다.
-
-⠀[`minimal-mistakes/_variables.scss`](#minimal-mistakes_variablesscss)에서 `/* system typefaces */`를 찾아 각 font-family 값을 넣습니다. serif는 좀 진지해 보이는 폰트(획 끝이 돌출된 글꼴)고 sans-serif와 sans-serif-narrow는 둥근 폰트, monospace는 코딩용 폰트입니다. <span style='font-family:OngleipParkDahyeon'>저는 귀여운 글꼴 넣는 블로그를 보고 감명받아서 cutie라는 새 변수를 만들었습니다.</span> 저장하면 끝입니다.
-
-```scss
-/* system typefaces */
-$serif: 'BookkMyungjo' !default;
-$sans-serif: 'NanumSquareRound' !default;
-$sans-serif-narrow: 'NanumSquareRound' !default;
-$monospace: 'D2Coding' !default;
-$cutie: 'OngleipParkDahyeon' !default;
-```
-
-### 글자 크기 변경하기
-⠀저는 [파일을 하나](#_fontsizescss) 새로 만들었습니다. 가져가서 `_sass/` 밑에 넣으십시오. `.page__content`가 본문 글자 선택자이니 여기 달린 `set-font-size()`의 $size 값만 조절하면 본문 글자 크기가 변합니다. 다른 특정 요소를 대상으로 하고 싶다면 그 아래에서 또 해당 선택자 불러서 `set-font-size()` 붙여주면 됩니다. 저는 보이는 바와 같이 인라인 코드 크기도 수정했습니다.
-
-### 색상 변경하기
-⠀군말 없이 템플릿 그대로 쓸 수도 있겠지만, 바꾸고 싶은 색이 보인다면 `_sass/skins/`에서 여러분이 택한 skin의 파일로 가서 찾거나 `_sass/variables.scss`에서 찾으면 됩니다. `mix()`라는 걸 쓰기도 하는데, 어렵지 않습니다. 그냥 두 색을 몇 퍼센트 피율로 섞어 만들겠다는 겁니다.
-
-```scss
-$code-background-color: mix(#000, $background-color, 15%) !default; //원본
-
-$code-background-color: mix(#000, $background-color, 70%) !default; //수정
-```
-
-### 링크 텍스트 밑줄 없애기
-⠀원래 댓글 기능 만드는 게 막막해서 여기저기 찾다가 [이 블로그](https://devinlife.com/howto%20github%20pages/github-pages-settings/)에서 엄청 좋은 걸 새로 얻게 되었습니다. 원래 <u><a>이렇게</a></u> 되는 걸 <a>이렇게</a> 만들어 줄 수 있습니다. `_sass/minimal-mistakes/_base.scss`에서 이렇게 하면 됩니다.
-```scss
-/* links */
-
-a {
-  /* devinlife : a link 하이퍼링크 밑줄 없애기 */
-  text-decoration: none;
-
-  &:focus {
-    @extend %tab-focus;
-  }
-
-  &:visited {
-    color: $link-color-visited;
-  }
-
-  &:hover {
-    color: $link-color-hover;
-    outline: 0;
-  }
-}
-```
-
-## Jekyll 디렉토리의 파일들
-⠀참고로 저는 Minimal-Mistakes를 fork해왔기 때문에 Minimal-Mistakes의 파일 기능과 그것을 어떻게 수정했는지를 중심으로 설명합니다. 이 템플릿을 쓰지 않았더라도 원하는 부분은 찾아서 가져가 쓰실 수 있습니다.
-### `main.scss`
-⠀이 파일만이 front matter를 가지고 다른 파일들을 @import 합니다. 새 파일을 만들면 여기서 @import해야 합니다. Directory 구조는 `assets/css/main.scss`입니다.
+## `main.scss`
+⠀이 파일만이 front matter를 가집니다. front matter를 가져야 Jekyll이 처리하기 때문에 다른 파일들은 여기서 @import 해야 합니다. 새 파일을 만들면 여기서 @import해야 합니다. Directory 구조는 `assets/css/main.scss`입니다.
 
 ⠀저는 **폰트 설정**과 본문 너비 제한 제거, sidebar 너비 수정을 위해 수정했습니다. 정확히 어디를 고쳐야 할지 모르겠을 때, 여기에서 수정하면 override 됩니다.
 
@@ -127,7 +73,7 @@ $right-sidebar-width:        220px;  // x-large일 때 sidebar 너비
 
 </div></details>
 
-### `minimal-mistakes/_variables.scss`
+## `minimal-mistakes/_variables.scss`
 ⠀CSS 파일에서 쓰이는 변수들을 모은 파일입니다. 여기서 변수 쇼핑하거나 수정하면 됩니다. 밑에 둔 것들은 아주 중요한 것들. 이 외에도 여러 색상 변수들이 정의되어 있습니다.
 
 <details><div markdown="1">
@@ -173,7 +119,7 @@ $h-size-6: 1em !default; // ~16px
 
 </div></details>
 
-### `_fontsize.scss`
+## `_fontsize.scss`
 ⠀제가 직접 만들었습니다. 글씨 크기를 조절하는 파일입니다. 파일 경로는 `_sass/_fontsize.szss`입니다. `breakpoint()`는 화면 크기에 따라 폰트 사이즈를 바꾸는 역할을 합니다. 우선순위가 높아서 폰트 크기 바꾼다고 다른 곳에서 열심히 깨작거려봐도 무시당합니다. 이 아이를 써야 합니다.
 
 <details><div markdown="1">
@@ -214,7 +160,7 @@ code.language-plaintext.highlighter-rouge {
 
 </div></details>
 
-### `navigationhover.scss`
+## `navigationhover.scss`
 ⠀ChatGPT가 짠 코드입니다. 본 블로그처럼 상단 바에서 목록이 나오도록 하고 싶다면 가져가십시오. *HTML과 YAML도 같이 맞춰줘야 합니다.*
 
 <details><div markdown="1">

@@ -1,8 +1,8 @@
 ---
-title: "[Blog]10. Jekyll의 HTML 활용, 파일 정리"
-excerpt: "블로그에서 댓글 만들기, 검색엔진 연동, 파비콘(favicon) 붙이기 등을 배운다. Jekyll의 HTML 파일들(includes, layouts)의 사용 방법(포스트 이동버튼 카테고리 기준 수정 등)을 알아보고 Minimal-Mistakes를 기준으로 구체적으로 정리한다."
+title: "[Blog]15. Jekyll의 HTML 파일 정리"
+excerpt: "Jekyll의 HTML 파일들(includes, layouts)의 Minimal-Mistakes를 기준으로 구체적으로 정리하고 본 블로그에서 수정된 내용(포스트 이동버튼 카테고리 기준 수정 등)을 알아본다."
 
-sort_key : 10
+sort_key : 15
 categories:
   - Blog
 tags:
@@ -11,8 +11,8 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2025-10-10
-last_modified_at: 2025-10-14
+date: 2025-10-16
+last_modified_at: 2025-10-16
 
 gallery:
   - url:
@@ -35,60 +35,12 @@ gallery:
     alt: "사진 6"
 ---
 ## 시작하며
-⠀자, 드디어 HTML을 어떻게 수정할지, 구체적인 파일들의 역할과, 이 파일들을 어떻게 고쳤기에 본 블로그의 모양새가 되었는지 파해칠 때가 왔습니다. 두근두근 하도록 하십시오. HTML 문법에 대해 이해가 필요하다면 [초보용](/blog/blog-3-newbie-html/)과 [고수용](/blog/blog-7-hard-html-and-liquid/)이 준비되어 있습니다.
+⠀사전처럼 쓰시면 되겠습니다.
+
+⠀참고로 저는 Minimal-Mistakes를 fork해왔기 때문에 Minimal-Mistakes의 파일 기능과 그것을 어떻게 수정했는지를 중심으로 설명합니다. 이 템플릿을 쓰지 않았더라도 원하는 부분은 찾아서 가져가 쓰실 수 있습니다.
 
 ⠀블로그의 파일은 대부분이 HTML이라 이 포스트가 상당히 길어질 예정입니다. 알 필요 없는 부분은 넘어가겠습니다.
 
-## 활용법
-
-### 댓글 달기
-⠀자세한 건 [댓글 만드는 포스트](/blog/blog-14-creating-comment-system/)에서 확인하십시오.
-
-### 검색엔진 연동
-⠀검색엔진 연결할 때 `head.html`을 사용합니다. 자세한 건 후에 다루겠습니다.
-
-### 파비콘(favicon) 붙이기
-⠀Favicon(로고같은 거) 붙일 때도 사용합니다.
-
-⠀그냥 <https://realfavicongenerator.net/>에서 하라는 대로 하면 되는 줄 알았는데 안 되서 별짓을 다 했습니다.
-
-```html
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-<!-- iOS 홈 화면 이름(추가 경고 해결용) -->
-<meta name="apple-mobile-web-app-title" content="당신의 사이트명">
-
-<!-- Favicon (캐시버스터 포함) -->
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/willow-blog-favicon/favicon-32x32.png?v=2' | relative_url }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ '/willow-blog-favicon/favicon-16x16.png?v=2' | relative_url }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ '/willow-blog-favicon/favicon-96x96.png?v=2' | relative_url }}">
-<link rel="icon" type="image/svg+xml" href="{{ '/willow-blog-favicon/favicon.svg?v=2' | relative_url }}">
-<link rel="shortcut icon" href="{{ '/willow-blog-favicon/favicon.ico?v=2' | relative_url }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ '/willow-blog-favicon/apple-touch-icon.png?v=2' | relative_url }}">
-<link rel="manifest" href="{{ '/willow-blog-favicon/site.webmanifest?v=2' | relative_url }}">
-
-<!-- (선택) 사파리 핀 탭 -->
-<link rel="mask-icon" href="{{ '/willow-blog-favicon/safari-pinned-tab.svg?v=2' | relative_url }}" color="#5bbad5">
-```
-⠀사이트에서 주는 파일에 더해 16x16, 32x32까지 만들어서 저장하고, `site.webmanifest`파일에 밑에 보이는 바와 같이 front matter까지 붙였더니 됩니다. <span style='font-family:OngleipParkDahyeon'>빨간줄까지 뜨지만 귀찮으므로 그냥 이렇게 했습니다.</span>
-```json
----
----
-{
-  "name": "가려 꺾은 묏버들",
-  "short_name": "Willow Blog",
-  "start_url": "{{ '/' | relative_url }}",
-  "icons": [
-    { "src": "{{ '/willow-blog-favicon/web-app-manifest-192x192.png?v=2' | relative_url }}", "sizes": "192x192", "type": "image/png" },
-    { "src": "{{ '/willow-blog-favicon/web-app-manifest-512x512.png?v=2' | relative_url }}", "sizes": "512x512", "type": "image/png" }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
-}
-```
-
-## Jekyll 디렉토리의 파일들
-⠀참고로 저는 Minimal-Mistakes를 fork해왔기 때문에 Minimal-Mistakes의 파일 기능과 그것을 어떻게 수정했는지를 중심으로 설명합니다. 이 템플릿을 쓰지 않았더라도 원하는 부분은 찾아서 가져가 쓰실 수 있습니다.
 ## **1. `index.html`**
 ⠀[홈 페이지](/)입니다. HTML이라 Markdown 못 쓰니 Markdown 문서에서 작성 후, 개발자도구로 HTML 복붙하는 것도 방법입니다.
 
@@ -147,14 +99,14 @@ gallery:
 ### `figure`
 ⠀수정했습니다.
 
-⠀확장자는 없지만 HTML입니다. HTML의 \<figure>를 이용해 Markdown 문법 대신 이미지를 멋들어지게 뽑아줍니다. 왼편의 사진이 이 방식을 사용했습니다. 이 부분은 [다른 포스트]()에서 따로 자세히 설명하겠습니다.
+⠀확장자는 없지만 HTML입니다. HTML의 \<figure>를 이용해 Markdown 문법 대신 이미지를 멋들어지게 뽑아줍니다. 왼편의 사진이 이 방식을 사용했습니다. 이 부분은 [다른 포스트](/blog/blog-13-uploading-Image/)에서 따로 자세히 설명하겠습니다.
 
 ⠀원래 style을 임의 지정할 수 없는데, 이를 임의 지정할 수 있도록 바꿨습니다. 빨간줄이 뜨긴 하는데 작동은 합니다. 살짝 위험할지도 모르겠습니다.
 
 <br>
 
 ### `gallery`
-⠀확장자는 없지만 HTML입니다. HTML의 \<figure>를 이용해 이미지셋을 멋들어지게 뽑아줍니다. 이 부분은 [다른 포스트]()에서 따로 자세히 설명하겠습니다.
+⠀확장자는 없지만 HTML입니다. HTML의 \<figure>를 이용해 이미지셋을 멋들어지게 뽑아줍니다. 이 부분은 [다른 포스트](/blog/blog-13-uploading-Image/)에서 따로 자세히 설명하겠습니다.
 
 {% include gallery %}
 ### `masthead.html`
@@ -162,7 +114,7 @@ gallery:
 
 ⠀상단의 navigation바를 만드는 조각입니다. 소환 :
 {% include masthead.html %}
-⠀원래는 navigation바는 별 다른 것 없이 제목과 버튼만 있었는데, 이를 수정해 마우스 hover 시 하위목록을 보여주도록 만들었습니다. 저 html만으로는 숨어있다가 나오지 못하므로 [CSS]()를 사용해야 합니다. 이 수정이 제가 처음 뜯어고치려고 한 부분이라 아직 미숙해서 여기는 ChatGPT의 도움을 받았습니다. 
+⠀원래는 navigation바는 별 다른 것 없이 제목과 버튼만 있었는데, 이를 수정해 마우스 hover 시 하위목록을 보여주도록 만들었습니다. 저 html만으로는 숨어있다가 나오지 못하므로 [CSS](/blog/blog-12-how-to-use-css/#상단바-세부목록)를 사용해야 합니다. 이 수정이 제가 처음 뜯어고치려고 한 부분이라 아직 미숙해서 여기는 ChatGPT의 도움을 받았습니다. 
 ### `page__date.html`
 ⠀수정했습니다.
 
@@ -172,7 +124,7 @@ gallery:
 ### `page__hero.html`
 ⠀수정했습니다.
 
-⠀포스트 상단에 [제목 뒤쪽으로 이미지 까는](/blog/blog-11-yaml-file/#제목-뒤쪽에-이미지-띄우기) 조각입니다.
+⠀포스트 상단에 [제목 뒤쪽으로 이미지 까는](/blog/blog-11-how-to-use-yaml/#제목-뒤쪽에-이미지-띄우기) 조각입니다.
 
 ⠀`page__meta.html`를 include하던 걸 `page__date.html`로 바꾸고, [`single.html`](#singlehtml)에서 hero가 있을 때 `posts-taxonomy.html`를 띄우지 않는 걸 제대로 띄우도록 `single.html`도 고쳤습니다.
 ### `page__meta.html`
@@ -230,6 +182,3 @@ gallery:
 ⠀모든 포스트가 이 문서의 틀 위에 있습니다. `_config.yml`에서 설정되어 있는 `site.defaults.values.layout`이 single로 되어있기 때문입니다. ([작은 수정](#page__herohtml))
 ### `field.html`
 ⠀제가 새로 만들었습니다. 저는 카테고리를 한 번 더 묶고 싶었기 때문에 카테고리 위의 field를 정의하고 같은 field인 카테고리를 나열하는 layout을 만들었습니다.
-
-## 마무리
-⠀복잡하면 그냥 제 repository에서 복붙하시면 됩니다. 버그는 댓글이나 메일로 물어보시면 열심히 생각해 보겠습니다.

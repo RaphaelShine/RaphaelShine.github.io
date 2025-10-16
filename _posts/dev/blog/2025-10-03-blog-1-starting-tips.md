@@ -15,22 +15,8 @@ date: 2025-10-03
 last_modified_at: 2025-10-13
 ---
 
-## 시작하기에 앞서
-⠀이 Blog카테고리는 원래 오로지 초보를 위한 글로 썼습니다. 저는 블로그 완성하고 바로 다 까먹을 예정이라 이 글이 다시 필요할 때는 초보가 되었을 것이기 때문입니다.
-
-⠀우선, 필자는 프런트엔드에 일절 아는 바가 없는 중졸이었으며, 그냥 열심히 ChatGPT와 2주동안 씨름했을 뿐임을 알려드립니다. 그럼에도 여러분이 보고 계신 이 블로그 모든 것은 저 혼자 학업과 병행하면서도 템플릿과 인터넷 자료들을 가지고 GPT를 열심히 굴려서 만들어 낼 수 있었습니다. 프런트엔드는 이미 끝장난 게 맞는 것 같습니다. 여러분도 그냥 열심히 이 블로그만 보고 시도해 보시면 블로그 하나쯤은 몇시간 만에 마음대로 만드실 수 있을 겁니다.
-
-## Plans
-⠀아무것도 배우고 싶지 않아 plan : [Blog-날먹]()
-
-⠀필요한 것만 배우고 싶어 plan : [Blog-초보]()
-
-⠀내 마음대로 만들고 싶어 plan : [Blog 카테고리]()를 다 순서대로 읽으시면 됩니다.
-
 ## Github Pages란?
-⠀우선 이 글을 열심히 읽고 계신 분들은 아마도 블로그를 시작하고 싶은 마음을 한아름 안고 계신 분들일 겁니다.
-
-⠀블로그를 하려면 본인이 서버를 돌리거나 서버를 돌려주는 인터넷 서비스를 이용해야 합니다. 본인이 서버를 돌린다면 열심히 하는 만큼 다채롭고 자유로운 블로그를 만들 수 있겠지만, 인터넷 서비스를 이용하면 쉽고 편한 대신 정해진 템플릿을 벗어나는 데 어려움이 있거나 인터넷 서비스의 광고가 삽입됩니다.
+⠀블로그를 하려면 본인이 서버를 돌리거나 서버를 돌려주는 인터넷 서비스를 이용해야 합니다. 본인이 서버를 돌린다면 열심히 하는 만큼 다채롭고 자유로운 블로그를 만들 수 있겠지만, 인터넷 서비스를 이용하면 쉽고 편한 대신 정해진 템플릿을 벗어나는 데 어려움이 있거나 인터넷 서비스의 광고가 강제로 삽입됩니다.
 
 ⠀Github Pages는 Github에서 제공하는 인터넷 서비스입니다. 따라서 본인이 서버를 운영하는데 드는 부담이 없지만 다른 서비스들과 비교하여 차이가 있다면, Github에서는 <span style="color:yellow">**서버만**</span> 제공하기 때문에 <span style="color:yellow">**나머지는 스스로**</span> 코드를 올려줘야 합니다. 따라서 강제 광고도 없고 밑바닥부터 고칠 수 있습니다. 그렇기 때문에 Github Pages는 다른 서비스들에 비해 자유도가 굉장히 높습니다. 그게 제가 Github Pages를 택한 이유기도 합니다. 조금 수고하더라도 내가 밑바닥부터 다 뜯어 고칠 수 있길 바란다면 Github Pages를 선택하시면 됩니다.
 
@@ -53,9 +39,9 @@ last_modified_at: 2025-10-13
 
 ### 복붙하기
 
-⠀[깃허브](https://github.com/topics/jekyll-theme){:target='_blank' rel='noopener noreferrer'}에서 마음에 드는 템플릿을 찾습니다. 혹시 템플릿을 기반하여 스스로 만드는 것도 귀찮거나 어렵다면 [이 블로그를 복사]()하는 것도 방법입니다. 이 경우, 다 필요 없고 그냥 [Markdown 작성법]()과 [자잘한 팁]()만 읽으셔도 되겠습니다.
+⠀[깃허브](https://github.com/topics/jekyll-theme){:target='_blank' rel='noopener noreferrer'}에서 마음에 드는 템플릿을 찾습니다. 혹시 템플릿을 기반하여 스스로 만드는 것도 귀찮거나 어렵다면 [이 블로그를 복사](https://github.com/RaphaelShine/RaphaelShine.github.io){:target='_blank' rel='noopener noreferrer'}하는 것도 방법입니다. 이 경우, 다 필요 없고 그냥 [Markdown 작성법](/blog/blog-4-newbie-markdown/)과 [자잘한 팁](/tags/#blog-팁)만 읽으셔도 되겠습니다.
 
-⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분을 중심으로 설명할 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉토리 구조를 설명할 때는 들어맞지 않을 수 있습니다.
+⠀저는 [Minimal-Mistakes](https://github.com/mmistakes/minimal-mistakes){:target="_blank" rel="noopener noreferrer"}을 썼습니다. 앞으로 Minimal-Mistakes를 기준으로 설명할 계획입니다. 포스트 내용은 Jekyll의 공통적인 부분을 중심으로 설명할 테니 다른 템플릿으로 시작해도 큰 상관은 없지만 세부적인 디렉터리 구조를 설명할 때는 들어맞지 않을 수 있습니다.
 
 ![image](https://github.com/user-attachments/assets/7e294187-cc3b-4fef-8177-1b36b631c39a){: .align-center width="70%" height="70%"}
 
@@ -331,5 +317,5 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 
 |:---:|:---|  
 | [Hyeok-Jeong](https://velog.io/@jj770206/posts){:target="_blank" rel="noopener noreferrer"} | 여기서 별의별 블로그를 다 염탐했습니다. |  
-| [공부하는 식빵맘](https://ansohxxn.github.io/blog){:target="_blank" rel="noopener noreferrer"} | 위 블로그에서 찾은 곳인데, 상당히 깔끔해서 열심히 읽었습니다. 여기서 읽은 것들을 바로 적용하기에는 처음이라 잘 안됐지만 기본적인 개념들을 잡을 수 있었습니다. |  
+| [공부하는 식빵맘](https://ansohxxn.github.io/categories/blog){:target="_blank" rel="noopener noreferrer"} | 위 블로그에서 찾은 곳인데, 상당히 깔끔해서 열심히 읽었습니다. 여기서 읽은 것들을 바로 적용하기에는 처음이라 잘 안됐지만 기본적인 개념들을 잡을 수 있었습니다. |  
 | [SW Developer](https://devinlife.com/){:target="_blank" rel="noopener noreferrer"} | 여기를 읽을 때는 이미 위 블로그를 읽고 나서 ChatGPT와 단둘이 씨름하며 산전수전을 다 겪고 다 익숙해진 후이기에 사실 지금 필요한 정보를 얻은 건 아닙니다. 다만 검색엔진 등록이나 광고 등록 방법이 잘 돼있더군요. 나중에 이 부분 만들 때 읽으려고 갖다 두었습니다. |

@@ -6,7 +6,7 @@ sort_key : 13
 categories:
   - Blog
 tags:
-  - [Blog-구체적으로, Blog-초보]
+  - [Blog-팁, Blog-초보]
 
 toc: true
 toc_sticky: true

@@ -6,7 +6,7 @@ sort_key : 14
 categories:
   - Blog
 tags:
-  - [Blog-뼈대, Blog-날먹, Blog-초보]
+  - [Blog-뼈대]
 
 toc: true
 toc_sticky: true
@@ -16,7 +16,7 @@ last_modified_at: 2025-10-14
 ---
 
 ## 시작하며
-⠀댓글 기능을 만드는 건 스스로 코드를 만들어 하기에는 조금 복잡하기 때문에 보통은 댓글 기능을 제공해주는 플랫폼을 이용합니다. 쉽고 편한 방법을 원하신다면 [utterances 쓰는 법 알려주는 블로그](https://ansohxxn.github.io/blog/utterances/){:target='_blank' rel='noopener noreferrer'}나 [disqus 알려주는 블로그](https://devinlife.com/howto%20github%20pages/blog-disqus/){:target='_blank' rel='noopener noreferrer'}를 읽어보시면 되겠습니다. 날먹이나 초보 태그가 붙어 있는 건 여기까지 읽으라고 붙인 것이고, 다음 내용부터의 난이도는 매우어려움입니다.
+⠀댓글 기능을 만드는 건 스스로 코드를 만들어 하기에는 조금 복잡하기 때문에 보통은 댓글 기능을 제공해주는 플랫폼을 이용합니다. 쉽고 편한 방법을 원하신다면 [utterances 쓰는 법 알려주는 블로그](https://ansohxxn.github.io/blog/utterances/){:target='_blank' rel='noopener noreferrer'}나 [disqus 알려주는 블로그](https://devinlife.com/howto%20github%20pages/blog-disqus/){:target='_blank' rel='noopener noreferrer'}를 읽어보시면 되겠습니다. 다음 내용부터의 난이도는 매우어려움입니다.
 
 ⠀저는 저 플랫폼들이 다 마음에 들지 않아서 JavaScript 세계에 도전했습니다. JS는 정말 초등학교 다닐 적에 조금 해본 게 전부였으므로 지금 머리속에는 아무것도 들어있지 않았습니다. 그래서 ChatGPT를 열심히 굴려 결국 완성했는데, 제가 바이브 코딩을 얕봤다는 걸 깨달았습니다. 생각보다 이게 많이 중독적었습니다. 원래는 AI가 다 해주면 하는 맛도 없고, AI가 어디서 오류를 낼지 몰라 오히려 머리가 더 아팠는데, 요즘 발전을 많이 했는지 오류를 뿜어내긴 하지만 오류 바로잡는 것도 계속 시도하다 보면 되고, 오류나는 비율도 확실히 줄어든 느낌입니다. 성공할 기대치가 높아지니, 오류나면 슬프고, 성공하면 기쁜 것이 이제 도박에 가까워져서 빠져나가기가 어려웠습니다. 프런트엔드의 종말이 온 것 같습니다.
 

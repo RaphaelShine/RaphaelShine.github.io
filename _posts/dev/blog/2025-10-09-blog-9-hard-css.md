@@ -35,62 +35,84 @@ selector {
 ⠀선택자(selector)로 HTML의 구성요소를 지목해서 CSS 속성(property)을 달아주는 겁니다. HTML 속성은 attribute로, property에 대응하는 게 아니라 selector에 대응하여 CSS에서 attribute를 가지고 HTML 구성요소를 지목하게 됩니다.
 
 ## 선택자
-⠀CSS로 HTML의 어느 부분을 꾸밀지 선택합니다. 일단 예시를 드립니다.
-```html
-<div class="example-1">
-  <div class="example-division-1">
-    <h4>1번 지원자</h4>
-    안녕하십니까!
-  </div>
-  <div class="example-division-2">
-    <h4>2번 지원자</h4>
-    안녕하세요??
-  </div>
-  <div class="example-division-3">
-    <h4>3번 지원자</h4>
-    안녕하십니까...
-  </div>
-</div>
-<style>
-  .example-1 {
-    background-color: black;
-  }
-  .example-1 h4 {
-    color: blue;
-  }
-</style>
+### 선택자 문법
+⠀A와 B라는 선택자가 있다고 했을 때, 각각의 관계를 특정하여 스타일을 정할 수 있습니다.
+```scss
+A, B {
+  property: value;
+}
 ```
-<div class="example-1">
-  <div class="example-division-1">
-    <h4>1번 지원자</h4>
-    안녕하십니까!
-  </div>
-  <div class="example-division-2">
-    <h4>2번 지원자</h4>
-    안녕하세요...
-  </div>
-  <div class="example-division-3">
-    <h4>3번 지원자</h4>
-    안녕하십니까??
-  </div>
-</div>
-<style>
-  .example-1 {
-    background-color: black;
-  }
-  .example-1 h4 {
-    color: blue;
-  }
-  .example-1 .example-division-1,
-  .example-1 .example-division-3 {
-    font-size: 20px;
-  }
-</style>
-<br>
-⠀CSS에서 tag명을 이용해 특정할 때는 태그명을 그대로 적고, class명을 이용해 특정할 때는 `.`을 찍고 적으면 됩니다. 합집합으로 선택 시에는 `,`로 연결하고, 교집합으로 선택 시에는 띄어쓰기로 연결합니다. 특정 선택자와 다른 선택자를 갖고 있는데 그 둘 사이의 관계가 어떻게 되는지까지 고려하여 선택할 수도 있습니다.
+```html
+<A>A도 선택</A>
+<B>B도 선택</B>
+```
+
+```scss
+AB {
+  property: value;
+}
+```
+```html
+<A B>A와 B를 동시에 만족</A B>
+```
+
+```scss
+A>B {
+  property: value;
+}
+```
+```html
+<A><B>A 바로 밑에 B</B></A>
+```
+
+```scss
+A B {
+  property: value;
+}
+```
+```html
+<A><C><B>A 밑 어딘가에 B</B></C></A>
+```
+
+```scss
+A+B {
+  property: value;
+}
+```
+```html
+<A></A>
+<B>A 다음에 오는 B</B>
+```
+
+```scss
+A~B {
+  property: value;
+}
+```
+```html
+<A></A>
+<B>A 다음에 오는 모든 B</B>
+<C></C>
+<B>A 다음에 오는 모든 B</B>
+```
+
+### 의사 클래스
+⠀특별한 상태를 선택할 때 사용합니다. 아래는 대표적인 상태들입니다.
+|:---:|---|
+|:hover|마우스 올림|
+|:active|클릭중|
+|:focus|tab키 조준|
+|:link|안 눌러 본 링크|
+|:visited|눌러 본 링크|
+⠀이런 식으로 `:`를 붙여 사용합니다.
+```scss
+A:hover {
+  property: value;
+}
+```
 
 ### before, after
-⠀before와 after는 각각 선택된 부분의 앞과 뒤에 무언가를 붙이는 문법입니다. "지원자"라는 단어가 h4에서 반복되고 있는데, 이를 after를 이용해 다시 작성해보겠습니다.
+⠀before와 after는 각각 선택된 부분의 앞과 뒤에 무언가를 붙이는 **의사요소**입니다. 의사요소는 `::`를 붙입니다.
 ```html
 <div class="example-2">
   <div class="example-division-1">
@@ -244,30 +266,6 @@ selector {
   }
 </style>
 
-### font-size
-```html
-<div class="example-5">
-  <div class="font-size-example">
-    듬직듬직
-  </div>
-</div>
-<style>
-  .example-5 .font-size-example {
-    font-size: 50px;
-  }
-</style>
-```
-<div class="example-5">
-  <div class="font-size-example">
-    듬직듬직
-  </div>
-</div>
-<style>
-  .example-5 .font-size-example {
-    font-size: 50px;
-  }
-</style>
-
 ### 테두리
 
 ```html
@@ -326,16 +324,8 @@ selector {
     background-color: green;
   }
 </style>
-테두리는 padding, border, margin이 있습니다.
+테두리 종류도 여러개라 padding, border, margin이 있습니다.
 
-### font-align
-⠀`center`하면 가운데 정렬됩니다.
-
-## 변수
-SCSS는 변수를 `$변수명`으로 작성합니다.
-```scss
-$var: "값";
-```
 ## 함수
 프로그래밍에서 함수는 동작들의 묶음인데, SCSS에선 function과 mixin이 담당합니다. function은 숫자 계산용이고 mixin이 스타일링 문법을 묶는 용도입니다. 곁들여서 if와 for도 보여드리겠습니다.
 
@@ -370,13 +360,6 @@ $var: "값";
 }
 ```
 ⠀이걸 이용하면 위 테두리속성 예시가 더 개선될 겁니다. <span style='font-family:OngleipParkDahyeon'>개인적으로 조금 신기했던 게 저 위에 #{}입니다. 전 attribute를 변수명같이 생각중이었는데 변수값으로 변수명을 때워서 접근하다니... 다른 언어 쓰면서 하고 싶던 건데 이런 거 처음 봅니다. attribute가 변수명이 아니라 값같은 거였을까요? 모르겠네요.</span>
-## 우선순위
-⠀CSS는 우선순위가 있어서 코드를 적어도 우선순위가 더 높은 코드가 다른 곳에서 방해하면 원하는 대로 동작할 수 없습니다. 따라서 `!important`를 붙여주어 우선순위를 높일 수 있습니다. 남발하면 안되겠죠?
-```scss
-@include breakpoint($small) {
-  font-size: $size * 0.6 !important;
-}
-```
 
 ## 마무리
-⠀CSS는 딱히 깊게 알 필요가 없다고 생각해서 이정도에서 끝내겠습니다. 이제 이론은 끝났고 다음 포스트부터는 Jekyll에 적용해 보겠습니다. 더 알고싶다면 [여기](https://www.heropy.dev/p/yUnC6g){:target='_blank' rel='noopener noreferrer'}가 상당히 좋아 보입니다.
+⠀CSS는 딱히 깊게 알 필요가 없다고 생각해서 이정도에서 끝내겠습니다. 이제 이론은 끝났고 다음 포스트부터는 Jekyll에 적용해 보겠습니다.
