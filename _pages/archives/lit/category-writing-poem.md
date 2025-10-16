@@ -1,7 +1,7 @@
 ---
-title: "Writing Poem"
+title: "Writing Poem" #나중에 한글로 해보기
 layout: archive
-permalink: /literature/sharing-poem/
+permalink: /literature/writing-poem/
 author_profile: true
 sidebar_main: true
 ---
