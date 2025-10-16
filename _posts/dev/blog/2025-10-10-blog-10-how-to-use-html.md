@@ -1,5 +1,5 @@
 ---
-title: "[Blog]10. Jekyll의 HTML 활용"
+title: "[Blog]10. Jekyll에서 댓글, 검색엔진, 파비콘 설정"
 excerpt: "블로그에서 댓글 만들기, 검색엔진 연동, 파비콘(favicon) 붙이기 방법을 배운다."
 
 sort_key : 10

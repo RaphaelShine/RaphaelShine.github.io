@@ -1,6 +1,6 @@
 ---
 title: "[Blog]17. Jekyll의 CSS 파일 정리"
-excerpt: "Jekyll에서 구체적인 CSS 파일들을 Minimal-Mistakes 기준으로 정리한다."
+excerpt: "Jekyll에서 구체적인 CSS 파일들을 Minimal-Mistakes 기준으로 정리하고 이 블로그에서 수정된 내용을 알아본다."
 
 sort_key : 17
 categories:

@@ -1,6 +1,6 @@
 ---
-title: "[Blog]12. Jekyll의 CSS 활용"
-excerpt: "블로그에서 원하는 글꼴(폰트) 설정, 글자 크기 설정, 부가적인 CSS 탑재 방법을 배운다. Jekyll에서 구체적인 CSS 파일들을 Minimal-Mistakes 기준으로 정리한다."
+title: "[Blog]12. Jekyll에서 폰트, 글자 크기, 색상 등 설정"
+excerpt: "블로그에서 원하는 글꼴(폰트) 설정, 글자 크기 설정, 부가적인 CSS 탑재 방법을 배운다."
 
 sort_key : 12
 categories:

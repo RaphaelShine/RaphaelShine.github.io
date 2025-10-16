@@ -1,5 +1,5 @@
 ---
-title: "[Blog]11. Jekyll의 YAML 활용"
+title: "[Blog]11. Jekyll에서 포스트 정렬, 제목 뒤 이미지 설정"
 excerpt: "블로그에서 포스트 정렬하는 법, 제목 뒤에 이미지 띄우는 법을 배운다."
 
 sort_key : 11
