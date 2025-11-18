@@ -1,11 +1,10 @@
 ---
-title: "Handsign"
+title: "K-Voca"
 layout: archive
-permalink: /language/korean-handsign/
+permalink: /language/k-voca/
 author_profile: true
 sidebar_main: true
 ---
-내년(2026)에는 올릴 듯합니다.
 ***
-{% assign posts = site.categories.Handsign %}
+{% assign posts = site.categories.K-Voca %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}

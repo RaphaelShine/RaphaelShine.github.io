@@ -30,9 +30,12 @@ main:
     name: "language"
     url: /language/
     children:
+      - title: "한국어 어휘"
+        name: "K-Voca"
+        url: /language/k-voca/
       - title: "수어"
-        name: "Korean Handsign"
-        url: /language/korean-handsign/
+        name: "K-Handsign"
+        url: /language/k-handsign/
   - title: "기타"
     name: "etc"
     url: /etc/
