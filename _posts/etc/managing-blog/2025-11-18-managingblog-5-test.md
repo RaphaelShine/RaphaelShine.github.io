@@ -1,5 +1,5 @@
 ---
-title: [ManagingBlog] Test
+title: "[ManagingBlog] Test"
 excerpt: annyeonghaseayo
 
 sort_key : 5

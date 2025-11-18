@@ -31,7 +31,7 @@ main:
     url: /language/
     children:
       - title: "한국어 어휘"
-        name: "K-voca"
+        name: "K-Voca"
         url: /language/k-voca/
       - title: "수어"
         name: "K-Handsign"
