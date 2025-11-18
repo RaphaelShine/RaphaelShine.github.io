@@ -1,6 +1,6 @@
 ---
-title: "[K-Voca] 뿐"
-excerpt: ""뿐"이라는 단어가 너무 귀엽다."
+title: [K-Voca] 뿐
+excerpt: "뿐"이라는 단어가 너무 귀엽다.
 
 sort_key : 1
 categories:
