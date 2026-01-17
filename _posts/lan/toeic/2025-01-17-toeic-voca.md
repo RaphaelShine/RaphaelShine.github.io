@@ -56,7 +56,6 @@ vocab_groups:
   - id: "nouns_looking_like_adjectives"
     title: "형용사처럼 보이지만 명사로 쓰이는 어휘"
     list:
-      # 모든 단어를 파란색(b)으로 설정
       - { eng: "alternative", kor: "대안", color: "b" }
       - { eng: "objective", kor: "목표", color: "b" }
       - { eng: "representative", kor: "대표자, 직원", color: "b" }
@@ -110,7 +109,7 @@ vocab_groups:
     border-color: #ddd;
   }
 
-  /* 영단어: 항상 검은색 두껍게 */
+  /* 영단어 */
   .word-eng {
     font-size: 1.2rem;
     font-weight: 800;
@@ -132,25 +131,22 @@ vocab_groups:
     opacity: 1;
   }
 
-  /* 중립적 색상 정의 */
-  .word-item.b .word-kor { color: #0056b3; } /* Blue (b) */
-  .word-item.r .word-kor { color: #d63031; } /* Red (r) */
+  .word-item.b .word-kor { color: #0056b3; }
+  .word-item.r .word-kor { color: #d63031; }
 </style>
 
 <div class="vocab-container">
   {% for group in page.vocab_groups %}
     <h2 id="{{ group.title }}" class="group-title">{{ group.title }}</h2>
-    <div class="vocabulary-quiz" data-group-id="{{ group.id }}"></div>
+    <div class="vocabulary-quiz" data-group-id="{{ group.id }}"></div><br>
   {% endfor %}
 </div>
 
 <script>
   (function() {
-    // 1. Jekyll 데이터를 JSON으로 가져오기
     const allGroups = {{ page.vocab_groups | jsonify }};
     if (!allGroups) return;
 
-    // 2. 화면에 배치된 모든 퀴즈 컨테이너 탐색
     const containers = document.querySelectorAll('.vocabulary-quiz');
 
     containers.forEach(container => {
@@ -162,7 +158,6 @@ vocab_groups:
       }
     });
 
-    // 3. 단어 렌더링 함수
     function renderWords(target, list) {
       // 랜덤 셔플 (Fisher-Yates)
       for (let i = list.length - 1; i > 0; i--) {
@@ -172,7 +167,6 @@ vocab_groups:
 
       list.forEach(item => {
         const itemDiv = document.createElement('div');
-        // 중립적인 b/r 클래스 부여
         itemDiv.className = `word-item ${item.color}`;
         
         itemDiv.innerHTML = `
@@ -180,7 +174,6 @@ vocab_groups:
           <span class="word-kor">${item.kor}</span>
         `;
 
-        // 클릭 토글 이벤트
         itemDiv.onclick = function() {
           this.classList.toggle('show');
         };
@@ -190,3 +183,11 @@ vocab_groups:
     }
   })();
 </script>
+
+제 깃허브에서 코드 가져가시면 맘대로 단어 넣어서 쓸 수 있습니다.
+
+<a href="https://github.com/RaphaelShine/RaphaelShine.github.io" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+  <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub blog code</span>
+</a>
+
+그냥 사진찍은 단어들 AI한테 주고 YAML로 같은 형식 만들어달라 하면 아주 편하게 단어 저장할 수 있습니다.

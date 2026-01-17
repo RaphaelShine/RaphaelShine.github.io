@@ -36,6 +36,9 @@ main:
       - title: "수어"
         name: "K-Handsign"
         url: /language/k-handsign/
+      - title: "토익"
+        name: "Toeic"
+        url: /language/toeic/
   - title: "기타"
     name: "etc"
     url: /etc/
