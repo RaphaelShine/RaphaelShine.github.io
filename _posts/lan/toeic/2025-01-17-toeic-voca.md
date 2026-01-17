@@ -56,12 +56,12 @@ vocab_groups:
   - id: "nouns_looking_like_adjectives"
     title: "형용사처럼 보이지만 명사로 쓰이는 어휘"
     list:
-      - { eng: "alternative", kor: "대안", color: "b" }
-      - { eng: "objective", kor: "목표", color: "b" }
-      - { eng: "representative", kor: "대표자, 직원", color: "b" }
-      - { eng: "professional", kor: "전문가", color: "b" }
-      - { eng: "potential", kor: "잠재력", color: "b" }
-      - { eng: "periodical", kor: "정기 간행물", color: "b" }
+      - { eng: "alternative", kor: "대안, 대안의", color: "b" }
+      - { eng: "objective", kor: "목표, 객관적인", color: "b" }
+      - { eng: "representative", kor: "대표자(직원), 대표적인", color: "b" }
+      - { eng: "professional", kor: "전문가, 전문적인", color: "b" }
+      - { eng: "potential", kor: "잠재력, 잠재적인", color: "b" }
+      - { eng: "periodical", kor: "정기 간행물, 정기 간행의", color: "b" }
       - { eng: "approval", kor: "승인", color: "b" }
       - { eng: "disposal", kor: "처분", color: "b" }
       - { eng: "initiative", kor: "계획, 진취성", color: "b" }
@@ -190,4 +190,4 @@ vocab_groups:
   <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub blog code</span>
 </a>
 
-그냥 사진찍은 단어들 AI한테 주고 YAML로 같은 형식 만들어달라 하면 아주 편하게 단어 저장할 수 있습니다.
+그냥 사진찍은 단어들 AI한테 주고 YAML로 같은 형식 만들어달라 하면 아주 편하게 단어 저장할 수 있습니다. <span style="font-family:OngleipParkDahyeon">사실 이 코드도 다 인공지능으로 뽑은 코듭니다. 저는 숟가락으로 좀 찌르고 놓은 것 뿐이죠 훗후.</span>
