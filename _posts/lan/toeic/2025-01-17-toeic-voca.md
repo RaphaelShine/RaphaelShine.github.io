@@ -186,7 +186,7 @@ vocab_groups:
 
 제 깃허브에서 코드 가져가시면 맘대로 단어 넣어서 쓸 수 있습니다.
 
-<a href="https://github.com/RaphaelShine/RaphaelShine.github.io" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+<a href="https://github.com/RaphaelShine/RaphaelShine.github.io/blob/master/_posts/lan/toeic/2025-01-17-toeic-voca.md?plain=1" itemprop="sameAs" rel="nofollow noopener noreferrer me">
   <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub blog code</span>
 </a>
 
