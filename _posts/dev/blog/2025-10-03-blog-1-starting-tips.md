@@ -288,6 +288,14 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
 
         bundle exec jekyll serve
         ```
+    gem 실종될 때
+        ```bash
+        echo '[[ -d ~/.rbenv ]] && \
+        export PATH="$HOME/.rbenv/bin:$PATH" && \
+        eval "$(rbenv init -)"' >> ~/.zshrc
+        
+        source ~/.zshrc
+        ```
 
     - [ruby](https://rubyinstaller.org/downloads/){:target="_blank" rel="noopener noreferrer"}를 다운 받습니다.  
 

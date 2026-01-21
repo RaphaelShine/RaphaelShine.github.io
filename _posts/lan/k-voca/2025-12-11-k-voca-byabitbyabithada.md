@@ -11,8 +11,8 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2025-11-18
-last_modified_at: 2025-11-18
+date: 2025-12-11
+last_modified_at: 2025-12-11
 ---
 ## 시작하며
 <span style="font-family:BookkMyungjo;font-size:30px">"뱌빚뱌빚하다"</span>라는 단어가 있습니다. 
