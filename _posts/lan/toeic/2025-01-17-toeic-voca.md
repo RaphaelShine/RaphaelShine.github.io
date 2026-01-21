@@ -16,7 +16,7 @@ last_modified_at: 2026-01-17
 
 vocab_groups:
   - id: "countability"
-    title: "가산: Blue / 불가산: Red"
+    title: "가산(b) / 불가산(r)"
     list:
       # 혼동하기 쉬운 가산명사
       - { eng: "plan", kor: "계획", color: "b" }
@@ -74,6 +74,52 @@ vocab_groups:
       - { eng: "removal", kor: "제거", color: "b" }
       - { eng: "proposal", kor: "제안(서)", color: "b" }
       - { eng: "characteristic", kor: "특징", color: "b" }
+  - id: "to_inf_vs_gerund"
+    title: "to부정사(b) / 동명사(r)"
+    list:
+      # to부정사를 목적어로 취하는 동사 (b: 파랑)
+      - { eng: "afford", kor: "-할 여유가 있다", color: "b" }
+      - { eng: "agree / consent / assent", kor: "동의하다", color: "b" }
+      - { eng: "ask / demand", kor: "요청하다, 요구하다", color: "b" }
+      - { eng: "attempt / endeavor / strive", kor: "시도하다, 노력하다", color: "b" }
+      - { eng: "choose / decide / determine", kor: "선택하다, 결정하다", color: "b" }
+      - { eng: "deserve", kor: "-할 가치가 있다", color: "b" }
+      - { eng: "expect", kor: "기대하다, 예상하다", color: "b" }
+      - { eng: "fail", kor: "-하지 못하다, 실패하다", color: "b" }
+      - { eng: "hesitate", kor: "주저하다", color: "b" }
+      - { eng: "hope / wish / desire", kor: "바라다, 희망하다", color: "b" }
+      - { eng: "intend / aim", kor: "의도하다, 작정하다", color: "b" }
+      - { eng: "manage", kor: "가까스로 해내다", color: "b" }
+      - { eng: "need / want", kor: "필요로 하다, 원하다", color: "b" }
+      - { eng: "offer", kor: "제안하다", color: "b" }
+      - { eng: "plan / resolve", kor: "계획하다, 결심하다", color: "b" }
+      - { eng: "pretend", kor: "-인 체하다", color: "b" }
+      - { eng: "promise / swear / pledge", kor: "약속하다, 서약하다", color: "b" }
+      - { eng: "refuse", kor: "거절하다", color: "b" }
+      - { eng: "tend", kor: "-하는 경향이 있다", color: "b" }
+      - { eng: "threaten", kor: "위협하다", color: "b" }
+
+      # 동명사를 목적어로 취하는 동사 (r: 빨강)
+      - { eng: "admit / acknowledge", kor: "인정하다", color: "r" }
+      - { eng: "allow / permit", kor: "허용하다", color: "r" }
+      - { eng: "anticipate", kor: "예상하다", color: "r" }
+      - { eng: "avoid / evade / escape", kor: "피하다, 회피하다", color: "r" }
+      - { eng: "consider / contemplate", kor: "고려하다, 심사숙고하다", color: "r" }
+      - { eng: "delay / postpone / defer / put off", kor: "미루다, 연기하다", color: "r" }
+      - { eng: "deny", kor: "부인하다, 저항하다", color: "r" }
+      - { eng: "discontinue / quit / stop / give up", kor: "중단하다, 그만두다, 포기하다", color: "r" }
+      - { eng: "dislike / resent", kor: "싫어하다, 분노하다", color: "r" }
+      - { eng: "enjoy", kor: "즐기다", color: "r" }
+      - { eng: "finish / complete", kor: "끝내다, 완료하다", color: "r" }
+      - { eng: "imagine", kor: "상상하다", color: "r" }
+      - { eng: "include / involve", kor: "포함하다, 연루시키다", color: "r" }
+      - { eng: "keep / continue", kor: "계속하다", color: "r" }
+      - { eng: "mention / discuss", kor: "언급하다, 상의하다", color: "r" }
+      - { eng: "mind", kor: "꺼리다, 반대하다", color: "r" }
+      - { eng: "practice", kor: "연습하다", color: "r" }
+      - { eng: "recall", kor: "상기하다, 회상하다", color: "r" }
+      - { eng: "recommend / suggest / advise", kor: "추천하다, 제안하다, 충고하다", color: "r" }
+      - { eng: "risk", kor: "위험을 무릅쓰다", color: "r" }
 ---
 
 <style>
@@ -190,4 +236,4 @@ vocab_groups:
   <i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub blog code</span>
 </a>
 
-그냥 사진찍은 단어들 AI한테 주고 YAML로 같은 형식 만들어달라 하면 아주 편하게 단어 저장할 수 있습니다. <span style="font-family:OngleipParkDahyeon">사실 이 코드도 다 인공지능으로 뽑은 코듭니다. 저는 숟가락으로 좀 찌르고 놓은 것 뿐이죠 훗후.</span>
+그냥 사진찍은 단어들 AI한테 주고 YAML로 같은 형식 만들어달라 하면 아주 편하게 단어 저장할 수 있습니다. <span style="font-family:OngleipParkDahyeon">사실 이 코드도 다 인공지능으로 뽑은 코듭니다. 저는 숟가락만 좀 열심히 얹은 것 뿐이죠 훗후.</span>
