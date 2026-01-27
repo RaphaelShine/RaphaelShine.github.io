@@ -4,7 +4,7 @@ excerpt: 밤하늘 아래 모두가 반짝일 때
 
 sort_key : 1
 categories:
-  - Writing Poem
+  - Writing-Poem
 tags:
   - [현대시, 컴퓨터문학]
 

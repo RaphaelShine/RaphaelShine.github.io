@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2025-11-18
-last_modified_at: 2025-11-18
+last_modified_at: 2026-01-27
 ---
 ## 시작하며
 <span style="font-family:BookkMyungjo;font-size:30px">"뿐"</span>이라는 단어를 다시 한 번, 천천히 읽어보면, 참 귀엽다는 느낌이 들지 않으십니까? 우선 소리가 귀엽죠. 생긴 것도 귀엽죠. 의미도 정말 귀엽지 않습니까?
@@ -20,7 +20,7 @@ last_modified_at: 2025-11-18
 ⠀오늘 포스트는 **"뿐"**을 주인공으로 하여 헷갈리기 쉬운 문법적인 부분과 함께 우리 주인공의 귀여운 모습을 샅샅이 파헤쳐 볼 뿐입니다.
 
 ## 역사적 변천사
-⠀15세기부터 로 표기되며 발음은 변하지 않은 것으로 보이며 "분"이나 "", ""과 같은 이표기가 있었습니다.
+⠀15세기부터 <span style="font-family:NanumMyeongjoOldHangeul"></span>로 표기되며 발음은 변하지 않은 것으로 보이며 "<span style="font-family:NanumMyeongjoOldHangeul">분</span>"이나 "<span style="font-family:NanumMyeongjoOldHangeul"></span>", "<span style="font-family:NanumMyeongjoOldHangeul"></span>"과 같은 이표기가 있었습니다.
 
 ## 문법
 ⠀한국어에는 **"뿐"**이라는 단어가 두 개 존재합니다. 각각은 의존명사와 보조사로 다른 동음이의어입니다. 의미가 다르다고는 하나 비슷하기 때문에 헷갈리기 쉽습니다.

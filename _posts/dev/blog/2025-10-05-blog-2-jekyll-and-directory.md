@@ -45,7 +45,7 @@ e.g.
   {{ file.name }}
 {% endfor %}{% endraw %}
 ```
-결과 (진짜 돌리는 중)
+결과 (웹사이트에서 직접 실행됨)
 ```
 {% for nav_button in site.data.navigation.main %}{{ nav_button.title }}{% endfor %}
 {% for file in site.static_files %}{{ file.name }}{% endfor %}

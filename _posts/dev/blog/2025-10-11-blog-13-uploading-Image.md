@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2025-10-08
-last_modified_at: 2025-10-14
+last_modified_at: 2026-01-27
 
 profiles:
   - image_path: /assets/images/TheEarthCapture.png
