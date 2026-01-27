@@ -4,12 +4,11 @@ excerpt: 밤하늘 아래 모두가 반짝일 때
 
 sort_key : 1
 categories:
-  - Writing-Poem
+  - Writing Poem
 tags:
   - [현대시, 컴퓨터문학]
 
-toc: true
-toc_sticky: true
+toc: false
 
 date: 2026-01-17
 last_modified_at: 2026-01-17

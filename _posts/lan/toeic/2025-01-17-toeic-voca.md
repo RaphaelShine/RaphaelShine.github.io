@@ -120,6 +120,17 @@ vocab_groups:
       - { eng: "recall", kor: "상기하다, 회상하다", color: "r" }
       - { eng: "recommend / suggest / advise", kor: "추천하다, 제안하다, 충고하다", color: "r" }
       - { eng: "risk", kor: "위험을 무릅쓰다", color: "r" }
+  - id: "confusing_adjectives"
+    title: "혼동하기 쉬운 토익 형용사 쌍"
+    list:
+      - { eng: "complimentary / complementary", kor: "무료의 / 보완적인", color: "b" }
+      - { eng: "considerate / considerable", kor: "사려 깊은 / 상당한", color: "b" }
+      - { eng: "dependent / dependable", kor: "의존적인 / 신뢰할 만한", color: "b" }
+      - { eng: "sizable / sized", kor: "상당한(많은) / 크기가 ~인", color: "b" }
+      - { eng: "confident / confidential", kor: "확신하는 / 기밀의", color: "b" }
+      - { eng: "successful / successive", kor: "성공적인 / 연속적인", color: "b" }
+      - { eng: "reliant / reliable", kor: "의존적인 / 신뢰할 만한", color: "b" }
+      - { eng: "favorable / favorite", kor: "호의적인 / 선호하는", color: "b" }
 ---
 
 <style>

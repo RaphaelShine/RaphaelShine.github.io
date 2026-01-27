@@ -8,8 +8,7 @@ categories:
 tags:
   - [주절주절]
 
-toc: true
-toc_sticky: true
+toc: false
 
 date: 2025-10-09
 last_modified_at: 2025-10-09
