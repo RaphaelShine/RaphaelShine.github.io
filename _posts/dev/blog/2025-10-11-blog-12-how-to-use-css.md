@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2025-10-11
-last_modified_at: 2025-10-16
+last_modified_at: 2026-01-27
 ---
 
 ## 시작하며
@@ -20,13 +20,16 @@ last_modified_at: 2025-10-16
 
 ⠀CSS 문법에 대해 이해가 필요하다면 [초보용](/blog/blog-6-newbie-css/)과 [고수용](/blog/blog-9-hard-css)이 준비되어 있습니다. 몰라도 그냥 따라만 하면 됩니다.
 ## 폰트 설정하기
-⠀먼저 인터넷에서 웹 폰트를 url로 얻어 옵니다. 저는 [누누](https://noonnu.cc/index){:target='_blank' rel='noopener noreferrer'}에서 가져왔습니다.
+⠀먼저 인터넷에서 웹 폰트를 url로 얻어 옵니다. 저는 [눈누](https://noonnu.cc/index){:target='_blank' rel='noopener noreferrer'}에서 가져왔습니다.
 
 (웹폰트로 사용 사진)
 
 ⠀웹폰트로 사용으로 복사해 텍스트를 [`assets/css/main.scss`](/blog/blog-17-css-files/#mainscss)에 넣습니다.
 
 ⠀[`minimal-mistakes/_variables.scss`](/blog/blog-17-css-files/#minimal-mistakes_variablesscss)에서 `/* system typefaces */`를 찾아 각 font-family 값을 넣습니다. serif는 좀 진지해 보이는 폰트(획 끝이 돌출된 글꼴)고 sans-serif와 sans-serif-narrow는 둥근 폰트, monospace는 코딩용 폰트입니다. <span style='font-family:OngleipParkDahyeon'>저는 귀여운 글꼴 넣는 블로그를 보고 감명받아서 cutie라는 새 변수를 만들었습니다.</span> 저장하면 끝입니다.
+
+⠀<span style='font-family:NanumMyeongjoOldHangeul'>옛한글 표시되는 명조</span>
+[나눔명조옛한글](https://noonnu.cc/font_page/1649){:target='_blank' rel='noopener noreferrer'}
 
 ```scss
 /* system typefaces */
