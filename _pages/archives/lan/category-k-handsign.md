@@ -1,5 +1,5 @@
 ---
-title: "Handsign"
+title: "K-Handsign"
 layout: archive
 permalink: /language/k-handsign/
 author_profile: true
