@@ -296,6 +296,19 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
         
         source ~/.zshrc
         ```
+    Gem::FilePermissionError
+        ```bash
+        echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+        echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+        
+        source ~/.zshrc
+        ```
+        ```
+    bundler 버전 문제
+        ```bash
+        bundle update --bundler
+        bundle install
+        ```
 
     - [ruby](https://rubyinstaller.org/downloads/){:target="_blank" rel="noopener noreferrer"}를 다운 받습니다.  
 
@@ -309,7 +322,7 @@ date_format: "%Y/%m/%d" # 외국에서는 September 03, 2025 처럼 표시하잖
       bundle exec jekyll serve
       ```
     - 로컬 서버의 주소가 cmd에 뜨게 됩니다.  
-      <span style="font-family:OngleipParkDahyeon">보통 <https://127.0.0.1:4000>입니다.</span>
+      <span style="font-family:OngleipParkDahyeon">보통 <http://127.0.0.1:4000>입니다.</span>
 
 ⠀이제 한번 페이지를 둘러봅시다. 그리고 빈 곳을 어떻게 채울지, 무엇을 바꿀지 생각해 봅시다.
 
