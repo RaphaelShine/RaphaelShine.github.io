@@ -8,6 +8,11 @@ categories:
 tags:
   - [농문화]
 
+header:
+  overlay_image: https://github.com/user-attachments/assets/71765a2a-bc69-4283-855e-9d246c3d101b
+  overlay_filter: 0.3
+  caption: "Email"
+
 toc: true
 toc_sticky: true
 
