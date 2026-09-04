@@ -63,7 +63,7 @@ custom 이미지, get windows 이미지
 {% include gallery
   id="VMware bifurcation"
   caption="각 케이스로 진행 시"
-  layout="third" %}
+  layout="harf" %}
 
 ⠀계속 진행하면 됩니다. 배당할 용량은 용도에 따라 다르겠지만 64GB면 보통 충분합니다.
 
