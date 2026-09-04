@@ -59,11 +59,9 @@ VMware bifurcation:
 ⠀VMware를 실행합니다. Windows Arm을 이미 설치했다면 custom을 선택, 안 했다면 get windows를 선택합니다.
 ![세 가지 선택지](https://github.com/user-attachments/assets/adfa640e-bc2a-40c2-9aec-8bd7725a76aa){: .align-center width="70%" height="70%"}
 
-custom 이미지, get windows 이미지
 {% include gallery
   id="VMware bifurcation"
-  caption="각 케이스로 진행 시"
-  layout="harf" %}
+  caption="각 방법으로 진행 시 화면. 순서대로 custom, get windows." %}
 
 ⠀계속 진행하면 됩니다. 배당할 용량은 용도에 따라 다르겠지만 64GB면 보통 충분합니다.
 
