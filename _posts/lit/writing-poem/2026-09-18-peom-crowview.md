@@ -14,7 +14,7 @@ date: 2026-09-18
 last_modified_at: 2026-09-18
 ---
 
-```
+```csharp
 public class CrowView : BirdView {
     Child[] childrun = new Child[13];
     // Private is apposite
