@@ -19,6 +19,15 @@ last_modified_at: 2026-09-29
 
 ⠀Unity는 GameObject라는 빈 껍데기에 Component들을 붙여서 기능을 동작시키는 **Component Pattern**을 사용한다. <span style="font-family:OngleipParkDahyeon">후에 디자인 패턴을 다루게 되면 링크를 걸도록 하겠다.</span> Component는 Transform과 Behaviour가 상속받는다. 여기서 Behaviour는 AudioSource, Collider, Camera, MeshRenderer 등이 상속받는다. 또한 MonoBehaviour도 Behaviour를 상속받는다.
 
+```
+UnityEngine.Object  
+   └── Component  
+         ├── Transform  
+         └── Behaviour  
+               ├── Camera, Light, AudioSource, Collider 등  
+               └── MonoBehaviour
+```
+
 ⠀Component는 Unity Editor에서 GameObject를 선택했을 때 Inspector에 나타나는 모든 것이다. Behaviour는 그 중 껐다 켰다 할 수 있는 것이다. 박스에 체크 표시로 On/Off 할 수 있다. Transform을 제외한 모든 Component가 Behaviour이다. 
 
 ⠀MonoBehaviour의 위치가 어느정도인지 감이 잡히는가? MonoBehaviour는 C# 코드를 Behaviour로 쓸 수 있도록 하는 클래스이다. 직접 작성한 C# class가 MonoBehaviour를 상속받게 하면 gameObject에 component로 넣을 수 있다. 위에서 설명한 상속관계 덕분이다.
@@ -28,10 +37,12 @@ last_modified_at: 2026-09-29
 
 ⠀이것이 가능한 이유는 C++로 구현된 엔진 내부에서 호출을 제어해주기 때문이다. 따라서 Unity에 작성한 모든 C# script들은 엔진에서 호출해 줄 수 있는 저 기본 함수들로부터 연결되어야 한다. 당연히 MonoBehaviour 없이 scripting을 할 수는 없다는 것이 된다.
 
+⠀구체적으로 어떤 것들이 있는지는 [유니티 메뉴얼](https://docs.unity3d.com/Manual/event-functions.html){:target="_blank" rel="noopener noreferrer"}에서 확인할 수 있다.
+
 ## Inspector
 ⠀field에 public으로 선언되었으면 기본적으로 Inspector에서도 확인할 수 있다.
 
-⠀field를 Inspector에서 확인할 수 있다는 것은 1. Editor에서 값을 할당 할 수 있고 2. 실행 중 값을 확인하거나 3. 실행 중 값을 임의로 변경할 수 있다는 의미가 있다. <span style="font-family:OngleipParkDahyeon">public delegate는 Inspector에 보이려나? 나중에 확인해보자</span>
+⠀field를 Inspector에서 확인할 수 있다는 것은 1. Editor에서 값을 할당 할 수 있고 2. 실행 중 값을 확인하거나 3. 실행 중 값을 임의로 변경할 수 있다는 의미가 있다.
 
 ⠀Inspector에 나타나는 것을 제어하기 위해 Unity Attributes를 사용할 수 있다.
 
@@ -42,8 +53,37 @@ last_modified_at: 2026-09-29
 [Header("Header")] // Header를 닮
 [Range(0,100)] // 수의 범위 설정, 슬라이더로 표기
 [Tooltip("설명")] // 마우스 올리면 보이는 설명
-[HelpURL("https://raphaelshine.github.io/")] // 외부링크
+[HelpURL("https://raphaelshine.github.io/")] // component 이름 옆 ?버튼을 누르면 이동
 ```
+
+![GameManager in Inspector](https://github.com/user-attachments/assets/8f73b6a6-cf17-4266-9a18-b4ffed5c8403){: .align-center width="100%"}
+
+<details><summary>실제 코드</summary><div markdown="1">
+
+```csharp
+[HelpURL("https://raphaelshine.github.io/")] // component 이름 옆 ?버튼을 누르면 이동
+public class GameManager : MonoBehaviour
+{
+    [SerializeField] // public이 아닌 것도 보여줌
+    private int privateNumber;
+    
+    [HideInInspector] // public인 것도 안 보여줌
+    public int publicNumber;
+
+    [Space(10)] // Inspector의 가독성을 위한 여백을 만듦
+    public string stayAway;
+
+    [Header("Header")] // Header를 닮
+
+    [Range(0,100)] // 수의 범위 설정, 슬라이더로 표기
+    public int slider;
+
+    [Tooltip("설명")] // 마우스 올리면 보이는 설명
+    public int needDescription;
+}
+```
+
+</div></details>
 
 ## 참고할 특징
 ⠀MonoBehaviour는 new 키워드로 생성할 수 없다. 반드시 `gameObject.AddComponent<>();`를 사용한다. 이 때문에 Factory pattern을 구현할 때 생각을 좀 더 해야 한다.
